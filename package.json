@@ -1,0 +1,22 @@
+{
+  "name": "faze-qq-match-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FaZe HLTV match notifications for one QQ group",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "bind": "node src/bind.js",
+    "test-message": "node src/send-test-message.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0-rc.12",
+    "dotenv": "16.4.7",
+    "got-scraping": "3.2.15",
+    "ws": "8.21.1"
+  }
+}
