@@ -66,18 +66,24 @@ function formatStartMessage(match) {
   ].join("\n");
 }
 
-function mapLine(map, team1Name, team2Name) {
+function mapLine(map, team1Name, team2Name, swapTeams = false) {
   if (!map.result) return `${map.name}：未进行`;
-  const t1 = map.result.team1TotalRounds;
-  const t2 = map.result.team2TotalRounds;
+  const t1 = swapTeams
+    ? map.result.team2TotalRounds
+    : map.result.team1TotalRounds;
+  const t2 = swapTeams
+    ? map.result.team1TotalRounds
+    : map.result.team2TotalRounds;
   const winner = t1 > t2 ? team1Name : t2 > t1 ? team2Name : "平局";
   return `${map.name}：${t1}-${t2}（${winner}）`;
 }
 
-function overviewLine(label, pair, digits = null) {
+function overviewLine(label, pair, digits = null, swapTeams = false) {
   if (!pair || pair.team1 === undefined || pair.team2 === undefined)
     return null;
-  return `${label}：${valueOrDash(pair.team1, digits)} : ${valueOrDash(pair.team2, digits)}`;
+  const team1 = swapTeams ? pair.team2 : pair.team1;
+  const team2 = swapTeams ? pair.team1 : pair.team2;
+  return `${label}：${valueOrDash(team1, digits)} : ${valueOrDash(team2, digits)}`;
 }
 
 function playerLine(player) {
@@ -101,44 +107,51 @@ function playerTable(name, players) {
 }
 
 function formatResultMessages(match, stats) {
-  const [team1Name, team2Name] = teamNames(match);
-  const team1Maps = match.maps.filter(
+  const [originalTeam1, originalTeam2] = teamNames(match);
+  const swapTeams =
+    /^faze$/i.test(originalTeam2) && !/^faze$/i.test(originalTeam1);
+  const team1Name = swapTeams ? originalTeam2 : originalTeam1;
+  const team2Name = swapTeams ? originalTeam1 : originalTeam2;
+  const originalTeam1Maps = match.maps.filter(
     (map) =>
       map.result && map.result.team1TotalRounds > map.result.team2TotalRounds,
   ).length;
-  const team2Maps = match.maps.filter(
+  const originalTeam2Maps = match.maps.filter(
     (map) =>
       map.result && map.result.team2TotalRounds > map.result.team1TotalRounds,
   ).length;
+  const team1Maps = swapTeams ? originalTeam2Maps : originalTeam1Maps;
+  const team2Maps = swapTeams ? originalTeam1Maps : originalTeam2Maps;
   const overview = stats.overview || {};
   const overviewLines = [
-    overviewLine("Team Rating 3.0", overview.teamRating, 2),
-    overviewLine("首杀", overview.firstKills),
-    overviewLine("残局胜利", overview.clutchesWon),
+    overviewLine("Team Rating 3.0", overview.teamRating, 2, swapTeams),
+    overviewLine("首杀", overview.firstKills, null, swapTeams),
+    overviewLine("残局胜利", overview.clutchesWon, null, swapTeams),
   ].filter(Boolean);
+  const team1Stats = swapTeams
+    ? stats.playerStats.team2
+    : stats.playerStats.team1;
+  const team2Stats = swapTeams
+    ? stats.playerStats.team1
+    : stats.playerStats.team2;
 
   const message = [
-    "【FaZe赛后战绩】",
+    "【赛后战绩】",
     "",
     `${team1Name} ${team1Maps}-${team2Maps} ${team2Name}`,
     `赛事：${match.event?.name || "赛事待定"}`,
     "",
+    "【地图比分】",
     ...match.maps
       .filter((map) => map.result)
-      .map((map) => mapLine(map, team1Name, team2Name)),
+      .map((map) => mapLine(map, team1Name, team2Name, swapTeams)),
     ...(overviewLines.length
       ? ["", `${team1Name} : ${team2Name}`, ...overviewLines]
       : []),
     "",
-    ...playerTable(
-      stats.team1?.name || team1Name,
-      stats.playerStats.team1,
-    ),
+    ...playerTable(team1Name, team1Stats),
     "",
-    ...playerTable(
-      stats.team2?.name || team2Name,
-      stats.playerStats.team2,
-    ),
+    ...playerTable(team2Name, team2Stats),
   ].join("\n");
 
   return [message];
