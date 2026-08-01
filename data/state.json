@@ -1,6 +1,62 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": null,
+  "lastScheduleCheckAt": "2026-08-01T10:58:55.784Z",
   "lastHeartbeatAt": "2026-08-01T09:09:23.474Z",
-  "matches": {}
+  "matches": {
+    "2396020": {
+      "id": 2396020,
+      "date": 1785580200000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": {
+        "id": 7020,
+        "name": "Spirit"
+      },
+      "event": {
+        "id": 8247,
+        "name": "BLAST Bounty 2026 Season 2 Finals"
+      },
+      "format": {
+        "type": "bo3"
+      },
+      "title": null,
+      "liveFromList": true,
+      "discoveredAt": "2026-08-01T10:58:55.784Z",
+      "lastSeenAt": "2026-08-01T10:58:55.784Z",
+      "startSent": true,
+      "resultSent": false,
+      "status": "live",
+      "statsId": null,
+      "winnerTeam": null,
+      "stage": {
+        "name": "Stage 2 semi-final",
+        "label": "第2阶段半决赛",
+        "isKnockout": true
+      },
+      "maps": [
+        {
+          "name": "Dust2",
+          "statsId": null,
+          "result": {
+            "team1TotalRounds": 5,
+            "team2TotalRounds": 7
+          }
+        },
+        {
+          "name": "Cache",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Anubis",
+          "statsId": null,
+          "result": null
+        }
+      ],
+      "embeddedStats": null,
+      "startSentAt": "2026-08-01T10:58:55.784Z"
+    }
+  }
 }
