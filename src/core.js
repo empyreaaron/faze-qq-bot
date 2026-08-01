@@ -128,11 +128,12 @@ async function runMonitor({
       }
 
       if (match.status === "over" && !match.resultSent) {
-        if (!match.statsId) {
+        if (!match.embeddedStats && !match.statsId) {
           logger.log(`比赛 ${match.id} 已结束，等待HLTV完整统计。`);
           continue;
         }
-        const stats = await dataSource.getStats(match.statsId);
+        const stats =
+          match.embeddedStats || (await dataSource.getStats(match.statsId));
         await messenger.send(formatResultMessages(match, stats));
         match.resultSent = true;
         match.resultSentAt = iso(now);

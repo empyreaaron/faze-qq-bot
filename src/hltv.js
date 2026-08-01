@@ -98,17 +98,74 @@ function parseStage(formatText) {
   return { name, label: `${prefix}${round}`, isKnockout: true };
 }
 
-async function fetchHltvHtml(url) {
-  const response = await gotScraping({
+function isCloudflarePage(html) {
+  return /Just a moment|cf-chl-|Attention Required|Enable JavaScript and cookies/i.test(
+    String(html || ""),
+  );
+}
+
+async function requestHtml(url, options = {}) {
+  const requestOptions = {
     url,
-    timeout: { request: 25_000 },
-    retry: { limit: 1 },
-  });
-  const html = response.body;
-  if (!html || /Just a moment|cf-chl-|Attention Required/i.test(html)) {
-    throw new Error("HLTV返回了Cloudflare验证页");
+    timeout: { request: options.timeout || 25_000 },
+    retry: { limit: options.retries ?? 1 },
+  };
+  if (options.headers) requestOptions.headers = options.headers;
+  const response = await gotScraping(requestOptions);
+  if (response.statusCode >= 400) {
+    throw new Error(`HTTP ${response.statusCode}`);
   }
-  return html;
+  if (!response.body) throw new Error("返回内容为空");
+  return response.body;
+}
+
+function jinaUrl(url) {
+  const target = new URL(url);
+  return `https://r.jina.ai/http://www.hltv.org${target.pathname}${target.search}`;
+}
+
+async function requestReaderHtml(url) {
+  let lastError;
+  for (let attempt = 1; attempt <= 4; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          "x-respond-with": "html",
+          "x-cache-tolerance": "60",
+        },
+        signal: AbortSignal.timeout(60_000),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const html = await response.text();
+      if (!html) throw new Error("返回内容为空");
+      return html;
+    } catch (error) {
+      lastError = error;
+      if (attempt < 4) {
+        await new Promise((resolve) => setTimeout(resolve, attempt * 1_500));
+      }
+    }
+  }
+  throw lastError;
+}
+
+async function fetchHltvHtml(url) {
+  try {
+    const html = await requestHtml(url);
+    if (isCloudflarePage(html)) {
+      throw new Error("HLTV返回了Cloudflare验证页");
+    }
+    return html;
+  } catch (directError) {
+    const html = await requestReaderHtml(jinaUrl(url));
+    if (isCloudflarePage(html)) {
+      throw new Error(
+        `HLTV直连失败（${directError.message}），备用通道也被Cloudflare拦截`,
+      );
+    }
+    console.warn(`HLTV直连失败，已使用备用通道：${directError.message}`);
+    return html;
+  }
 }
 
 function teamFromMatchList($, element, position) {
@@ -123,33 +180,62 @@ function teamFromMatchList($, element, position) {
 
 function parseMatchesHtml(html) {
   const $ = cheerio.load(html);
-  return $(".liveMatch-container, .upcomingMatch")
+  return $(
+    ".liveMatch-container, .upcomingMatch, .live-match-container, [data-match-wrapper]",
+  )
     .toArray()
     .map((element) => {
-      const link = $(element).find('a.a-reset[href*="/matches/"]').first();
+      const link = $(element).find('a[href*="/matches/"]').first();
       const href =
         link.attr("href") || $(element).find(".a-reset").first().attr("href");
-      const id = matchIdFromHref(href);
+      const id =
+        numberFrom($(element).attr("data-match-id")) || matchIdFromHref(href);
       if (!id) return null;
-      const time = $(element).find(".matchTime").first();
+      const time = $(element).find(".matchTime, .match-time").first();
       const date = numberFrom(time.attr("data-unix"));
       const title =
         cleanText($(element).find(".matchInfoEmpty").text()) || null;
       const eventName = cleanText(
-        $(element).find(".matchEventLogo").attr("title") ||
+        $(element).find(".match-event").attr("data-event-headline") ||
+          $(element).find(".matchEventLogo").attr("title") ||
           $(element).find(".matchEventName").text(),
       );
+      const modernTeams = $(element).find(".match-teamname");
+      const team1 = title
+        ? null
+        : modernTeams.length
+          ? {
+              id: numberFrom($(element).attr("team1")),
+              name: cleanText(modernTeams.eq(0).text()),
+            }
+          : teamFromMatchList($, element, 1);
+      const team2 = title
+        ? null
+        : modernTeams.length
+          ? {
+              id: numberFrom($(element).attr("team2")),
+              name: cleanText(modernTeams.eq(1).text()),
+            }
+          : teamFromMatchList($, element, 2);
+      const modernFormat = $(element)
+        .find(".match-info .match-meta")
+        .toArray()
+        .map((item) => cleanText($(item).text()))
+        .find((value) => value && value.toLowerCase() !== "live");
       return {
         id,
         date,
-        team1: title ? null : teamFromMatchList($, element, 1),
-        team2: title ? null : teamFromMatchList($, element, 2),
+        team1: team1?.name ? team1 : null,
+        team2: team2?.name ? team2 : null,
         event: eventName ? { name: eventName } : null,
-        format: cleanText($(element).find(".matchMeta").text()) || null,
+        format:
+          modernFormat || cleanText($(element).find(".matchMeta").text()) || null,
         title,
         live:
           cleanText(time.text()).toUpperCase() === "LIVE" ||
-          $(element).hasClass("liveMatch-container"),
+          $(element).hasClass("liveMatch-container") ||
+          $(element).hasClass("live-match-container") ||
+          $(element).attr("live") === "true",
       };
     })
     .filter(Boolean);
@@ -190,6 +276,68 @@ function parseMap($, element) {
             team1TotalRounds: team1Score,
             team2TotalRounds: team2Score,
           },
+  };
+}
+
+function parseCompactPlayerTable($, table) {
+  return $(table)
+    .find("tr")
+    .not(".header-row")
+    .toArray()
+    .map((row) => {
+      const playerLink = $(row).find('a[href*="/player/"]').first();
+      const playerName = cleanText(
+        $(row).find(".player-nick").first().text() || playerLink.text(),
+      );
+      if (!playerName) return null;
+
+      const kdValues =
+        cleanText($(row).find(".kd.traditional-data").first().text()).match(
+          /\d+(?:\.\d+)?/g,
+        ) || [];
+      const kills = kdValues[0] === undefined ? null : Number(kdValues[0]);
+      const deaths = kdValues[1] === undefined ? null : Number(kdValues[1]);
+      const playerIdMatch = String(playerLink.attr("href") || "").match(
+        /\/player\/(\d+)/,
+      );
+      return {
+        player: {
+          id: playerIdMatch ? Number(playerIdMatch[1]) : null,
+          name: playerName,
+        },
+        kills,
+        deaths,
+        killDeathsDifference:
+          kills === null || deaths === null ? null : kills - deaths,
+        roundSwing: numberFrom($(row).find(".roundSwing").first().text()),
+        ADR: numberFrom($(row).find(".adr.traditional-data").first().text()),
+        KAST: numberFrom($(row).find(".kast.traditional-data").first().text()),
+        rating3: numberFrom($(row).find(".rating").first().text()),
+      };
+    })
+    .filter(Boolean);
+}
+
+function parseCompactMatchStats($) {
+  const tables = $("#all-content table.table.totalstats").toArray();
+  if (tables.length < 2) return null;
+
+  const tableData = tables.slice(0, 2).map((table) => ({
+    name: cleanText($(table).find(".header-row .teamName").first().text()),
+    players: parseCompactPlayerTable($, table),
+  }));
+  if (tableData[0].players.length < 4 || tableData[1].players.length < 4) {
+    return null;
+  }
+
+  return {
+    team1: { name: tableData[0].name || "Team 1" },
+    team2: { name: tableData[1].name || "Team 2" },
+    overview: {},
+    playerStats: {
+      team1: tableData[0].players,
+      team2: tableData[1].players,
+    },
   };
 }
 
@@ -240,6 +388,7 @@ function parseMatchHtml(html, matchId) {
     maps: $(".mapholder")
       .toArray()
       .map((element) => parseMap($, element)),
+    embeddedStats: parseCompactMatchStats($),
   };
 }
 
@@ -413,7 +562,10 @@ class HltvDataSource {
     const html = await fetchHltvHtml(
       `https://www.hltv.org/matches?team=${FAZE_TEAM_ID}`,
     );
-    return parseMatchesHtml(html);
+    return parseMatchesHtml(html).filter(
+      (match) =>
+        match.team1?.id === FAZE_TEAM_ID || match.team2?.id === FAZE_TEAM_ID,
+    );
   }
 
   async getMatch(matchId) {
