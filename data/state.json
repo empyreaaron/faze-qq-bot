@@ -38,6 +38,14 @@
       "maps": [
         {
           "name": "Dust2",
+          "statsId": 234138,
+          "result": {
+            "team1TotalRounds": 6,
+            "team2TotalRounds": 13
+          }
+        },
+        {
+          "name": "Cache",
           "statsId": null,
           "result": {
             "team1TotalRounds": 5,
@@ -45,17 +53,156 @@
           }
         },
         {
-          "name": "Cache",
-          "statsId": null,
-          "result": null
-        },
-        {
           "name": "Anubis",
           "statsId": null,
           "result": null
         }
       ],
-      "embeddedStats": null,
+      "embeddedStats": {
+        "team1": {
+          "name": "FaZe"
+        },
+        "team2": {
+          "name": "Spirit"
+        },
+        "overview": {},
+        "playerStats": {
+          "team1": [
+            {
+              "player": {
+                "id": 10394,
+                "name": "Twistzz"
+              },
+              "kills": 12,
+              "deaths": 16,
+              "killDeathsDifference": -4,
+              "roundSwing": 0.3,
+              "ADR": 90.5,
+              "KAST": 68.4,
+              "rating3": 1.06
+            },
+            {
+              "player": {
+                "id": 22383,
+                "name": "jcobbb"
+              },
+              "kills": 12,
+              "deaths": 13,
+              "killDeathsDifference": -1,
+              "roundSwing": -0.4,
+              "ADR": 61.7,
+              "KAST": 57.9,
+              "rating3": 1.04
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 15,
+              "deaths": 14,
+              "killDeathsDifference": 1,
+              "roundSwing": 0.01,
+              "ADR": 75.4,
+              "KAST": 47.4,
+              "rating3": 1
+            },
+            {
+              "player": {
+                "id": 9960,
+                "name": "frozen"
+              },
+              "kills": 7,
+              "deaths": 15,
+              "killDeathsDifference": -8,
+              "roundSwing": -6.56,
+              "ADR": 46.1,
+              "KAST": 52.6,
+              "rating3": 0.54
+            },
+            {
+              "player": {
+                "id": 22866,
+                "name": "JBOEN"
+              },
+              "kills": 6,
+              "deaths": 18,
+              "killDeathsDifference": -12,
+              "roundSwing": -7.52,
+              "ADR": 57.1,
+              "KAST": 47.4,
+              "rating3": 0.51
+            }
+          ],
+          "team2": [
+            {
+              "player": {
+                "id": 18317,
+                "name": "magixx"
+              },
+              "kills": 20,
+              "deaths": 13,
+              "killDeathsDifference": 7,
+              "roundSwing": 5.76,
+              "ADR": 110.3,
+              "KAST": 84.2,
+              "rating3": 1.57
+            },
+            {
+              "player": {
+                "id": 16920,
+                "name": "sh1ro"
+              },
+              "kills": 17,
+              "deaths": 6,
+              "killDeathsDifference": 11,
+              "roundSwing": 7.01,
+              "ADR": 80.4,
+              "KAST": 73.7,
+              "rating3": 1.53
+            },
+            {
+              "player": {
+                "id": 19808,
+                "name": "tN1R"
+              },
+              "kills": 18,
+              "deaths": 11,
+              "killDeathsDifference": 7,
+              "roundSwing": -0.56,
+              "ADR": 93.6,
+              "KAST": 68.4,
+              "rating3": 1.22
+            },
+            {
+              "player": {
+                "id": 21167,
+                "name": "donk"
+              },
+              "kills": 11,
+              "deaths": 12,
+              "killDeathsDifference": -1,
+              "roundSwing": 1.02,
+              "ADR": 58.6,
+              "KAST": 84.2,
+              "rating3": 1.09
+            },
+            {
+              "player": {
+                "id": 20423,
+                "name": "zont1x"
+              },
+              "kills": 10,
+              "deaths": 10,
+              "killDeathsDifference": 0,
+              "roundSwing": 0.95,
+              "ADR": 68.6,
+              "KAST": 73.7,
+              "rating3": 1.03
+            }
+          ]
+        }
+      },
       "startSentAt": "2026-08-01T10:58:55.784Z"
     }
   }
