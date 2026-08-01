@@ -38,8 +38,11 @@ function formatType(match) {
 
 function formatStartMessage(match) {
   const [team1, team2] = teamNames(match);
+  const startTitle = match.stage?.isKnockout
+    ? `@全体成员 【FaZe淘汰赛开始｜${match.stage.label}】`
+    : "@全体成员 【FaZe比赛开始】";
   return [
-    "【FaZe比赛开始】",
+    startTitle,
     "",
     `${team1} vs ${team2}`,
     `赛事：${match.event?.name || "赛事待定"}`,
@@ -65,28 +68,22 @@ function overviewLine(label, pair, digits = null) {
 
 function playerLine(player) {
   const kd = `${valueOrDash(player.kills)}-${valueOrDash(player.deaths)}`;
-  const diff = signed(player.killDeathsDifference);
-  const opening =
-    player.openingKills === null || player.openingKills === undefined
-      ? signed(player.firstKillsDifference)
-      : `${player.openingKills}-${player.openingDeaths}`;
-  const details = [
-    `${player.player.name}｜${kd} (${diff})`,
-    `ADR ${valueOrDash(player.ADR, 1)}`,
-    `KAST ${valueOrDash(player.KAST, 1)}%`,
-    `Swing ${signed(player.roundSwing, "%")}`,
-    `R3 ${valueOrDash(player.rating3, 2)}`,
-    `首杀 ${opening}`,
-    `HS ${valueOrDash(player.hsKills)}`,
-    `A/FA ${valueOrDash(player.assists)}/${valueOrDash(player.flashAssists)}`,
+  return [
+    player.player.name,
+    kd,
+    signed(player.roundSwing, "%"),
+    valueOrDash(player.ADR, 1),
+    `${valueOrDash(player.KAST, 1)}%`,
+    valueOrDash(player.rating3, 2),
+  ].join("｜");
+}
+
+function playerTable(name, players) {
+  return [
+    `【${name} 选手数据】`,
+    "选手｜K-D｜Swing｜ADR｜KAST｜Rating",
+    ...players.map(playerLine),
   ];
-  if (player.multiKillRounds !== null && player.multiKillRounds !== undefined) {
-    details.push(`MK ${player.multiKillRounds}`);
-  }
-  if (player.clutchesWon !== null && player.clutchesWon !== undefined) {
-    details.push(`1vX ${player.clutchesWon}`);
-  }
-  return details.join("｜");
 }
 
 function formatResultMessages(match, stats) {
@@ -106,7 +103,7 @@ function formatResultMessages(match, stats) {
     overviewLine("残局胜利", overview.clutchesWon),
   ].filter(Boolean);
 
-  const summary = [
+  const message = [
     "【FaZe赛后战绩】",
     "",
     `${team1Name} ${team1Maps}-${team2Maps} ${team2Name}`,
@@ -119,17 +116,18 @@ function formatResultMessages(match, stats) {
       ? ["", `${team1Name} : ${team2Name}`, ...overviewLines]
       : []),
     "",
-    "数据说明：R3=Rating 3.0，Swing=Round Swing，FA=闪光助攻，MK=多杀回合，1vX=残局胜利。",
+    ...playerTable(
+      stats.team1?.name || team1Name,
+      stats.playerStats.team1,
+    ),
+    "",
+    ...playerTable(
+      stats.team2?.name || team2Name,
+      stats.playerStats.team2,
+    ),
   ].join("\n");
 
-  const teamMessage = (name, players) =>
-    [`【${name} 选手数据】`, ...players.map(playerLine)].join("\n");
-
-  return [
-    summary,
-    teamMessage(stats.team1?.name || team1Name, stats.playerStats.team1),
-    teamMessage(stats.team2?.name || team2Name, stats.playerStats.team2),
-  ];
+  return [message];
 }
 
 module.exports = {
@@ -138,4 +136,3 @@ module.exports = {
   formatStartMessage,
   playerLine,
 };
-

@@ -76,14 +76,14 @@ function parseStage(formatText) {
 
   const excluded = /\bgroup\b|\bswiss\b|\bqualifier\b/.test(lower);
   let round = null;
-  if (/grand final/.test(lower)) round = "鎬诲喅璧�";
-  else if (/consolidation final/.test(lower)) round = "璐ヨ€呯粍鍐宠禌";
-  else if (/round of 32|round-of-32/.test(lower)) round = "涓夊崄浜屽己";
-  else if (/round of 16|round-of-16/.test(lower)) round = "鍗佸叚寮�";
-  else if (/quarter[- ]final/.test(lower)) round = "鍥涘垎涔嬩竴鍐宠禌";
-  else if (/semi[- ]final/.test(lower)) round = "鍗婂喅璧�";
-  else if (/\bfinal\b/.test(lower)) round = "鍐宠禌";
-  else if (/playoff/.test(lower)) round = "娣樻卑璧�";
+  if (/grand final/.test(lower)) round = "总决赛";
+  else if (/consolidation final/.test(lower)) round = "败者组决赛";
+  else if (/round of 32|round-of-32/.test(lower)) round = "三十二强";
+  else if (/round of 16|round-of-16/.test(lower)) round = "十六强";
+  else if (/quarter[- ]final/.test(lower)) round = "四分之一决赛";
+  else if (/semi[- ]final/.test(lower)) round = "半决赛";
+  else if (/\bfinal\b/.test(lower)) round = "决赛";
+  else if (/playoff/.test(lower)) round = "淘汰赛";
 
   if (!round || excluded) {
     return { name, label: null, isKnockout: false };
@@ -91,9 +91,9 @@ function parseStage(formatText) {
 
   let prefix = "";
   const stageNumber = lower.match(/stage\s+(\d+)/);
-  if (stageNumber) prefix += `绗�${stageNumber[1]}闃舵`;
-  if (/upper bracket/.test(lower)) prefix += "鑳滆€呯粍";
-  if (/lower bracket/.test(lower)) prefix += "璐ヨ€呯粍";
+  if (stageNumber) prefix += `第${stageNumber[1]}阶段`;
+  if (/upper bracket/.test(lower)) prefix += "胜者组";
+  if (/lower bracket/.test(lower)) prefix += "败者组";
 
   return { name, label: `${prefix}${round}`, isKnockout: true };
 }
@@ -106,7 +106,7 @@ async function fetchHltvHtml(url) {
   });
   const html = response.body;
   if (!html || /Just a moment|cf-chl-|Attention Required/i.test(html)) {
-    throw new Error("HLTV杩斿洖浜咰loudflare楠岃瘉椤�");
+    throw new Error("HLTV返回了Cloudflare验证页");
   }
   return html;
 }
@@ -353,7 +353,7 @@ function chooseTeamTables($, tables, team1Name, team2Name) {
     return [team1.table, team2.table];
   }
 
-  if (tables.length < 2) throw new Error("娌℃湁鎵惧埌鍙屾柟閫夋墜缁熻琛�");
+  if (tables.length < 2) throw new Error("没有找到双方选手统计表");
   return [tables[0], tables[Math.floor(tables.length / 2)]];
 }
 
@@ -393,7 +393,7 @@ function parseMatchStatsHtml(html) {
 
   if (team1Players.length + team2Players.length < 8) {
     throw new Error(
-      `閫夋墜缁熻灏氫笉瀹屾暣锛堢洰鍓�${team1Players.length + team2Players.length}浜猴級`,
+      `选手统计尚不完整（目前${team1Players.length + team2Players.length}人）`,
     );
   }
 
