@@ -26,6 +26,16 @@ function formatBeijingTime(timestamp) {
     .replaceAll("/", "-");
 }
 
+function formatBeijingClock(timestamp) {
+  if (!timestamp) return "时间待定";
+  return new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date(timestamp));
+}
+
 function teamNames(match) {
   return [match.team1?.name || "TBA", match.team2?.name || "TBA"];
 }
@@ -38,17 +48,21 @@ function formatType(match) {
 
 function formatStartMessage(match) {
   const [team1, team2] = teamNames(match);
-  const startTitle = match.stage?.isKnockout
-    ? `@全体成员 【FaZe淘汰赛开始｜${match.stage.label}】`
-    : "@全体成员 【FaZe比赛开始】";
-  return [
-    startTitle,
+  const round = String(match.stage?.label || "淘汰赛").replace(
+    /^第\d+阶段/,
     "",
+  );
+  const startTitle = match.stage?.isKnockout
+    ? `【${round}开赛】`
+    : "【FaZe比赛开赛】";
+  return [
+    "@全体成员",
+    "",
+    startTitle,
     `${team1} vs ${team2}`,
     `赛事：${match.event?.name || "赛事待定"}`,
     `赛制：${formatType(match)}`,
-    `北京时间：${formatBeijingTime(match.date)}`,
-    `HLTV比赛编号：${match.id}`,
+    `北京时间：${formatBeijingClock(match.date)}`,
   ].join("\n");
 }
 
