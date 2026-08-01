@@ -65,6 +65,39 @@ function normalizeStatus(status) {
   return "scheduled";
 }
 
+function parseStage(formatText) {
+  const text = cleanText(formatText);
+  const detailMatch = text.match(/\*\s*([^*]+?)(?:\*\*|$)/);
+  if (!detailMatch) return null;
+
+  const name = cleanText(detailMatch[1]).split(/\.\s/)[0];
+  const lower = name.toLowerCase();
+  if (!name) return null;
+
+  const excluded = /\bgroup\b|\bswiss\b|\bqualifier\b/.test(lower);
+  let round = null;
+  if (/grand final/.test(lower)) round = "鎬诲喅璧�";
+  else if (/consolidation final/.test(lower)) round = "璐ヨ€呯粍鍐宠禌";
+  else if (/round of 32|round-of-32/.test(lower)) round = "涓夊崄浜屽己";
+  else if (/round of 16|round-of-16/.test(lower)) round = "鍗佸叚寮�";
+  else if (/quarter[- ]final/.test(lower)) round = "鍥涘垎涔嬩竴鍐宠禌";
+  else if (/semi[- ]final/.test(lower)) round = "鍗婂喅璧�";
+  else if (/\bfinal\b/.test(lower)) round = "鍐宠禌";
+  else if (/playoff/.test(lower)) round = "娣樻卑璧�";
+
+  if (!round || excluded) {
+    return { name, label: null, isKnockout: false };
+  }
+
+  let prefix = "";
+  const stageNumber = lower.match(/stage\s+(\d+)/);
+  if (stageNumber) prefix += `绗�${stageNumber[1]}闃舵`;
+  if (/upper bracket/.test(lower)) prefix += "鑳滆€呯粍";
+  if (/lower bracket/.test(lower)) prefix += "璐ヨ€呯粍";
+
+  return { name, label: `${prefix}${round}`, isKnockout: true };
+}
+
 async function fetchHltvHtml(url) {
   const response = await gotScraping({
     url,
@@ -73,7 +106,7 @@ async function fetchHltvHtml(url) {
   });
   const html = response.body;
   if (!html || /Just a moment|cf-chl-|Attention Required/i.test(html)) {
-    throw new Error("HLTV返回了Cloudflare验证页");
+    throw new Error("HLTV杩斿洖浜咰loudflare楠岃瘉椤�");
   }
   return html;
 }
@@ -200,6 +233,7 @@ function parseMatchHtml(html, matchId) {
           name: cleanText(eventLink.text()),
         }
       : null,
+    stage: parseStage(formatText),
     format: formatText
       ? { type: bestOf ? `bo${bestOf[1]}` : formatText }
       : null,
@@ -319,7 +353,7 @@ function chooseTeamTables($, tables, team1Name, team2Name) {
     return [team1.table, team2.table];
   }
 
-  if (tables.length < 2) throw new Error("没有找到双方选手统计表");
+  if (tables.length < 2) throw new Error("娌℃湁鎵惧埌鍙屾柟閫夋墜缁熻琛�");
   return [tables[0], tables[Math.floor(tables.length / 2)]];
 }
 
@@ -359,7 +393,7 @@ function parseMatchStatsHtml(html) {
 
   if (team1Players.length + team2Players.length < 8) {
     throw new Error(
-      `选手统计尚不完整（目前${team1Players.length + team2Players.length}人）`,
+      `閫夋墜缁熻灏氫笉瀹屾暣锛堢洰鍓�${team1Players.length + team2Players.length}浜猴級`,
     );
   }
 
@@ -404,4 +438,5 @@ module.exports = {
   parseMatchHtml,
   parseMatchesHtml,
   parseMatchStatsHtml,
+  parseStage,
 };
