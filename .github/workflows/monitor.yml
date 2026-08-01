@@ -2,7 +2,7 @@ name: Monitor FaZe matches
 
 on:
   schedule:
-    - cron: "7,17,27,37,47,57 * * * *"
+    - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
   workflow_dispatch:
     inputs:
       dry_run:
