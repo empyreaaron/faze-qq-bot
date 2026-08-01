@@ -26,10 +26,13 @@
       "discoveredAt": "2026-08-01T10:58:55.784Z",
       "lastSeenAt": "2026-08-01T10:58:55.784Z",
       "startSent": true,
-      "resultSent": false,
-      "status": "live",
-      "statsId": null,
-      "winnerTeam": null,
+      "resultSent": true,
+      "status": "over",
+      "statsId": 128936,
+      "winnerTeam": {
+        "id": 7020,
+        "name": "Spirit"
+      },
       "stage": {
         "name": "Stage 2 semi-final",
         "label": "第2阶段半决赛",
@@ -46,16 +49,19 @@
         },
         {
           "name": "Cache",
-          "statsId": null,
+          "statsId": 234148,
           "result": {
-            "team1TotalRounds": 5,
-            "team2TotalRounds": 7
+            "team1TotalRounds": 13,
+            "team2TotalRounds": 9
           }
         },
         {
           "name": "Anubis",
-          "statsId": null,
-          "result": null
+          "statsId": 234159,
+          "result": {
+            "team1TotalRounds": 11,
+            "team2TotalRounds": 13
+          }
         }
       ],
       "embeddedStats": {
@@ -73,137 +79,138 @@
                 "id": 10394,
                 "name": "Twistzz"
               },
-              "kills": 12,
-              "deaths": 16,
-              "killDeathsDifference": -4,
-              "roundSwing": 0.3,
-              "ADR": 90.5,
-              "KAST": 68.4,
-              "rating3": 1.06
-            },
-            {
-              "player": {
-                "id": 22383,
-                "name": "jcobbb"
-              },
-              "kills": 12,
-              "deaths": 13,
-              "killDeathsDifference": -1,
-              "roundSwing": -0.4,
-              "ADR": 61.7,
-              "KAST": 57.9,
-              "rating3": 1.04
-            },
-            {
-              "player": {
-                "id": 21972,
-                "name": "Neityu"
-              },
-              "kills": 15,
-              "deaths": 14,
-              "killDeathsDifference": 1,
-              "roundSwing": 0.01,
-              "ADR": 75.4,
-              "KAST": 47.4,
-              "rating3": 1
+              "kills": 43,
+              "deaths": 45,
+              "killDeathsDifference": -2,
+              "roundSwing": 2.07,
+              "ADR": 72.6,
+              "KAST": 76.9,
+              "rating3": 1.1
             },
             {
               "player": {
                 "id": 9960,
                 "name": "frozen"
               },
-              "kills": 7,
-              "deaths": 15,
-              "killDeathsDifference": -8,
-              "roundSwing": -6.56,
-              "ADR": 46.1,
-              "KAST": 52.6,
-              "rating3": 0.54
+              "kills": 40,
+              "deaths": 40,
+              "killDeathsDifference": 0,
+              "roundSwing": -1.68,
+              "ADR": 69.8,
+              "KAST": 72.3,
+              "rating3": 0.99
+            },
+            {
+              "player": {
+                "id": 22383,
+                "name": "jcobbb"
+              },
+              "kills": 38,
+              "deaths": 43,
+              "killDeathsDifference": -5,
+              "roundSwing": -0.53,
+              "ADR": 60.9,
+              "KAST": 66.2,
+              "rating3": 0.97
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 43,
+              "deaths": 45,
+              "killDeathsDifference": -2,
+              "roundSwing": -0.51,
+              "ADR": 71.9,
+              "KAST": 63.1,
+              "rating3": 0.97
             },
             {
               "player": {
                 "id": 22866,
                 "name": "JBOEN"
               },
-              "kills": 6,
-              "deaths": 18,
-              "killDeathsDifference": -12,
-              "roundSwing": -7.52,
-              "ADR": 57.1,
-              "KAST": 47.4,
-              "rating3": 0.51
+              "kills": 34,
+              "deaths": 43,
+              "killDeathsDifference": -9,
+              "roundSwing": -2.1,
+              "ADR": 68.1,
+              "KAST": 61.5,
+              "rating3": 0.83
             }
           ],
           "team2": [
             {
               "player": {
-                "id": 18317,
-                "name": "magixx"
-              },
-              "kills": 20,
-              "deaths": 13,
-              "killDeathsDifference": 7,
-              "roundSwing": 5.76,
-              "ADR": 110.3,
-              "KAST": 84.2,
-              "rating3": 1.57
-            },
-            {
-              "player": {
                 "id": 16920,
                 "name": "sh1ro"
               },
-              "kills": 17,
-              "deaths": 6,
-              "killDeathsDifference": 11,
-              "roundSwing": 7.01,
-              "ADR": 80.4,
-              "KAST": 73.7,
-              "rating3": 1.53
+              "kills": 49,
+              "deaths": 31,
+              "killDeathsDifference": 18,
+              "roundSwing": 3,
+              "ADR": 75.6,
+              "KAST": 78.5,
+              "rating3": 1.24
             },
             {
               "player": {
-                "id": 19808,
-                "name": "tN1R"
+                "id": 18317,
+                "name": "magixx"
               },
-              "kills": 18,
-              "deaths": 11,
-              "killDeathsDifference": 7,
-              "roundSwing": -0.56,
-              "ADR": 93.6,
-              "KAST": 68.4,
-              "rating3": 1.22
-            },
-            {
-              "player": {
-                "id": 21167,
-                "name": "donk"
-              },
-              "kills": 11,
-              "deaths": 12,
-              "killDeathsDifference": -1,
-              "roundSwing": 1.02,
-              "ADR": 58.6,
-              "KAST": 84.2,
-              "rating3": 1.09
+              "kills": 45,
+              "deaths": 41,
+              "killDeathsDifference": 4,
+              "roundSwing": 0.79,
+              "ADR": 72,
+              "KAST": 70.8,
+              "rating3": 1.06
             },
             {
               "player": {
                 "id": 20423,
                 "name": "zont1x"
               },
-              "kills": 10,
-              "deaths": 10,
+              "kills": 38,
+              "deaths": 38,
               "killDeathsDifference": 0,
-              "roundSwing": 0.95,
-              "ADR": 68.6,
-              "KAST": 73.7,
-              "rating3": 1.03
+              "roundSwing": 0.9,
+              "ADR": 68,
+              "KAST": 75.4,
+              "rating3": 1.05
+            },
+            {
+              "player": {
+                "id": 21167,
+                "name": "donk"
+              },
+              "kills": 39,
+              "deaths": 47,
+              "killDeathsDifference": -8,
+              "roundSwing": 0.28,
+              "ADR": 64.6,
+              "KAST": 73.8,
+              "rating3": 0.94
+            },
+            {
+              "player": {
+                "id": 19808,
+                "name": "tN1R"
+              },
+              "kills": 45,
+              "deaths": 41,
+              "killDeathsDifference": 4,
+              "roundSwing": -2.2,
+              "ADR": 75.1,
+              "KAST": 67.7,
+              "rating3": 0.94
             }
           ]
         }
       },
-      "startSentAt": "2026-08-01T10:58:55.784Z"
+      "startSentAt": "2026-08-01T10:58:55.784Z",
+      "resultSentAt": "2026-08-01T13:44:36.896Z"
     }
   }
 }
