@@ -5,10 +5,11 @@ function valueOrDash(value, digits = null) {
   return digits === null ? String(value) : Number(value).toFixed(digits);
 }
 
-function signed(value, suffix = "") {
+function signed(value, suffix = "", digits = null) {
   if (value === null || value === undefined || Number.isNaN(value)) return "-";
   const number = Number(value);
-  return `${number > 0 ? "+" : ""}${number}${suffix}`;
+  const displayed = digits === null ? String(number) : number.toFixed(digits);
+  return `${number > 0 ? "+" : ""}${displayed}${suffix}`;
 }
 
 function formatBeijingTime(timestamp) {
@@ -66,7 +67,7 @@ function formatStartMessage(match) {
   ].join("\n");
 }
 
-function mapLine(map, team1Name, team2Name, swapTeams = false) {
+function mapLine(map, swapTeams = false) {
   if (!map.result) return `${map.name}：未进行`;
   const t1 = swapTeams
     ? map.result.team2TotalRounds
@@ -74,35 +75,25 @@ function mapLine(map, team1Name, team2Name, swapTeams = false) {
   const t2 = swapTeams
     ? map.result.team1TotalRounds
     : map.result.team2TotalRounds;
-  const winner = t1 > t2 ? team1Name : t2 > t1 ? team2Name : "平局";
-  return `${map.name}：${t1}-${t2}（${winner}）`;
-}
-
-function overviewLine(label, pair, digits = null, swapTeams = false) {
-  if (!pair || pair.team1 === undefined || pair.team2 === undefined)
-    return null;
-  const team1 = swapTeams ? pair.team2 : pair.team1;
-  const team2 = swapTeams ? pair.team1 : pair.team2;
-  return `${label}：${valueOrDash(team1, digits)} : ${valueOrDash(team2, digits)}`;
+  const result = t1 > t2 ? "胜" : t2 > t1 ? "负" : "平";
+  return `${map.name}｜${t1}-${t2}｜${result}`;
 }
 
 function playerLine(player) {
   const kd = `${valueOrDash(player.kills)}-${valueOrDash(player.deaths)}`;
   return [
-    player.player.name,
-    kd,
-    signed(player.roundSwing, "%"),
-    valueOrDash(player.ADR, 1),
-    `${valueOrDash(player.KAST, 1)}%`,
-    valueOrDash(player.rating3, 2),
-  ].join("｜");
+    `${player.player.name}｜${kd}｜${valueOrDash(player.rating3, 2)}`,
+    `└ ${valueOrDash(player.ADR, 1)}｜${valueOrDash(player.KAST, 1)}%｜${signed(player.roundSwing, "%", 2)}`,
+  ];
 }
 
 function playerTable(name, players) {
   return [
-    `【${name} 选手数据】`,
-    "选手｜K-D｜Swing｜ADR｜KAST｜Rating",
-    ...players.map(playerLine),
+    `【${name}】`,
+    "选手｜K-D｜Rating",
+    "└ ADR｜KAST｜Swing",
+    "",
+    ...players.flatMap(playerLine),
   ];
 }
 
@@ -122,12 +113,6 @@ function formatResultMessages(match, stats) {
   ).length;
   const team1Maps = swapTeams ? originalTeam2Maps : originalTeam1Maps;
   const team2Maps = swapTeams ? originalTeam1Maps : originalTeam2Maps;
-  const overview = stats.overview || {};
-  const overviewLines = [
-    overviewLine("Team Rating 3.0", overview.teamRating, 2, swapTeams),
-    overviewLine("首杀", overview.firstKills, null, swapTeams),
-    overviewLine("残局胜利", overview.clutchesWon, null, swapTeams),
-  ].filter(Boolean);
   const team1Stats = swapTeams
     ? stats.playerStats.team2
     : stats.playerStats.team1;
@@ -144,10 +129,7 @@ function formatResultMessages(match, stats) {
     "【地图比分】",
     ...match.maps
       .filter((map) => map.result)
-      .map((map) => mapLine(map, team1Name, team2Name, swapTeams)),
-    ...(overviewLines.length
-      ? ["", `${team1Name} : ${team2Name}`, ...overviewLines]
-      : []),
+      .map((map) => mapLine(map, swapTeams)),
     "",
     ...playerTable(team1Name, team1Stats),
     "",
