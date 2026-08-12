@@ -234,9 +234,9 @@
       "liveFromList": false,
       "discoveredAt": "2026-08-10T01:47:35.578Z",
       "lastSeenAt": "2026-08-12T12:02:15.450Z",
-      "startSent": false,
+      "startSent": true,
       "resultSent": false,
-      "status": "scheduled",
+      "status": "live",
       "statsId": null,
       "winnerTeam": null,
       "stage": {
@@ -246,12 +246,13 @@
       },
       "maps": [
         {
-          "name": "TBA",
+          "name": "Nuke",
           "statsId": null,
           "result": null
         }
       ],
-      "embeddedStats": null
+      "embeddedStats": null,
+      "startSentAt": "2026-08-12T15:43:42.286Z"
     }
   }
 }
