@@ -214,7 +214,7 @@
     },
     "2396565": {
       "id": 2396565,
-      "date": 1786546800000,
+      "date": 1786547400000,
       "team1": {
         "id": 12394,
         "name": "BetBoom"
@@ -224,15 +224,34 @@
         "name": "FaZe"
       },
       "event": {
+        "id": 8261,
         "name": "Esports World Cup 2026"
       },
-      "format": "bo1",
+      "format": {
+        "type": "bo1"
+      },
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-08-10T01:47:35.578Z",
       "lastSeenAt": "2026-08-12T12:02:15.450Z",
       "startSent": false,
-      "resultSent": false
+      "resultSent": false,
+      "status": "scheduled",
+      "statsId": null,
+      "winnerTeam": null,
+      "stage": {
+        "name": "Group B upper bracket quarter-final",
+        "label": null,
+        "isKnockout": false
+      },
+      "maps": [
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        }
+      ],
+      "embeddedStats": null
     }
   }
 }
