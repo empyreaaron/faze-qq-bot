@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-08-12T12:02:15.450Z",
+  "lastScheduleCheckAt": "2026-08-12T16:40:28.463Z",
   "lastHeartbeatAt": "2026-08-01T09:09:23.474Z",
   "matches": {
     "2396020": {
@@ -235,10 +235,13 @@
       "discoveredAt": "2026-08-10T01:47:35.578Z",
       "lastSeenAt": "2026-08-12T12:02:15.450Z",
       "startSent": true,
-      "resultSent": false,
-      "status": "live",
+      "resultSent": true,
+      "status": "over",
       "statsId": null,
-      "winnerTeam": null,
+      "winnerTeam": {
+        "id": 6667,
+        "name": "FaZe"
+      },
       "stage": {
         "name": "Group B upper bracket quarter-final",
         "label": null,
@@ -247,12 +250,182 @@
       "maps": [
         {
           "name": "Nuke",
-          "statsId": null,
-          "result": null
+          "statsId": 234971,
+          "result": {
+            "team1TotalRounds": 11,
+            "team2TotalRounds": 13
+          }
         }
       ],
-      "embeddedStats": null,
-      "startSentAt": "2026-08-12T15:43:42.286Z"
+      "embeddedStats": {
+        "team1": {
+          "name": "BetBoom"
+        },
+        "team2": {
+          "name": "FaZe"
+        },
+        "overview": {},
+        "playerStats": {
+          "team1": [
+            {
+              "player": {
+                "id": 21667,
+                "name": "Magnojez"
+              },
+              "kills": 17,
+              "deaths": 17,
+              "killDeathsDifference": 0,
+              "roundSwing": 3.02,
+              "ADR": 93.8,
+              "KAST": 75,
+              "rating3": 1.35
+            },
+            {
+              "player": {
+                "id": 18506,
+                "name": "S1ren"
+              },
+              "kills": 18,
+              "deaths": 18,
+              "killDeathsDifference": 0,
+              "roundSwing": 2.1,
+              "ADR": 75.2,
+              "KAST": 70.8,
+              "rating3": 1.1
+            },
+            {
+              "player": {
+                "id": 11840,
+                "name": "Boombl4"
+              },
+              "kills": 16,
+              "deaths": 17,
+              "killDeathsDifference": -1,
+              "roundSwing": -3.41,
+              "ADR": 73.8,
+              "KAST": 66.7,
+              "rating3": 0.92
+            },
+            {
+              "player": {
+                "id": 20357,
+                "name": "d1Ledez"
+              },
+              "kills": 12,
+              "deaths": 16,
+              "killDeathsDifference": -4,
+              "roundSwing": -2.63,
+              "ADR": 61.3,
+              "KAST": 66.7,
+              "rating3": 0.87
+            },
+            {
+              "player": {
+                "id": 15662,
+                "name": "zorte"
+              },
+              "kills": 14,
+              "deaths": 14,
+              "killDeathsDifference": 0,
+              "roundSwing": -2.39,
+              "ADR": 48.3,
+              "KAST": 62.5,
+              "rating3": 0.84
+            }
+          ],
+          "team2": [
+            {
+              "player": {
+                "id": 22383,
+                "name": "jcobbb"
+              },
+              "kills": 17,
+              "deaths": 15,
+              "killDeathsDifference": 2,
+              "roundSwing": 2.45,
+              "ADR": 77.9,
+              "KAST": 75,
+              "rating3": 1.28
+            },
+            {
+              "player": {
+                "id": 22866,
+                "name": "JBOEN"
+              },
+              "kills": 19,
+              "deaths": 13,
+              "killDeathsDifference": 6,
+              "roundSwing": 4.52,
+              "ADR": 79.3,
+              "KAST": 62.5,
+              "rating3": 1.24
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 17,
+              "deaths": 16,
+              "killDeathsDifference": 1,
+              "roundSwing": -2.71,
+              "ADR": 78.9,
+              "KAST": 70.8,
+              "rating3": 1.01
+            },
+            {
+              "player": {
+                "id": 10394,
+                "name": "Twistzz"
+              },
+              "kills": 14,
+              "deaths": 16,
+              "killDeathsDifference": -2,
+              "roundSwing": 0.4,
+              "ADR": 65.2,
+              "KAST": 75,
+              "rating3": 1
+            },
+            {
+              "player": {
+                "id": 9960,
+                "name": "frozen"
+              },
+              "kills": 15,
+              "deaths": 17,
+              "killDeathsDifference": -2,
+              "roundSwing": -1.35,
+              "ADR": 70.6,
+              "KAST": 70.8,
+              "rating3": 1
+            }
+          ]
+        }
+      },
+      "startSentAt": "2026-08-12T15:43:42.286Z",
+      "resultSentAt": "2026-08-12T16:40:28.463Z"
+    },
+    "2396580": {
+      "id": 2396580,
+      "date": 1786639800000,
+      "team1": {
+        "id": 12468,
+        "name": "Legacy"
+      },
+      "team2": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "event": {
+        "name": "Esports World Cup 2026"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-08-12T16:40:28.463Z",
+      "lastSeenAt": "2026-08-12T16:40:28.463Z",
+      "startSent": false,
+      "resultSent": false
     }
   }
 }
