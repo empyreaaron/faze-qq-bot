@@ -613,7 +613,7 @@
     },
     "2396605": {
       "id": 2396605,
-      "date": 1787232300000,
+      "date": 1787232900000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
@@ -633,9 +633,9 @@
       "liveFromList": false,
       "discoveredAt": "2026-08-16T23:23:59.571Z",
       "lastSeenAt": "2026-08-20T12:17:31.803Z",
-      "startSent": false,
+      "startSent": true,
       "resultSent": false,
-      "status": "scheduled",
+      "status": "live",
       "statsId": null,
       "winnerTeam": null,
       "stage": {
@@ -645,22 +645,23 @@
       },
       "maps": [
         {
-          "name": "TBA",
+          "name": "Dust2",
           "statsId": null,
           "result": null
         },
         {
-          "name": "TBA",
+          "name": "Cache",
           "statsId": null,
           "result": null
         },
         {
-          "name": "TBA",
+          "name": "Nuke",
           "statsId": null,
           "result": null
         }
       ],
-      "embeddedStats": null
+      "embeddedStats": null,
+      "startSentAt": "2026-08-20T14:08:20.244Z"
     }
   }
 }
