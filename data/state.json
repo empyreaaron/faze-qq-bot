@@ -613,7 +613,7 @@
     },
     "2396605": {
       "id": 2396605,
-      "date": 1787234100000,
+      "date": 1787232300000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
@@ -623,15 +623,44 @@
         "name": "Vitality"
       },
       "event": {
+        "id": 8261,
         "name": "Esports World Cup 2026"
       },
-      "format": "bo3",
+      "format": {
+        "type": "bo3"
+      },
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-08-16T23:23:59.571Z",
       "lastSeenAt": "2026-08-20T12:17:31.803Z",
       "startSent": false,
-      "resultSent": false
+      "resultSent": false,
+      "status": "scheduled",
+      "statsId": null,
+      "winnerTeam": null,
+      "stage": {
+        "name": "Round of 16",
+        "label": "十六强",
+        "isKnockout": true
+      },
+      "maps": [
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        }
+      ],
+      "embeddedStats": null
     }
   }
 }
