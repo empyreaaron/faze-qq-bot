@@ -646,8 +646,11 @@
       "maps": [
         {
           "name": "Dust2",
-          "statsId": null,
-          "result": null
+          "statsId": 235533,
+          "result": {
+            "team1TotalRounds": 11,
+            "team2TotalRounds": 13
+          }
         },
         {
           "name": "Cache",
@@ -660,7 +663,151 @@
           "result": null
         }
       ],
-      "embeddedStats": null,
+      "embeddedStats": {
+        "team1": {
+          "name": "FaZe"
+        },
+        "team2": {
+          "name": "Vitality"
+        },
+        "overview": {},
+        "playerStats": {
+          "team1": [
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 17,
+              "deaths": 16,
+              "killDeathsDifference": 1,
+              "roundSwing": -0.83,
+              "ADR": 85.4,
+              "KAST": 70.8,
+              "rating3": 1.17
+            },
+            {
+              "player": {
+                "id": 22383,
+                "name": "jcobbb"
+              },
+              "kills": 20,
+              "deaths": 18,
+              "killDeathsDifference": 2,
+              "roundSwing": 0.58,
+              "ADR": 82.3,
+              "KAST": 75,
+              "rating3": 1.1
+            },
+            {
+              "player": {
+                "id": 22866,
+                "name": "JBOEN"
+              },
+              "kills": 15,
+              "deaths": 15,
+              "killDeathsDifference": 0,
+              "roundSwing": 1.54,
+              "ADR": 60.4,
+              "KAST": 66.7,
+              "rating3": 1
+            },
+            {
+              "player": {
+                "id": 10394,
+                "name": "Twistzz"
+              },
+              "kills": 15,
+              "deaths": 18,
+              "killDeathsDifference": -3,
+              "roundSwing": -3.86,
+              "ADR": 77.2,
+              "KAST": 79.2,
+              "rating3": 0.97
+            },
+            {
+              "player": {
+                "id": 9960,
+                "name": "frozen"
+              },
+              "kills": 16,
+              "deaths": 19,
+              "killDeathsDifference": -3,
+              "roundSwing": -0.95,
+              "ADR": 70.3,
+              "KAST": 62.5,
+              "rating3": 0.93
+            }
+          ],
+          "team2": [
+            {
+              "player": {
+                "id": 18462,
+                "name": "mezii"
+              },
+              "kills": 21,
+              "deaths": 15,
+              "killDeathsDifference": 6,
+              "roundSwing": 3.28,
+              "ADR": 90.4,
+              "KAST": 79.2,
+              "rating3": 1.47
+            },
+            {
+              "player": {
+                "id": 11893,
+                "name": "ZywOo"
+              },
+              "kills": 17,
+              "deaths": 15,
+              "killDeathsDifference": 2,
+              "roundSwing": 2.35,
+              "ADR": 74.8,
+              "KAST": 75,
+              "rating3": 1.17
+            },
+            {
+              "player": {
+                "id": 7322,
+                "name": "apEX"
+              },
+              "kills": 21,
+              "deaths": 17,
+              "killDeathsDifference": 4,
+              "roundSwing": -1.8,
+              "ADR": 95.4,
+              "KAST": 62.5,
+              "rating3": 1.12
+            },
+            {
+              "player": {
+                "id": 16693,
+                "name": "flameZ"
+              },
+              "kills": 12,
+              "deaths": 16,
+              "killDeathsDifference": -4,
+              "roundSwing": 1.23,
+              "ADR": 53.4,
+              "KAST": 70.8,
+              "rating3": 0.97
+            },
+            {
+              "player": {
+                "id": 11816,
+                "name": "ropz"
+              },
+              "kills": 13,
+              "deaths": 20,
+              "killDeathsDifference": -7,
+              "roundSwing": -1.54,
+              "ADR": 61.1,
+              "KAST": 62.5,
+              "rating3": 0.72
+            }
+          ]
+        }
+      },
       "startSentAt": "2026-08-20T14:08:20.244Z"
     }
   }
