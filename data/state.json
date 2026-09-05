@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-09-05T01:25:11.463Z",
+  "lastScheduleCheckAt": "2026-09-05T06:13:21.669Z",
   "lastHeartbeatAt": "2026-08-31T11:39:50.270Z",
   "matches": {
     "2396565": {
@@ -607,6 +607,28 @@
       },
       "startSentAt": "2026-08-20T14:08:20.244Z",
       "resultSentAt": "2026-08-20T15:39:06.317Z"
+    },
+    "2397598": {
+      "id": 2397598,
+      "date": 1788847200000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": {
+        "id": 12474,
+        "name": "Alliance"
+      },
+      "event": {
+        "name": "FISSURE Playground 3"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-09-05T06:13:21.669Z",
+      "lastSeenAt": "2026-09-05T06:13:21.669Z",
+      "startSent": false,
+      "resultSent": false
     }
   }
 }
