@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-09-08T06:15:09.240Z",
+  "lastScheduleCheckAt": "2026-09-08T11:28:25.161Z",
   "lastHeartbeatAt": "2026-08-31T11:39:50.270Z",
   "matches": {
     "2396565": {
@@ -610,7 +610,7 @@
     },
     "2397598": {
       "id": 2397598,
-      "date": 1788850800000,
+      "date": 1788853800000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
@@ -631,10 +631,13 @@
       "discoveredAt": "2026-09-05T06:13:21.669Z",
       "lastSeenAt": "2026-09-08T06:15:09.240Z",
       "startSent": false,
-      "resultSent": false,
-      "status": "scheduled",
-      "statsId": null,
-      "winnerTeam": null,
+      "resultSent": true,
+      "status": "over",
+      "statsId": 130236,
+      "winnerTeam": {
+        "id": 12474,
+        "name": "Alliance"
+      },
       "stage": {
         "name": "Group B upper bracket quarter-final",
         "label": null,
@@ -642,22 +645,195 @@
       },
       "maps": [
         {
-          "name": "TBA",
-          "statsId": null,
-          "result": null
+          "name": "Ancient",
+          "statsId": 237417,
+          "result": {
+            "team1TotalRounds": 9,
+            "team2TotalRounds": 13
+          }
         },
         {
-          "name": "TBA",
-          "statsId": null,
-          "result": null
+          "name": "Nuke",
+          "statsId": 237420,
+          "result": {
+            "team1TotalRounds": 11,
+            "team2TotalRounds": 13
+          }
         },
         {
-          "name": "TBA",
+          "name": "Anubis",
           "statsId": null,
           "result": null
         }
       ],
-      "embeddedStats": null
+      "embeddedStats": {
+        "team1": {
+          "name": "FaZe"
+        },
+        "team2": {
+          "name": "Alliance"
+        },
+        "overview": {},
+        "playerStats": {
+          "team1": [
+            {
+              "player": {
+                "id": 10394,
+                "name": "Twistzz"
+              },
+              "kills": 38,
+              "deaths": 30,
+              "killDeathsDifference": 8,
+              "roundSwing": 1.41,
+              "ADR": 75.2,
+              "KAST": 67.4,
+              "rating3": 1.22
+            },
+            {
+              "player": {
+                "id": 22866,
+                "name": "JBOEN"
+              },
+              "kills": 28,
+              "deaths": 33,
+              "killDeathsDifference": -5,
+              "roundSwing": 0.56,
+              "ADR": 62.6,
+              "KAST": 63,
+              "rating3": 0.91
+            },
+            {
+              "player": {
+                "id": 9960,
+                "name": "frozen"
+              },
+              "kills": 24,
+              "deaths": 36,
+              "killDeathsDifference": -12,
+              "roundSwing": -0.95,
+              "ADR": 67.8,
+              "KAST": 58.7,
+              "rating3": 0.9
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 21,
+              "deaths": 34,
+              "killDeathsDifference": -13,
+              "roundSwing": -0.91,
+              "ADR": 60.4,
+              "KAST": 56.5,
+              "rating3": 0.82
+            },
+            {
+              "player": {
+                "id": 22383,
+                "name": "jcobbb"
+              },
+              "kills": 18,
+              "deaths": 34,
+              "killDeathsDifference": -16,
+              "roundSwing": -0.79,
+              "ADR": 51.8,
+              "KAST": 58.7,
+              "rating3": 0.76
+            }
+          ],
+          "team2": [
+            {
+              "player": {
+                "id": 7443,
+                "name": "twist"
+              },
+              "kills": 39,
+              "deaths": 23,
+              "killDeathsDifference": 16,
+              "roundSwing": 3.05,
+              "ADR": 85.6,
+              "KAST": 71.7,
+              "rating3": 1.34
+            },
+            {
+              "player": {
+                "id": 21159,
+                "name": "bobeksde"
+              },
+              "kills": 40,
+              "deaths": 30,
+              "killDeathsDifference": 10,
+              "roundSwing": 1.69,
+              "ADR": 101.2,
+              "KAST": 76.1,
+              "rating3": 1.31
+            },
+            {
+              "player": {
+                "id": 16487,
+                "name": "eraa"
+              },
+              "kills": 33,
+              "deaths": 24,
+              "killDeathsDifference": 9,
+              "roundSwing": 0.28,
+              "ADR": 70.4,
+              "KAST": 73.9,
+              "rating3": 1.03
+            },
+            {
+              "player": {
+                "id": 22860,
+                "name": "avid"
+              },
+              "kills": 29,
+              "deaths": 23,
+              "killDeathsDifference": 6,
+              "roundSwing": -1.27,
+              "ADR": 67.5,
+              "KAST": 80.4,
+              "rating3": 1.03
+            },
+            {
+              "player": {
+                "id": 22760,
+                "name": "upE"
+              },
+              "kills": 24,
+              "deaths": 29,
+              "killDeathsDifference": -5,
+              "roundSwing": -3.21,
+              "ADR": 61.8,
+              "KAST": 69.6,
+              "rating3": 0.8
+            }
+          ]
+        }
+      },
+      "resultSentAt": "2026-09-08T11:28:25.161Z"
+    },
+    "2397607": {
+      "id": 2397607,
+      "date": 1788922800000,
+      "team1": {
+        "id": 13592,
+        "name": "magic"
+      },
+      "team2": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "event": {
+        "name": "FISSURE Playground 3"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-09-08T11:28:25.161Z",
+      "lastSeenAt": "2026-09-08T11:28:25.161Z",
+      "startSent": false,
+      "resultSent": false
     }
   }
 }
