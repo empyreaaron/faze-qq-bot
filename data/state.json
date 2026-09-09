@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-09-09T11:54:44.160Z",
+  "lastScheduleCheckAt": "2026-09-09T16:15:09.721Z",
   "lastHeartbeatAt": "2026-08-31T11:39:50.270Z",
   "matches": {
     "2396565": {
@@ -1021,6 +1021,28 @@
       },
       "startSentAt": "2026-09-09T06:39:48.905Z",
       "resultSentAt": "2026-09-09T11:54:44.160Z"
+    },
+    "2397941": {
+      "id": 2397941,
+      "date": 1790875800000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": {
+        "id": 7969,
+        "name": "Nemiga"
+      },
+      "event": {
+        "name": "Stake Ranked Episode 4"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-09-09T16:15:09.721Z",
+      "lastSeenAt": "2026-09-09T16:15:09.721Z",
+      "startSent": false,
+      "resultSent": false
     }
   }
 }
