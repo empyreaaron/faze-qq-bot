@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-09-20T06:18:14.041Z",
+  "lastScheduleCheckAt": "2026-09-20T14:52:55.981Z",
   "lastHeartbeatAt": "2026-08-31T11:39:50.270Z",
   "matches": {
     "2397598": {
@@ -435,7 +435,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-09-09T16:15:09.721Z",
-      "lastSeenAt": "2026-09-20T06:18:14.041Z",
+      "lastSeenAt": "2026-09-20T14:52:55.981Z",
       "startSent": false,
       "resultSent": false
     }
