@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-01T21:10:48.859Z",
+  "lastScheduleCheckAt": "2026-10-02T06:29:34.229Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397598": {
@@ -615,6 +615,28 @@
         }
       },
       "startSentAt": "2026-10-01T21:10:48.859Z"
+    },
+    "2398000": {
+      "id": 2398000,
+      "date": 1790935200000,
+      "team1": {
+        "id": 6665,
+        "name": "Astralis"
+      },
+      "team2": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "event": {
+        "name": "Stake Ranked Episode 4"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-10-02T06:29:34.229Z",
+      "lastSeenAt": "2026-10-02T06:29:34.229Z",
+      "startSent": false,
+      "resultSent": false
     }
   }
 }
