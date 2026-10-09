@@ -439,16 +439,17 @@
       "lastSeenAt": "2026-10-08T14:53:17.933Z",
       "startSent": false,
       "resultSent": false,
-      "lastCheckedAt": "2026-10-09T19:12:54.500Z",
+      "lastCheckedAt": "2026-10-09T23:18:51.851Z",
       "lastError": "HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"
     }
   },
-  "lastRunGapMs": null,
-  "lastRunAt": "2026-10-09T19:12:54.500Z",
+  "lastRunGapMs": 14757351,
+  "lastRunAt": "2026-10-09T23:18:51.851Z",
   "lastRunErrors": [
     "刷新HLTV赛程失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
     "补查HLTV近期赛果失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
     "检查比赛 2399044 失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"
   ],
-  "lastRunStatus": "failed"
+  "lastRunStatus": "failed",
+  "lastResultsCheckAt": null
 }
