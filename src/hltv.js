@@ -107,8 +107,8 @@ function isCloudflarePage(html) {
 async function requestHtml(url, options = {}) {
   const requestOptions = {
     url,
-    timeout: { request: options.timeout || 25_000 },
-    retry: { limit: options.retries ?? 1 },
+    timeout: { request: options.timeout || 10_000 },
+    retry: { limit: options.retries ?? 0 },
   };
   if (options.headers) requestOptions.headers = options.headers;
   const response = await gotScraping(requestOptions);
@@ -119,29 +119,54 @@ async function requestHtml(url, options = {}) {
   return response.body;
 }
 
-function jinaUrl(url) {
+function withFreshQuery(url) {
   const target = new URL(url);
-  return `https://r.jina.ai/http://www.hltv.org${target.pathname}${target.search}`;
+  target.searchParams.set("faze_bot_refresh", String(Date.now()));
+  return target.toString();
 }
 
-async function requestReaderHtml(url) {
+function jinaUrl(url) {
+  const target = new URL(url);
+  return `https://r.jina.ai/https://www.hltv.org${target.pathname}${target.search}`;
+}
+
+function readerHeaders(options = {}) {
+  const key = options.apiKey ?? process.env.JINA_API_KEY;
+  const proxy = options.proxy ?? process.env.JINA_PROXY;
+  return {
+    "x-respond-with": "html",
+    "x-cache-tolerance": options.fresh ? "0" : "60",
+    ...(options.fresh ? { "x-no-cache": "true" } : {}),
+    ...(key ? {
+      Authorization: `Bearer ${key}`,
+      "x-engine": "browser",
+      "x-respond-timing": "resource-idle",
+      "x-timeout": "15",
+      ...(proxy ? { "x-proxy": proxy } : {}),
+    } : {}),
+  };
+}
+
+async function requestReaderHtml(url, options = {}) {
   let lastError;
-  for (let attempt = 1; attempt <= 4; attempt += 1) {
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
     try {
       const response = await fetch(url, {
-        headers: {
-          "x-respond-with": "html",
-          "x-cache-tolerance": "60",
-        },
-        signal: AbortSignal.timeout(60_000),
+        headers: readerHeaders(options),
+        signal: AbortSignal.timeout(30_000),
       });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (!response.ok) {
+        const error = new Error(`读取通道 HTTP ${response.status}`);
+        error.status = response.status;
+        throw error;
+      }
       const html = await response.text();
       if (!html) throw new Error("返回内容为空");
       return html;
     } catch (error) {
       lastError = error;
-      if (attempt < 4) {
+      if (error.status && error.status < 500 && error.status !== 429) break;
+      if (attempt < 2) {
         await new Promise((resolve) => setTimeout(resolve, attempt * 1_500));
       }
     }
@@ -149,22 +174,72 @@ async function requestReaderHtml(url) {
   throw lastError;
 }
 
-async function fetchHltvHtml(url) {
+async function fetchHltvHtml(url, options = {}) {
+  const requestUrl = options.fresh ? withFreshQuery(url) : url;
   try {
-    const html = await requestHtml(url);
+    const html = await requestHtml(requestUrl);
     if (isCloudflarePage(html)) {
       throw new Error("HLTV返回了Cloudflare验证页");
     }
+    if (options.validate) options.validate(html);
     return html;
   } catch (directError) {
-    const html = await requestReaderHtml(jinaUrl(url));
+    let html;
+    try {
+      html = await requestReaderHtml(jinaUrl(requestUrl), options);
+    } catch (error) {
+      throw new Error(`HLTV直连失败（${directError.message}），${error.message}`);
+    }
     if (isCloudflarePage(html)) {
       throw new Error(
-        `HLTV直连失败（${directError.message}），备用通道也被Cloudflare拦截`,
+        `HLTV直连失败（${directError.message}），备用通道也被Cloudflare拦截。${process.env.JINA_API_KEY ? "已配置认证读取，仍需检查数据通道。" : "匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"}`,
       );
     }
+    if (options.validate) options.validate(html);
     console.warn(`HLTV直连失败，已使用备用通道：${directError.message}`);
     return html;
+  }
+}
+
+function parseResultsHtml(html, { since = 0, now = Date.now() } = {}) {
+  const $ = cheerio.load(html);
+  const results = new Map();
+  $(".result-con").each((_, element) => {
+    const row = $(element);
+    const href = row.find('a[href*="/matches/"]').first().attr("href");
+    const id = matchIdFromHref(href);
+    const names = row.find("div.team");
+    const team1Name = cleanText(names.first().text());
+    const team2Name = cleanText(names.last().text());
+    if (!id || !team1Name || !team2Name) throw new Error("赛果列表结构变化，无法识别比赛");
+    const date = numberFrom(row.attr("data-zonedgrouping-entry-unix"));
+    if (!date) throw new Error(`赛果 ${id} 缺少时间，无法安全补查`);
+    if (date < since || date > now) return;
+    if (![team1Name, team2Name].some((name) => /^faze$/i.test(name))) return;
+    const team = (name) => ({ id: /^faze$/i.test(name) ? FAZE_TEAM_ID : null, name });
+    results.set(id, {
+      id, date, team1: team(team1Name), team2: team(team2Name),
+      event: cleanText(row.find(".event-name").text()) ?
+        { name: cleanText(row.find(".event-name").text()) } : null,
+      format: /bo\d/i.test(row.find(".map-text").text()) ?
+        cleanText(row.find(".map-text").text()) : "bo1",
+      live: false, status: "over",
+    });
+  });
+  return [...results.values()];
+}
+
+function validateListPage(html, kind) {
+  const $ = cheerio.load(html);
+  const selectors = kind === "results" ? ".results, .results-all, .results-holder, .result-con" :
+    ".matches-page, .matches-container, .upcomingMatchesContainer, [data-match-wrapper], .upcomingMatch, .liveMatch-container";
+  if (!$(selectors).length) throw new Error(`没有识别到HLTV${kind === "results" ? "赛果" : "赛程"}页面，拒绝将异常响应当成空列表`);
+}
+
+function validateMatchPage(html) {
+  const $ = cheerio.load(html);
+  if (!teamFromMatchPage($, 1) || !teamFromMatchPage($, 2) || !$(".timeAndEvent .date").attr("data-unix")) {
+    throw new Error("比赛页结构不完整，拒绝覆盖已知比赛状态");
   }
 }
 
@@ -326,7 +401,7 @@ function parseCompactMatchStats($) {
     name: cleanText($(table).find(".header-row .teamName").first().text()),
     players: parseCompactPlayerTable($, table),
   }));
-  if (tableData[0].players.length < 4 || tableData[1].players.length < 4) {
+  if (tableData[0].players.length < 5 || tableData[1].players.length < 5) {
     return null;
   }
 
@@ -339,6 +414,23 @@ function parseCompactMatchStats($) {
       team2: tableData[1].players,
     },
   };
+}
+
+function inferSeriesStatus(status, maps, bestOf) {
+  if (status === "over" || !bestOf) return status;
+  const winsNeeded = Math.floor(Number(bestOf) / 2) + 1;
+  let team1Wins = 0;
+  let team2Wins = 0;
+
+  for (const map of maps) {
+    // HLTV在进行中的地图也会显示临时比分，但结束后才会给出mapstatsid。
+    // 只用已经生成统计页的地图推断整场结果，避免在13-12等实时比分时误判。
+    if (!map.statsId || !map.result) continue;
+    if (map.result.team1TotalRounds > map.result.team2TotalRounds) team1Wins += 1;
+    if (map.result.team2TotalRounds > map.result.team1TotalRounds) team2Wins += 1;
+  }
+
+  return Math.max(team1Wins, team2Wins) >= winsNeeded ? "over" : status;
 }
 
 function parseMatchHtml(html, matchId) {
@@ -367,6 +459,11 @@ function parseMatchHtml(html, matchId) {
   const formatText = cleanText($(".preformatted-text").first().text());
   const bestOf = formatText.match(/Best of\s+(\d+)/i);
 
+  const maps = $(".mapholder")
+    .toArray()
+    .map((element) => parseMap($, element));
+  status = inferSeriesStatus(status, maps, bestOf ? Number(bestOf[1]) : null);
+
   return {
     id: Number(matchId),
     date: numberFrom($(".timeAndEvent .date").attr("data-unix")),
@@ -385,9 +482,7 @@ function parseMatchHtml(html, matchId) {
     format: formatText
       ? { type: bestOf ? `bo${bestOf[1]}` : formatText }
       : null,
-    maps: $(".mapholder")
-      .toArray()
-      .map((element) => parseMap($, element)),
+    maps,
     embeddedStats: parseCompactMatchStats($),
   };
 }
@@ -540,7 +635,7 @@ function parseMatchStatsHtml(html) {
   const team1Players = parsePlayerTable($, team1Table);
   const team2Players = parsePlayerTable($, team2Table);
 
-  if (team1Players.length + team2Players.length < 8) {
+  if (team1Players.length < 5 || team2Players.length < 5) {
     throw new Error(
       `选手统计尚不完整（目前${team1Players.length + team2Players.length}人）`,
     );
@@ -558,26 +653,47 @@ function parseMatchStatsHtml(html) {
 }
 
 class HltvDataSource {
+  constructor({ fetchPage = fetchHltvHtml } = {}) { this.fetchPage = fetchPage; }
+
   async listTeamMatches() {
-    const html = await fetchHltvHtml(
+    const html = await this.fetchPage(
       `https://www.hltv.org/matches?team=${FAZE_TEAM_ID}`,
+      { fresh: true, validate: (html) => validateListPage(html, "matches") },
     );
+    validateListPage(html, "matches");
     return parseMatchesHtml(html).filter(
       (match) =>
-        match.team1?.id === FAZE_TEAM_ID || match.team2?.id === FAZE_TEAM_ID,
+        match.team1?.id === FAZE_TEAM_ID || match.team2?.id === FAZE_TEAM_ID ||
+        /^faze$/i.test(match.team1?.name || "") || /^faze$/i.test(match.team2?.name || ""),
     );
   }
 
+  async listRecentResults({ since, now = Date.now() }) {
+    const params = new URLSearchParams({
+      team: String(FAZE_TEAM_ID),
+      startDate: new Date(since).toISOString().slice(0, 10),
+      endDate: new Date(now).toISOString().slice(0, 10),
+    });
+    const html = await this.fetchPage(`https://www.hltv.org/results?${params}`, {
+      fresh: true, validate: (html) => validateListPage(html, "results"),
+    });
+    validateListPage(html, "results");
+    return parseResultsHtml(html, { since, now });
+  }
+
   async getMatch(matchId) {
-    const html = await fetchHltvHtml(
+    const html = await this.fetchPage(
       `https://www.hltv.org/matches/${Number(matchId)}/-`,
+      { fresh: true, validate: validateMatchPage },
     );
+    validateMatchPage(html);
     return parseMatchHtml(html, Number(matchId));
   }
 
   async getStats(statsId) {
-    const html = await fetchHltvHtml(
+    const html = await this.fetchPage(
       `https://www.hltv.org/stats/matches/${statsId}/-`,
+      { fresh: true, validate: parseMatchStatsHtml },
     );
     return parseMatchStatsHtml(html);
   }
@@ -591,4 +707,9 @@ module.exports = {
   parseMatchesHtml,
   parseMatchStatsHtml,
   parseStage,
+  inferSeriesStatus,
+  parseResultsHtml,
+  validateMatchPage,
+  validateListPage,
+  readerHeaders,
 };

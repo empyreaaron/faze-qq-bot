@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
+    "watch": "node src/watch.js",
     "bind": "node src/bind.js",
     "test-message": "node src/send-test-message.js",
     "test": "node --test"

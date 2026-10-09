@@ -2,7 +2,9 @@
 
 const { formatResultMessages, formatStartMessage } = require("./format");
 
-const SCHEDULE_REFRESH_MS = 4 * 60 * 60 * 1000;
+const SCHEDULE_REFRESH_MS = 5 * 60 * 1000;
+const RESULTS_REFRESH_MS = 30 * 60 * 1000;
+const RECOVERY_MS = 7 * 24 * 60 * 60 * 1000;
 const INSPECT_BEFORE_START_MS = 45 * 60 * 1000;
 const KEEP_MATCH_MS = 30 * 24 * 60 * 60 * 1000;
 const HEARTBEAT_MS = 30 * 24 * 60 * 60 * 1000;
@@ -13,6 +15,7 @@ function iso(timestamp) {
 
 function normalizeState(input) {
   return {
+    ...input,
     schemaVersion: 1,
     lastScheduleCheckAt: input?.lastScheduleCheckAt || null,
     lastHeartbeatAt: input?.lastHeartbeatAt || null,
@@ -29,11 +32,13 @@ function mergePreview(record, preview, now) {
     team1: preview.team1 || record.team1 || null,
     team2: preview.team2 || record.team2 || null,
     event: preview.event || record.event || null,
-    format: preview.format || record.format || null,
+    format: record.format || preview.format || null,
     title: preview.title || record.title || null,
     liveFromList: Boolean(preview.live),
     discoveredAt: record.discoveredAt || iso(now),
     lastSeenAt: iso(now),
+    status: ["over", "deleted"].includes(record.status) ? record.status :
+      preview.status || record.status || "scheduled",
     startSent: Boolean(record.startSent),
     resultSent: Boolean(record.resultSent),
   };
@@ -50,6 +55,8 @@ function mergeDetails(record, details, now) {
     date: details.date || record.date,
     startSent: Boolean(record.startSent),
     resultSent: Boolean(record.resultSent),
+    lastCheckedAt: iso(now),
+    lastError: null,
   };
 }
 
@@ -61,12 +68,14 @@ function shouldRefresh(state, now) {
 function shouldInspect(record, now) {
   if (
     record.resultSent ||
-    record.status === "deleted" ||
-    record.status === "postponed"
+    record.status === "deleted"
   )
     return false;
   if (record.liveFromList || record.startSent || record.status === "live")
     return true;
+  if (record.status === "over") return true;
+  if (record.status === "postponed")
+    return !record.lastCheckedAt || now - Date.parse(record.lastCheckedAt) >= RESULTS_REFRESH_MS;
   if (!record.date) return false;
   return now >= record.date - INSPECT_BEFORE_START_MS;
 }
@@ -90,30 +99,71 @@ async function runMonitor({
   messenger,
   now = Date.now(),
   logger = console,
+  checkpoint = async () => {},
+  deadline = Infinity,
+  maxMatches = 4,
 }) {
   const state = normalizeState(inputState);
+  const errors = [];
+  const fail = (message) => { errors.push(message); logger.error(message); };
+  const previousRun = Date.parse(state.lastRunAt || "");
+  state.lastRunGapMs = Number.isFinite(previousRun) ? now - previousRun : null;
+  if (state.lastRunGapMs > 15 * 60 * 1000) {
+    logger.log(`距离上次运行已超过15分钟（${Math.round(state.lastRunGapMs / 60_000)}分钟）；本次尝试补查近期赛果。`);
+    state.lastResultsCheckAt = null;
+  }
+  state.lastRunAt = iso(now);
+  const mergePreviews = (previews) => {
+    for (const preview of previews) {
+      const id = String(preview.id);
+      state.matches[id] = mergePreview(state.matches[id] || {}, preview, now);
+    }
+  };
+  let checked = 0;
 
   if (shouldRefresh(state, now)) {
     try {
       const previews = await dataSource.listTeamMatches();
-      for (const preview of previews) {
-        const id = String(preview.id);
-        state.matches[id] = mergePreview(state.matches[id] || {}, preview, now);
-      }
+      mergePreviews(previews);
       state.lastScheduleCheckAt = iso(now);
       logger.log(
         `赛程刷新完成，当前记录 ${Object.keys(state.matches).length} 场。`,
       );
     } catch (error) {
-      logger.error(`刷新HLTV赛程失败：${error.message}`);
+      fail(`刷新HLTV赛程失败：${error.message}`);
     }
   }
 
+  if (dataSource.listRecentResults &&
+      (!state.lastResultsCheckAt || now - Date.parse(state.lastResultsCheckAt) >= RESULTS_REFRESH_MS)) {
+    if (Date.now() < deadline) {
+      try {
+        const previews = await dataSource.listRecentResults({ since: now - RECOVERY_MS, now });
+        mergePreviews(previews);
+        state.lastResultsCheckAt = iso(now);
+        logger.log(`近期赛果补查完成，发现 ${previews.length} 场。`);
+      } catch (error) {
+        fail(`补查HLTV近期赛果失败：${error.message}`);
+      }
+    } else fail("运行时间不足，近期赛果补查留待下次。");
+  }
+  await checkpoint(state);
+
   const records = Object.values(state.matches)
     .filter((match) => shouldInspect(match, now))
-    .sort((a, b) => (a.date || 0) - (b.date || 0));
+    .sort((a, b) => {
+      const priority = (m) => m.status === "live" || m.liveFromList ? 0 :
+        m.date && Math.abs(now - m.date) < 12 * 60 * 60 * 1000 ? 1 : 2;
+      return priority(a) - priority(b) ||
+        (Date.parse(a.lastCheckedAt || 0) || 0) - (Date.parse(b.lastCheckedAt || 0) || 0);
+    });
 
   for (const original of records) {
+    if (checked >= maxMatches || Date.now() >= deadline) {
+      logger.log(`剩余 ${records.length - checked} 场留待下次检查。`);
+      break;
+    }
+    checked += 1;
     const id = String(original.id);
     try {
       const details = await dataSource.getMatch(original.id);
@@ -125,6 +175,7 @@ async function runMonitor({
         match.startSent = true;
         match.startSentAt = iso(now);
         logger.log(`已发送开赛提醒：${match.id}`);
+        await checkpoint(state);
       }
 
       if (match.status === "over" && !match.resultSent) {
@@ -138,9 +189,12 @@ async function runMonitor({
         match.resultSent = true;
         match.resultSentAt = iso(now);
         logger.log(`已发送赛后统计：${match.id}`);
+        await checkpoint(state);
       }
     } catch (error) {
-      logger.error(`检查比赛 ${original.id} 失败：${error.message}`);
+      state.matches[id].lastCheckedAt = iso(now);
+      state.matches[id].lastError = error.message;
+      fail(`检查比赛 ${original.id} 失败：${error.message}`);
     }
   }
 
@@ -151,6 +205,10 @@ async function runMonitor({
     state.lastHeartbeatAt = iso(now);
   }
   pruneMatches(state, now);
+  state.lastRunErrors = errors;
+  state.lastRunStatus = errors.length ? "failed" : "success";
+  if (!errors.length) state.lastSuccessfulRunAt = iso(now);
+  logger.log(`本次检查 ${checked} 场，错误 ${errors.length} 个。`);
   return state;
 }
 
