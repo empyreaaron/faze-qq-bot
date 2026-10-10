@@ -439,12 +439,12 @@
       "lastSeenAt": "2026-10-08T14:53:17.933Z",
       "startSent": false,
       "resultSent": false,
-      "lastCheckedAt": "2026-10-10T19:17:09.478Z",
+      "lastCheckedAt": "2026-10-10T22:42:31.239Z",
       "lastError": "HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"
     }
   },
-  "lastRunGapMs": 14914452,
-  "lastRunAt": "2026-10-10T19:17:09.478Z",
+  "lastRunGapMs": 12321761,
+  "lastRunAt": "2026-10-10T22:42:31.239Z",
   "lastRunErrors": [
     "刷新HLTV赛程失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
     "补查HLTV近期赛果失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
