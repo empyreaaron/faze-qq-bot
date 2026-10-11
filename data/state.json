@@ -420,7 +420,7 @@
     },
     "2399044": {
       "id": 2399044,
-      "date": 1791477000000,
+      "date": 1791478800000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
@@ -437,10 +437,47 @@
       "liveFromList": false,
       "discoveredAt": "2026-10-08T14:53:17.933Z",
       "lastSeenAt": "2026-10-08T14:53:17.933Z",
-      "startSent": false,
-      "resultSent": false,
+      "startSent": true,
+      "resultSent": true,
       "lastCheckedAt": "2026-10-11T01:19:22.084Z",
-      "lastError": "HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"
+      "lastError": "HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
+      "status": "over",
+      "resultSentAt": "2026-10-11T05:44:34.149Z",
+      "resultSkipped": "missed during HLTV outage; not re-posted"
+    },
+    "2399048": {
+      "id": 2399048,
+      "date": 1791552600000,
+      "team1": {
+        "name": "PURE"
+      },
+      "team2": {
+        "name": "FaZe"
+      },
+      "status": "over",
+      "liveFromList": false,
+      "discoveredAt": "2026-10-11T05:44:34.149Z",
+      "startSent": true,
+      "resultSent": true,
+      "resultSentAt": "2026-10-11T05:44:34.149Z",
+      "resultSkipped": "missed during HLTV outage; not re-posted"
+    },
+    "2399052": {
+      "id": 2399052,
+      "date": 1791626400000,
+      "team1": {
+        "name": "FaZe"
+      },
+      "team2": {
+        "name": "NAVI Junior"
+      },
+      "status": "over",
+      "liveFromList": false,
+      "discoveredAt": "2026-10-11T05:44:34.149Z",
+      "startSent": true,
+      "resultSent": true,
+      "resultSentAt": "2026-10-11T05:44:34.149Z",
+      "resultSkipped": "missed during HLTV outage; not re-posted"
     }
   },
   "lastRunGapMs": 9410845,
