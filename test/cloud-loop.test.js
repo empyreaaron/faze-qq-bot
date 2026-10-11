@@ -33,3 +33,24 @@ test("用户取消云端任务后不能自动重启", async () => {
   assert.equal(result.handoff, false);
   assert.equal(result.cycles, 1);
 });
+
+test("有一轮失败整个任务就标红，GitHub照常发失败邮件", async () => {
+  let now = 0;
+  const codes = [0, 1, 0];
+  const result = await runCloudLoop({ clock: () => now, durationMs: 900_000,
+    run: async () => { now += 1000; return codes.shift(); }, wait: async (ms) => { now += ms; },
+    logger: { error() {} } });
+  assert.equal(result.cycles, 3);
+  assert.equal(result.lastCode, 1);
+  assert.equal(result.handoff, true);
+});
+
+test("连续失败半小时提前结束，让失败邮件尽快发出并接续下一轮", async () => {
+  let now = 0;
+  const result = await runCloudLoop({ clock: () => now, durationMs: 5 * 60 * 60 * 1000,
+    run: async () => { now += 1000; return 1; }, wait: async (ms) => { now += ms; },
+    logger: { error() {} } });
+  assert.equal(result.cycles, 6);
+  assert.equal(result.lastCode, 1);
+  assert.equal(result.handoff, true);
+});

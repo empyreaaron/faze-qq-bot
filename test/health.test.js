@@ -10,62 +10,6 @@ const players = Array.from({ length: 5 }, (_, i) => ({
   player: { name: `p${i}` }, kills: 20, deaths: 15,
   ADR: 80, KAST: 75, rating3: 1.2, roundSwing: 1,
 }));
-const blind = {
-  listTeamMatches: async () => { throw new Error("HTTP 403"); },
-  listRecentResults: async () => { throw new Error("HTTP 403"); },
-};
-
-test("连续读不到HLTV超过阈值时主动提醒，不再静默漏比赛", async () => {
-  const sent = [];
-  const messenger = { send: async (messages) => sent.push(...messages) };
-  const state = {
-    lastRunAt: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
-    lastSuccessfulReadAt: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
-  };
-  const updated = await runMonitor({
-    state, dataSource: blind, messenger, now, logger,
-  });
-  assert.equal(sent.length, 1);
-  assert.match(sent[0], /【监控异常】/);
-  assert.match(sent[0], /240 分钟/);
-  assert.ok(updated.lastBlindAlertAt);
-});
-
-test("异常提醒不会每轮重复轰炸群聊", async () => {
-  const sent = [];
-  const messenger = { send: async (messages) => sent.push(...messages) };
-  let state = {
-    lastRunAt: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
-    lastSuccessfulReadAt: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
-  };
-  state = await runMonitor({ state, dataSource: blind, messenger, now, logger });
-  state = await runMonitor({
-    state, dataSource: blind, messenger, now: now + 10 * 60 * 1000, logger,
-  });
-  assert.equal(sent.length, 1);
-});
-
-test("恢复读取后发送一次恢复通知", async () => {
-  const sent = [];
-  const messenger = { send: async (messages) => sent.push(...messages) };
-  let state = {
-    lastRunAt: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
-    lastSuccessfulReadAt: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
-  };
-  state = await runMonitor({ state, dataSource: blind, messenger, now, logger });
-  sent.length = 0;
-  state = await runMonitor({
-    state,
-    dataSource: { listTeamMatches: async () => [], listRecentResults: async () => [] },
-    messenger,
-    now: now + 10 * 60 * 1000,
-    logger,
-  });
-  assert.equal(sent.length, 1);
-  assert.match(sent[0], /【监控恢复】/);
-  assert.equal(state.lastBlindAlertAt, null);
-});
-
 test("HLTV长时间不出统计时宁可只播报比分，也不漏掉这场", async () => {
   const sent = [];
   const messenger = { send: async (messages) => sent.push(...messages) };
