@@ -9,6 +9,9 @@ const { QQMessenger } = require("./qq");
 const { persistGitState } = require("./git-state");
 
 const statePath = path.resolve(__dirname, "..", "data", "state.json");
+// Push at least this often even when nothing happened, so a fresh runner never
+// starts from a very old snapshot.
+const PUSH_HEARTBEAT_MS = 30 * 60 * 1000;
 
 async function loadState() {
   try {
@@ -19,12 +22,38 @@ async function loadState() {
   }
 }
 
+// Only the facts that decide whether a message still needs sending. Timestamps
+// like lastRunAt change on every tick; committing those pushed ~288 commits a
+// day, which is what made concurrent runs fight over data/state.json.
+function sendFingerprint(state) {
+  const matches = Object.values(state?.matches || {})
+    .map(
+      (match) =>
+        `${match.id}:${match.status}:${match.startSent ? 1 : 0}:${match.resultSent ? 1 : 0}`,
+    )
+    .sort()
+    .join("|");
+  return `${matches}#${state?.lastBlindAlertAt || ""}`;
+}
+
 async function saveState(state) {
   try {
+    const fingerprint = sendFingerprint(state);
+    const pushedAt = Date.parse(state.lastPushedAt || "");
+    const push =
+      fingerprint !== state.lastPushedFingerprint ||
+      !Number.isFinite(pushedAt) ||
+      Date.now() - pushedAt >= PUSH_HEARTBEAT_MS;
+    if (push) {
+      state.lastPushedFingerprint = fingerprint;
+      state.lastPushedAt = new Date().toISOString();
+    }
     const temporary = `${statePath}.tmp`;
     await fs.writeFile(temporary, `${JSON.stringify(state, null, 2)}\n`, "utf8");
     await fs.rename(temporary, statePath);
-    if (process.env.GIT_SYNC_STATE === "true") await persistGitState();
+    // A send is always followed by a fingerprint change, so the "already sent"
+    // marker still reaches the remote before the next match is handled.
+    if (push && process.env.GIT_SYNC_STATE === "true") await persistGitState();
   } catch (error) {
     error.statePersistence = true;
     throw error;

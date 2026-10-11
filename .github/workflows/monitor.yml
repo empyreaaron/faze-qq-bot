@@ -2,7 +2,12 @@ name: Monitor FaZe matches
 
 on:
   schedule:
-    - cron: "17 * * * *"
+    # GitHub deprioritises scheduled workflows and silently drops ticks: the
+    # hourly cron here was really firing every 3-6 hours. These are only the
+    # recovery entry points — the five-minute polling comes from the long-lived
+    # run in src/cloud-loop.js, which starts its own successor.
+    - cron: "13 * * * *"
+    - cron: "43 * * * *"
   repository_dispatch:
     types: [monitor-tick]
   workflow_dispatch:
@@ -30,6 +35,16 @@ jobs:
     if: ${{ vars.MONITOR_ENABLED != 'false' }}
     runs-on: ubuntu-latest
     timeout-minutes: 340
+    services:
+      # Cloudflare answers every GitHub runner IP with a 403 managed challenge,
+      # which no TLS-fingerprint trick can get past. FlareSolverr drives a real
+      # undetected Chrome inside the job and hands back the solved page.
+      flaresolverr:
+        image: ghcr.io/flaresolverr/flaresolverr:latest
+        ports:
+          - 8191:8191
+        env:
+          LOG_LEVEL: warning
     steps:
       - name: Checkout latest branch and notification state
         uses: actions/checkout@v4
@@ -54,6 +69,19 @@ jobs:
           git config user.name "faze-match-bot"
           git config user.email "faze-match-bot@users.noreply.github.com"
 
+      - name: Wait for the Cloudflare solver
+        run: |
+          for i in $(seq 1 45); do
+            if curl -sf -m 5 http://localhost:8191/ >/dev/null 2>&1; then
+              echo "FlareSolverr ready after ${i} attempt(s)."
+              exit 0
+            fi
+            sleep 2
+          done
+          # Not fatal: the monitor falls back to its other transports and will
+          # report an unreadable HLTV to the group itself.
+          echo "::warning::FlareSolverr did not become ready; falling back to other transports."
+
       - name: Check HLTV and notify QQ
         id: monitor
         env:
@@ -61,33 +89,24 @@ jobs:
           QQ_APP_SECRET: ${{ secrets.QQ_APP_SECRET }}
           QQ_GROUP_OPENID: ${{ secrets.QQ_GROUP_OPENID }}
           HLTV_PYTHON: python
+          FLARESOLVERR_URL: http://localhost:8191/v1
+          HLTV_RELAY_URL: ${{ secrets.HLTV_RELAY_URL }}
+          HLTV_RELAY_TOKEN: ${{ secrets.HLTV_RELAY_TOKEN }}
           DRY_RUN: ${{ inputs.dry_run || 'false' }}
           MONITOR_MODE: ${{ inputs.mode || 'continuous' }}
           GIT_SYNC_STATE: ${{ !inputs.dry_run && 'true' || 'false' }}
         run: |
           set +e
+          started=$(date +%s)
           if [ "$DRY_RUN" = "true" ] || [ "$MONITOR_MODE" = "once" ]; then
             npm start
           else
             node src/cloud-loop.js
           fi
           status=$?
-          if [ "$status" -eq 2 ]; then
-            echo "sync_failed=true" >> "$GITHUB_OUTPUT"
-          fi
+          echo "monitor_status=$status" >> "$GITHUB_OUTPUT"
+          echo "elapsed=$(( $(date +%s) - started ))" >> "$GITHUB_OUTPUT"
           exit "$status"
-
-      - name: Pause workflow after a state persistence failure
-        if: ${{ !cancelled() && steps.monitor.outputs.sync_failed == 'true' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow disable monitor.yml
-          gh api "repos/$GITHUB_REPOSITORY/actions/workflows/monitor.yml/runs?per_page=100" \
-            --jq '.workflow_runs[] | select(.status == "queued" or .status == "pending" or .status == "waiting") | .id' \
-            | while read -r run_id; do
-                gh api --method POST "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/cancel"
-              done
 
       - name: Preserve state if this run failed
         if: ${{ failure() && !inputs.dry_run }}
@@ -95,10 +114,30 @@ jobs:
         with:
           name: notification-state-${{ github.run_id }}
           path: data/state.json
-          retention-days: 3
+          retention-days: 7
+
+      # Previously a single failed state push ran `gh workflow disable`, which
+      # switched the bot off for good and silently. The run already stops on a
+      # persistence failure; the schedule must stay alive so the next run can
+      # recover from the committed state.
+      - name: Flag a state persistence failure
+        if: ${{ !cancelled() && steps.monitor.outputs.monitor_status == '2' }}
+        run: |
+          echo "::error::状态未能推送到仓库，本轮已停止发送。下一轮会从仓库里的状态恢复。"
 
       - name: Start next five-hour monitoring run
-        if: ${{ !cancelled() && steps.monitor.outputs.handoff == 'true' }}
+        # Hand off even when the loop ended in an error: an unreadable HLTV must
+        # not break the chain, otherwise polling stops and we are back to
+        # waiting on GitHub's throttled cron. The elapsed-time guard is the
+        # circuit breaker — a run that died in its first minutes (bad install,
+        # crash on boot) must not spawn a successor that dies the same way.
+        if: >-
+          ${{ !cancelled()
+              && (inputs.mode || 'continuous') == 'continuous'
+              && !inputs.dry_run
+              && steps.monitor.outputs.monitor_status != ''
+              && steps.monitor.outputs.monitor_status != '2'
+              && fromJSON(steps.monitor.outputs.elapsed || '0') >= 600 }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh workflow run monitor.yml --ref "$GITHUB_REF_NAME" -f mode=continuous -f dry_run=false

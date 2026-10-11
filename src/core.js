@@ -1,6 +1,10 @@
 "use strict";
 
-const { formatResultMessages, formatStartMessage } = require("./format");
+const {
+  formatResultMessages,
+  formatScoreOnlyResultMessages,
+  formatStartMessage,
+} = require("./format");
 
 const SCHEDULE_REFRESH_MS = 5 * 60 * 1000;
 const RESULTS_REFRESH_MS = 30 * 60 * 1000;
@@ -8,6 +12,15 @@ const RECOVERY_MS = 7 * 24 * 60 * 60 * 1000;
 const INSPECT_BEFORE_START_MS = 45 * 60 * 1000;
 const KEEP_MATCH_MS = 30 * 24 * 60 * 60 * 1000;
 const HEARTBEAT_MS = 30 * 24 * 60 * 60 * 1000;
+// A finished match whose stats never materialise is re-checked on this cadence
+// instead of burning a slot of the per-run budget on every single tick.
+const OVER_RETRY_MS = 10 * 60 * 1000;
+// ...and after this long we post the score alone rather than stay silent.
+const STATS_WAIT_MS = 6 * 60 * 60 * 1000;
+// Going blind used to be invisible: HLTV refused every read for three days and
+// nothing said so. Warn the group instead of quietly skipping matches.
+const BLIND_ALERT_AFTER_MS = 90 * 60 * 1000;
+const BLIND_ALERT_REPEAT_MS = 6 * 60 * 60 * 1000;
 
 function requireCompleteStats(stats) {
   for (const side of ["team1", "team2"]) {
@@ -87,7 +100,18 @@ function shouldInspect(record, now) {
     return false;
   if (record.liveFromList || record.startSent || record.status === "live")
     return true;
-  if (record.status === "over") return true;
+  if (record.status === "over") {
+    if (!record.lastCheckedAt) return true;
+    // Poll every tick while the result is still fresh — stats usually appear
+    // within minutes and the group should not wait. Only a match that stayed
+    // unresolved past the grace period backs off, so it cannot keep eating the
+    // per-run budget forever.
+    const overSince = Date.parse(record.overSince || "");
+    if (!Number.isFinite(overSince) || now - overSince < STATS_WAIT_MS) {
+      return true;
+    }
+    return now - Date.parse(record.lastCheckedAt) >= OVER_RETRY_MS;
+  }
   if (record.status === "postponed")
     return !record.lastCheckedAt || now - Date.parse(record.lastCheckedAt) >= RESULTS_REFRESH_MS;
   if (!record.date) return false;
@@ -104,6 +128,46 @@ function pruneMatches(state, now) {
     ) {
       delete state.matches[id];
     }
+  }
+}
+
+// Tell the group when HLTV has been unreadable for a while, and again when it
+// recovers. Never let a failure here mask the monitoring result itself.
+async function reportHealth({ state, messenger, now, logger }) {
+  const lastRead = Date.parse(state.lastSuccessfulReadAt || "");
+  const blindSince = Number.isFinite(lastRead) ? now - lastRead : null;
+  const alerted = Date.parse(state.lastBlindAlertAt || "");
+
+  if (blindSince !== null && blindSince < BLIND_ALERT_AFTER_MS) {
+    if (Number.isFinite(alerted)) {
+      state.lastBlindAlertAt = null;
+      try {
+        await messenger.send(["【监控恢复】已重新读到HLTV，比赛提醒继续。"]);
+      } catch (error) {
+        logger.error(`恢复通知发送失败：${error.message}`);
+      }
+    }
+    return;
+  }
+  if (blindSince === null && !state.lastRunAt) return;
+  if (Number.isFinite(alerted) && now - alerted < BLIND_ALERT_REPEAT_MS) return;
+
+  const minutes =
+    blindSince === null ? null : Math.round(blindSince / 60_000);
+  try {
+    await messenger.send([
+      [
+        "【监控异常】",
+        minutes === null
+          ? "还没有成功读到过HLTV。"
+          : `已连续 ${minutes} 分钟无法读取HLTV，期间的比赛可能漏报。`,
+        "恢复后会自动补发赛果。",
+      ].join("\n"),
+    ]);
+    state.lastBlindAlertAt = iso(now);
+    logger.log("已发送监控异常提醒。");
+  } catch (error) {
+    logger.error(`异常提醒发送失败：${error.message}`);
   }
 }
 
@@ -140,6 +204,7 @@ async function runMonitor({
       const previews = await dataSource.listTeamMatches();
       mergePreviews(previews);
       state.lastScheduleCheckAt = iso(now);
+      state.lastSuccessfulReadAt = iso(now);
       logger.log(
         `赛程刷新完成，当前记录 ${Object.keys(state.matches).length} 场。`,
       );
@@ -155,6 +220,7 @@ async function runMonitor({
         const previews = await dataSource.listRecentResults({ since: now - RECOVERY_MS, now });
         mergePreviews(previews);
         state.lastResultsCheckAt = iso(now);
+        state.lastSuccessfulReadAt = iso(now);
         logger.log(`近期赛果补查完成，发现 ${previews.length} 场。`);
       } catch (error) {
         fail(`补查HLTV近期赛果失败：${error.message}`);
@@ -181,6 +247,7 @@ async function runMonitor({
     const id = String(original.id);
     try {
       const details = await dataSource.getMatch(original.id);
+      state.lastSuccessfulReadAt = iso(now);
       const match = mergeDetails(state.matches[id], details, now);
       state.matches[id] = match;
 
@@ -193,18 +260,56 @@ async function runMonitor({
       }
 
       if (match.status === "over" && !match.resultSent) {
-        if (!match.embeddedStats && !match.statsId) {
-          logger.log(`比赛 ${match.id} 已结束，等待HLTV完整统计。`);
+        match.overSince = match.overSince || iso(now);
+        const waited = now - Date.parse(match.overSince);
+        let stats = null;
+        let statsError = null;
+        if (match.embeddedStats || match.statsId) {
+          stats = match.embeddedStats;
+          try {
+            requireCompleteStats(stats);
+          } catch (error) {
+            statsError = error;
+            if (match.statsId) {
+              stats = await dataSource.getStats(match.statsId);
+              state.lastSuccessfulReadAt = iso(now);
+              try {
+                requireCompleteStats(stats);
+                statsError = null;
+              } catch (retryError) {
+                statsError = retryError;
+              }
+            }
+          }
+        } else {
+          statsError = new Error("HLTV还没有生成统计页");
+        }
+
+        if (statsError) {
+          // Wait for HLTV to catch up, but not forever: a forfeited or
+          // permanently broken match would otherwise never be reported at all.
+          // The wait still counts as an error so the run never looks green
+          // while a result is outstanding.
+          if (
+            waited < STATS_WAIT_MS ||
+            !match.maps?.some((map) => map.result)
+          ) {
+            match.lastCheckedAt = iso(now);
+            match.lastError = statsError.message;
+            fail(`检查比赛 ${match.id} 失败：${statsError.message}`);
+            continue;
+          }
+          await messenger.send(
+            formatScoreOnlyResultMessages(match, statsError.message),
+          );
+          match.resultSent = true;
+          match.resultSentAt = iso(now);
+          match.resultDegraded = statsError.message;
+          logger.log(`已发送仅比分赛果：${match.id}（${statsError.message}）`);
+          await checkpoint(state);
           continue;
         }
-        let stats = match.embeddedStats;
-        try {
-          requireCompleteStats(stats);
-        } catch (error) {
-          if (!match.statsId) throw error;
-          stats = await dataSource.getStats(match.statsId);
-          requireCompleteStats(stats);
-        }
+
         await messenger.send(formatResultMessages(match, stats));
         match.resultSent = true;
         match.resultSentAt = iso(now);
@@ -218,6 +323,8 @@ async function runMonitor({
       fail(`检查比赛 ${original.id} 失败：${error.message}`);
     }
   }
+
+  await reportHealth({ state, messenger, now, logger });
 
   if (
     !state.lastHeartbeatAt ||

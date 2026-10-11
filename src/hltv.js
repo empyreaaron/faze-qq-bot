@@ -1,10 +1,7 @@
 "use strict";
 
 const cheerio = require("cheerio");
-const { execFile } = require("node:child_process");
-const { promisify } = require("node:util");
-const path = require("node:path");
-const execute = promisify(execFile);
+const { HltvFetcher, isCloudflarePage } = require("./fetch");
 
 const FAZE_TEAM_ID = 6667;
 
@@ -101,11 +98,7 @@ function parseStage(formatText) {
   return { name, label: `${prefix}${round}`, isKnockout: true };
 }
 
-function isCloudflarePage(html) {
-  return /Just a moment|cf-chl-|Attention Required|Enable JavaScript and cookies/i.test(
-    String(html || ""),
-  );
-}
+const defaultFetcher = new HltvFetcher();
 
 async function fetchHltvHtml(url, options = {}) {
   const target = new URL(url);
@@ -113,19 +106,8 @@ async function fetchHltvHtml(url, options = {}) {
     throw new Error("只允许读取HLTV公开页面");
   }
   if (options.fresh) target.searchParams.set("faze_bot_refresh", String(Date.now()));
-  const python = process.env.HLTV_PYTHON || (process.platform === "win32" ? "python" : "python3");
-  let html;
-  try {
-    const result = await execute(python, [path.join(__dirname, "fetch-hltv.py"), target.toString()], {
-      timeout: 50_000, maxBuffer: 8 * 1024 * 1024, encoding: "utf8",
-      windowsHide: true,
-    });
-    html = result.stdout;
-  } catch (error) {
-    const detail = error.code === "ENOENT" ? "未安装Python或HLTV_PYTHON路径不正确" :
-      String(error.stderr || error.message).trim().slice(-600);
-    throw new Error(`HLTV直接读取失败：${detail}`);
-  }
+  const fetcher = options.fetcher || defaultFetcher;
+  const html = await fetcher.fetch(target.toString());
   if (!html || isCloudflarePage(html)) throw new Error("HLTV仍返回验证页，下轮重试；没有发送缺失数据");
   if (options.validate) options.validate(html);
   return html;
@@ -134,16 +116,24 @@ async function fetchHltvHtml(url, options = {}) {
 function parseResultsHtml(html, { since = 0, now = Date.now() } = {}) {
   const $ = cheerio.load(html);
   const results = new Map();
-  $(".result-con").each((_, element) => {
+  const rows = $(".result-con");
+  let unusable = 0;
+  rows.each((_, element) => {
     const row = $(element);
     const href = row.find('a[href*="/matches/"]').first().attr("href");
     const id = matchIdFromHref(href);
     const names = row.find("div.team");
     const team1Name = cleanText(names.first().text());
     const team2Name = cleanText(names.last().text());
-    if (!id || !team1Name || !team2Name) throw new Error("赛果列表结构变化，无法识别比赛");
     const date = numberFrom(row.attr("data-zonedgrouping-entry-unix"));
-    if (!date) throw new Error(`赛果 ${id} 缺少时间，无法安全补查`);
+    // A single odd row (the featured box at the top of /results has no grouping
+    // timestamp) must not throw away the whole recovery pass — that silently
+    // cost us every backfilled match. Skip the row, and only give up below if
+    // nothing at all was readable.
+    if (!id || !team1Name || !team2Name || !date) {
+      unusable += 1;
+      return;
+    }
     if (date < since || date > now) return;
     if (![team1Name, team2Name].some((name) => /^faze$/i.test(name))) return;
     const team = (name) => ({ id: /^faze$/i.test(name) ? FAZE_TEAM_ID : null, name });
@@ -156,6 +146,9 @@ function parseResultsHtml(html, { since = 0, now = Date.now() } = {}) {
       live: false, status: "over",
     });
   });
+  if (rows.length && unusable === rows.length) {
+    throw new Error("赛果列表结构变化，整页都无法识别");
+  }
   return [...results.values()];
 }
 

@@ -1,0 +1,149 @@
+name: Probe HLTV access
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [fix/hltv-access]
+    paths: [.github/workflows/probe.yml]
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      flaresolverr:
+        image: ghcr.io/flaresolverr/flaresolverr:latest
+        ports:
+          - 8191:8191
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Report runner egress IP
+        run: curl -s -m 20 https://api.ipify.org || true
+
+      - name: A - plain curl with browser UA
+        run: |
+          code=$(curl -s -o a.html -w '%{http_code}' -m 25 \
+            -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36' \
+            -H 'Accept-Language: en-US,en;q=0.9' \
+            'https://www.hltv.org/matches?team=6667' || echo 000)
+          echo "A status=$code size=$(wc -c <a.html 2>/dev/null || echo 0)"
+          grep -c 'upcomingMatch\|matchTeamName' a.html 2>/dev/null | sed 's/^/A markers=/' || true
+          grep -o 'Just a moment\|cf-chl-\|Attention Required' a.html 2>/dev/null | head -1 | sed 's/^/A challenge=/' || true
+        continue-on-error: true
+
+      - name: B - curl_cffi impersonation
+        run: |
+          pip install -q "curl_cffi>=0.7"
+          python - <<'PY'
+          from curl_cffi import requests
+          for p in ("chrome","chrome131","firefox","safari"):
+              try:
+                  r = requests.get("https://www.hltv.org/matches?team=6667", impersonate=p, timeout=25)
+                  body = r.text or ""
+                  ch = any(m in body for m in ("Just a moment","cf-chl-","Attention Required","Enable JavaScript and cookies"))
+                  print(f"B {p}: status={r.status_code} size={len(body)} challenge={ch} markers={'upcomingMatch' in body or 'matchTeamName' in body}")
+              except Exception as e:
+                  print(f"B {p}: EXC {type(e).__name__} {e}")
+          PY
+        continue-on-error: true
+
+      - name: C - cloudscraper
+        run: |
+          pip install -q cloudscraper
+          python - <<'PY'
+          import cloudscraper
+          try:
+              s = cloudscraper.create_scraper(browser={"browser":"chrome","platform":"windows","mobile":False})
+              r = s.get("https://www.hltv.org/matches?team=6667", timeout=30)
+              body = r.text or ""
+              ch = any(m in body for m in ("Just a moment","cf-chl-","Attention Required"))
+              print(f"C status={r.status_code} size={len(body)} challenge={ch} markers={'upcomingMatch' in body or 'matchTeamName' in body}")
+          except Exception as e:
+              print(f"C EXC {type(e).__name__} {e}")
+          PY
+        continue-on-error: true
+
+      - name: D - FlareSolverr service
+        run: |
+          for i in $(seq 1 30); do
+            curl -sf -m 5 http://localhost:8191/ >/dev/null 2>&1 && break
+            sleep 2
+          done
+          curl -s -m 180 -X POST http://localhost:8191/v1 \
+            -H 'Content-Type: application/json' \
+            -d '{"cmd":"request.get","url":"https://www.hltv.org/matches?team=6667","maxTimeout":120000}' \
+            -o d.json || echo "D request failed"
+          python - <<'PY'
+          import json
+          try:
+              d = json.load(open("d.json"))
+          except Exception as e:
+              print("D unreadable", e); raise SystemExit
+          sol = d.get("solution") or {}
+          body = sol.get("response") or ""
+          ch = any(m in body for m in ("Just a moment","cf-chl-","Attention Required"))
+          print(f"D outer={d.get('status')} msg={d.get('message')!r} inner={sol.get('status')} size={len(body)} challenge={ch} markers={'upcomingMatch' in body or 'matchTeamName' in body}")
+          PY
+        continue-on-error: true
+
+      - name: E - Playwright real Chromium
+        run: |
+          npm i -s playwright@1.49.0
+          npx playwright install --with-deps chromium >/dev/null 2>&1 || npx playwright install chromium
+          node - <<'JS'
+          const { chromium } = require("playwright");
+          (async () => {
+            const browser = await chromium.launch({ args: ["--disable-blink-features=AutomationControlled","--no-sandbox"] });
+            const ctx = await browser.newContext({
+              userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+              viewport: { width: 1440, height: 900 }, locale: "en-US", timezoneId: "Europe/Copenhagen",
+            });
+            await ctx.addInitScript(() => Object.defineProperty(navigator, "webdriver", { get: () => undefined }));
+            const page = await ctx.newPage();
+            try {
+              const resp = await page.goto("https://www.hltv.org/matches?team=6667", { waitUntil: "domcontentloaded", timeout: 60000 });
+              await page.waitForTimeout(12000);
+              const html = await page.content();
+              const ch = /Just a moment|cf-chl-|Attention Required/i.test(html);
+              const n = await page.locator(".upcomingMatch, .liveMatch-container").count();
+              console.log(`E status=${resp && resp.status()} size=${html.length} challenge=${ch} matchNodes=${n} title=${JSON.stringify(await page.title())}`);
+            } catch (e) {
+              console.log("E EXC", e.message);
+            } finally { await browser.close(); }
+          })();
+          JS
+        continue-on-error: true
+
+      - name: F - public text/CORS relays
+        run: |
+          for u in \
+            "https://r.jina.ai/https://www.hltv.org/matches?team=6667" \
+            "https://api.codetabs.com/v1/proxy/?quest=https://www.hltv.org/matches%3Fteam%3D6667" \
+            "https://api.allorigins.win/raw?url=https%3A%2F%2Fwww.hltv.org%2Fmatches%3Fteam%3D6667"; do
+            code=$(curl -s -o f.out -w '%{http_code}' -m 40 "$u" || echo 000)
+            m=$(grep -c 'upcomingMatch\|matchTeamName\|FaZe' f.out 2>/dev/null || echo 0)
+            echo "F $u -> status=$code size=$(wc -c <f.out 2>/dev/null || echo 0) markers=$m"
+          done
+        continue-on-error: true
+
+      - name: G - alternative data APIs
+        run: |
+          code=$(curl -s -o g1.json -w '%{http_code}' -m 30 'https://hltv-api.vercel.app/api/matches' || echo 000)
+          echo "G hltv-api.vercel.app status=$code size=$(wc -c <g1.json 2>/dev/null || echo 0)"
+          head -c 300 g1.json 2>/dev/null; echo
+          code=$(curl -s -o g2.json -w '%{http_code}' -m 30 -H 'Accept: application/json' 'https://api.bo3.gg/api/v1/matches?page[limit]=5' || echo 000)
+          echo "G bo3.gg status=$code size=$(wc -c <g2.json 2>/dev/null || echo 0)"
+          head -c 300 g2.json 2>/dev/null; echo
+          code=$(curl -s -o g3.json -w '%{http_code}' -m 30 \
+            -H 'User-Agent: faze-qq-bot/1.0 (match notifier; contact github.com/empyreaaron/faze-qq-bot)' \
+            'https://liquipedia.net/counterstrike/api.php?action=cargoquery&format=json&tables=Matches&fields=Match.DateTime_UTC,Match.Team1,Match.Team2,Match.BestOf,Match.Team1Score,Match.Team2Score&where=Match.Team1%3D%22FaZe%22%20OR%20Match.Team2%3D%22FaZe%22&order_by=Match.DateTime_UTC%20DESC&limit=5' || echo 000)
+          echo "G liquipedia status=$code size=$(wc -c <g3.json 2>/dev/null || echo 0)"
+          head -c 600 g3.json 2>/dev/null; echo
+        continue-on-error: true
