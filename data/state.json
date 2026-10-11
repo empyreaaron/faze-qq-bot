@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-11T05:46:24.320Z",
+  "lastScheduleCheckAt": "2026-10-11T06:02:07.412Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -436,7 +436,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-08T14:53:17.933Z",
-      "lastSeenAt": "2026-10-11T05:46:24.320Z",
+      "lastSeenAt": "2026-10-11T06:02:07.412Z",
       "startSent": true,
       "resultSent": true,
       "lastCheckedAt": "2026-10-11T01:19:22.084Z",
@@ -468,7 +468,7 @@
       },
       "format": "bo3",
       "title": null,
-      "lastSeenAt": "2026-10-11T05:46:24.320Z"
+      "lastSeenAt": "2026-10-11T06:02:07.412Z"
     },
     "2399052": {
       "id": 2399052,
@@ -493,21 +493,20 @@
       },
       "format": "bo3",
       "title": null,
-      "lastSeenAt": "2026-10-11T05:46:24.320Z"
+      "lastSeenAt": "2026-10-11T06:02:07.412Z"
     },
     "2399055": {
       "id": 2399055,
-      "date": 1791656400000,
+      "date": 1791661011000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
       },
       "team2": {
-        "id": 10371,
+        "id": null,
         "name": "NAVI Junior"
       },
       "event": {
-        "id": 9318,
         "name": "Roman Imperium Cup IX"
       },
       "format": {
@@ -516,7 +515,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-11T05:46:24.320Z",
-      "lastSeenAt": "2026-10-11T05:46:24.320Z",
+      "lastSeenAt": "2026-10-11T06:02:07.412Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -704,16 +703,12 @@
       "resultSentAt": "2026-10-11T05:46:24.320Z"
     }
   },
-  "lastRunGapMs": 16022236,
-  "lastRunAt": "2026-10-11T05:46:24.320Z",
-  "lastRunErrors": [
-    "刷新HLTV赛程失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
-    "补查HLTV近期赛果失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
-    "检查比赛 2399044 失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"
-  ],
+  "lastRunGapMs": 943092,
+  "lastRunAt": "2026-10-11T06:02:07.412Z",
+  "lastRunErrors": [],
   "lastRunStatus": "failed",
-  "lastResultsCheckAt": "2026-10-11T05:46:24.320Z",
+  "lastResultsCheckAt": "2026-10-11T06:02:07.412Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2397941:over:1:1|2398000:over:1:1|2399044:over:1:1|2399048:over:1:1|2399052:over:1:1|2399055:over:0:1#",
-  "lastPushedAt": "2026-10-11T05:46:47.181Z"
+  "lastPushedFingerprint": "2397941:over:1:1|2398000:over:1:1|2399044:over:1:1|2399048:over:1:1|2399052:over:1:1|2399055:over:0:1",
+  "lastPushedAt": "2026-10-11T06:02:17.671Z"
 }
