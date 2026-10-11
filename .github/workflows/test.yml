@@ -2,7 +2,7 @@ name: Test monitor
 on:
   pull_request:
   push:
-    paths: ["src/**", "test/**", "package*.json", ".github/workflows/test.yml"]
+    paths: ["src/**", "test/**", "package*.json", "requirements.txt", ".github/workflows/test.yml"]
 permissions:
   contents: read
 jobs:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
       - run: npm ci
       - run: npm test

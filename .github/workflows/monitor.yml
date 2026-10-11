@@ -2,63 +2,103 @@ name: Monitor FaZe matches
 
 on:
   schedule:
-    - cron: "1,6,11,16,21,26,31,36,41,46,51,56 * * * *"
+    - cron: "17 * * * *"
   repository_dispatch:
     types: [monitor-tick]
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "只打印消息，不发送到QQ群"
-        required: false
-        default: false
+        description: "只预览，不发送QQ群消息（只执行一轮）"
         type: boolean
+        default: false
+      mode:
+        description: "continuous持续运行；once只检查一轮"
+        type: choice
+        options: [continuous, once]
+        default: continuous
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: faze-match-monitor
+  group: faze-match-monitor-${{ inputs.dry_run && 'preview' || 'production' }}
   cancel-in-progress: false
 
 jobs:
   monitor:
+    if: ${{ vars.MONITOR_ENABLED != 'false' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 340
     steps:
-      - name: Checkout
+      - name: Checkout latest branch and notification state
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          python -m pip install -r requirements.txt
+          git config user.name "faze-match-bot"
+          git config user.email "faze-match-bot@users.noreply.github.com"
 
       - name: Check HLTV and notify QQ
+        id: monitor
         env:
           QQ_APP_ID: ${{ secrets.QQ_APP_ID }}
           QQ_APP_SECRET: ${{ secrets.QQ_APP_SECRET }}
           QQ_GROUP_OPENID: ${{ secrets.QQ_GROUP_OPENID }}
-          JINA_API_KEY: ${{ secrets.JINA_API_KEY }}
-          JINA_PROXY: ${{ vars.JINA_PROXY }}
+          HLTV_PYTHON: python
           DRY_RUN: ${{ inputs.dry_run || 'false' }}
-        run: npm start
-
-      - name: Save notification state
-        if: ${{ !cancelled() && inputs.dry_run != true }}
-        shell: bash
+          MONITOR_MODE: ${{ inputs.mode || 'continuous' }}
+          GIT_SYNC_STATE: ${{ !inputs.dry_run && 'true' || 'false' }}
         run: |
-          if git diff --quiet -- data/state.json; then
-            exit 0
+          set +e
+          if [ "$DRY_RUN" = "true" ] || [ "$MONITOR_MODE" = "once" ]; then
+            npm start
+          else
+            node src/cloud-loop.js
           fi
-          git config user.name "faze-match-bot"
-          git config user.email "faze-match-bot@users.noreply.github.com"
-          git add data/state.json
-          git commit -m "chore: update notification state"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          status=$?
+          if [ "$status" -eq 2 ]; then
+            echo "sync_failed=true" >> "$GITHUB_OUTPUT"
+          fi
+          exit "$status"
+
+      - name: Pause workflow after a state persistence failure
+        if: ${{ !cancelled() && steps.monitor.outputs.sync_failed == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow disable monitor.yml
+          gh api "repos/$GITHUB_REPOSITORY/actions/workflows/monitor.yml/runs?per_page=100" \
+            --jq '.workflow_runs[] | select(.status == "queued" or .status == "pending" or .status == "waiting") | .id' \
+            | while read -r run_id; do
+                gh api --method POST "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/cancel"
+              done
+
+      - name: Preserve state if this run failed
+        if: ${{ failure() && !inputs.dry_run }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: notification-state-${{ github.run_id }}
+          path: data/state.json
+          retention-days: 3
+
+      - name: Start next five-hour monitoring run
+        if: ${{ !cancelled() && steps.monitor.outputs.handoff == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run monitor.yml --ref "$GITHUB_REF_NAME" -f mode=continuous -f dry_run=false
