@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-08T14:53:17.933Z",
+  "lastScheduleCheckAt": "2026-10-11T05:46:24.320Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -420,13 +420,13 @@
     },
     "2399044": {
       "id": 2399044,
-      "date": 1791478800000,
+      "date": 1791490260000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
       },
       "team2": {
-        "id": 10333,
+        "id": null,
         "name": "Sangal"
       },
       "event": {
@@ -436,7 +436,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-08T14:53:17.933Z",
-      "lastSeenAt": "2026-10-08T14:53:17.933Z",
+      "lastSeenAt": "2026-10-11T05:46:24.320Z",
       "startSent": true,
       "resultSent": true,
       "lastCheckedAt": "2026-10-11T01:19:22.084Z",
@@ -447,12 +447,14 @@
     },
     "2399048": {
       "id": 2399048,
-      "date": 1791552600000,
+      "date": 1791560100000,
       "team1": {
-        "name": "PURE"
+        "id": 6667,
+        "name": "FaZe"
       },
       "team2": {
-        "name": "FaZe"
+        "id": null,
+        "name": "PURE"
       },
       "status": "over",
       "liveFromList": false,
@@ -460,15 +462,23 @@
       "startSent": true,
       "resultSent": true,
       "resultSentAt": "2026-10-11T05:44:34.149Z",
-      "resultSkipped": "missed during HLTV outage; not re-posted"
+      "resultSkipped": "missed during HLTV outage; not re-posted",
+      "event": {
+        "name": "Roman Imperium Cup IX"
+      },
+      "format": "bo3",
+      "title": null,
+      "lastSeenAt": "2026-10-11T05:46:24.320Z"
     },
     "2399052": {
       "id": 2399052,
-      "date": 1791626400000,
+      "date": 1791638617000,
       "team1": {
+        "id": 6667,
         "name": "FaZe"
       },
       "team2": {
+        "id": null,
         "name": "NAVI Junior"
       },
       "status": "over",
@@ -477,16 +487,48 @@
       "startSent": true,
       "resultSent": true,
       "resultSentAt": "2026-10-11T05:44:34.149Z",
-      "resultSkipped": "missed during HLTV outage; not re-posted"
+      "resultSkipped": "missed during HLTV outage; not re-posted",
+      "event": {
+        "name": "Roman Imperium Cup IX"
+      },
+      "format": "bo3",
+      "title": null,
+      "lastSeenAt": "2026-10-11T05:46:24.320Z"
+    },
+    "2399055": {
+      "id": 2399055,
+      "date": 1791661011000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": {
+        "id": null,
+        "name": "NAVI Junior"
+      },
+      "event": {
+        "name": "Roman Imperium Cup IX"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-10-11T05:46:24.320Z",
+      "lastSeenAt": "2026-10-11T05:46:24.320Z",
+      "status": "over",
+      "startSent": false,
+      "resultSent": false
     }
   },
-  "lastRunGapMs": 9410845,
-  "lastRunAt": "2026-10-11T01:19:22.084Z",
+  "lastRunGapMs": 16022236,
+  "lastRunAt": "2026-10-11T05:46:24.320Z",
   "lastRunErrors": [
     "刷新HLTV赛程失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
     "补查HLTV近期赛果失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
     "检查比赛 2399044 失败：HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"
   ],
   "lastRunStatus": "failed",
-  "lastResultsCheckAt": null
+  "lastResultsCheckAt": "2026-10-11T05:46:24.320Z",
+  "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
+  "lastPushedFingerprint": "2397941:over:1:1|2398000:over:1:1|2399044:over:1:1|2399048:over:1:1|2399052:over:1:1|2399055:over:0:0#",
+  "lastPushedAt": "2026-10-11T05:46:29.947Z"
 }
