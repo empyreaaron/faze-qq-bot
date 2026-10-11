@@ -9,7 +9,8 @@
     "watch": "node src/watch.js",
     "bind": "node src/bind.js",
     "test-message": "node src/send-test-message.js",
-    "test": "node --test"
+    "test": "node --test",
+    "cloud": "node src/cloud-loop.js"
   },
   "engines": {
     "node": ">=20"

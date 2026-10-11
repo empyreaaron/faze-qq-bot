@@ -9,6 +9,20 @@ const INSPECT_BEFORE_START_MS = 45 * 60 * 1000;
 const KEEP_MATCH_MS = 30 * 24 * 60 * 60 * 1000;
 const HEARTBEAT_MS = 30 * 24 * 60 * 60 * 1000;
 
+function requireCompleteStats(stats) {
+  for (const side of ["team1", "team2"]) {
+    const players = stats?.playerStats?.[side];
+    if (!Array.isArray(players) || players.length < 5) throw new Error("双方完整选手统计尚未生成");
+    for (const player of players) {
+      if (!player.player?.name || ["kills", "deaths", "ADR", "KAST", "rating3", "roundSwing"]
+        .some((key) => !Number.isFinite(player[key]))) {
+        throw new Error(`选手 ${player.player?.name || "未知"} 的统计不完整，保留待补发`);
+      }
+    }
+  }
+  return stats;
+}
+
 function iso(timestamp) {
   return new Date(timestamp).toISOString();
 }
@@ -183,8 +197,14 @@ async function runMonitor({
           logger.log(`比赛 ${match.id} 已结束，等待HLTV完整统计。`);
           continue;
         }
-        const stats =
-          match.embeddedStats || (await dataSource.getStats(match.statsId));
+        let stats = match.embeddedStats;
+        try {
+          requireCompleteStats(stats);
+        } catch (error) {
+          if (!match.statsId) throw error;
+          stats = await dataSource.getStats(match.statsId);
+          requireCompleteStats(stats);
+        }
         await messenger.send(formatResultMessages(match, stats));
         match.resultSent = true;
         match.resultSentAt = iso(now);
@@ -192,6 +212,7 @@ async function runMonitor({
         await checkpoint(state);
       }
     } catch (error) {
+      if (error.statePersistence) throw error;
       state.matches[id].lastCheckedAt = iso(now);
       state.matches[id].lastError = error.message;
       fail(`检查比赛 ${original.id} 失败：${error.message}`);
@@ -217,4 +238,5 @@ module.exports = {
   runMonitor,
   shouldInspect,
   shouldRefresh,
+  requireCompleteStats,
 };

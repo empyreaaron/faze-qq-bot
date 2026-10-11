@@ -6,6 +6,7 @@ const path = require("node:path");
 const { runMonitor } = require("./core");
 const { HltvDataSource } = require("./hltv");
 const { QQMessenger } = require("./qq");
+const { persistGitState } = require("./git-state");
 
 const statePath = path.resolve(__dirname, "..", "data", "state.json");
 
@@ -19,9 +20,15 @@ async function loadState() {
 }
 
 async function saveState(state) {
-  const temporary = `${statePath}.tmp`;
-  await fs.writeFile(temporary, `${JSON.stringify(state, null, 2)}\n`, "utf8");
-  await fs.rename(temporary, statePath);
+  try {
+    const temporary = `${statePath}.tmp`;
+    await fs.writeFile(temporary, `${JSON.stringify(state, null, 2)}\n`, "utf8");
+    await fs.rename(temporary, statePath);
+    if (process.env.GIT_SYNC_STATE === "true") await persistGitState();
+  } catch (error) {
+    error.statePersistence = true;
+    throw error;
+  }
 }
 
 async function executeMonitor({ state, dataSource, messenger, save = saveState,
@@ -63,7 +70,7 @@ async function main() {
 
 if (require.main === module) main().catch((error) => {
   console.error(error.stack || error.message);
-  process.exitCode = 1;
+  process.exitCode = error.statePersistence ? 2 : 1;
 });
 
 module.exports = { executeMonitor };

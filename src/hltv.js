@@ -1,7 +1,10 @@
 "use strict";
 
 const cheerio = require("cheerio");
-const { gotScraping } = require("got-scraping");
+const { execFile } = require("node:child_process");
+const { promisify } = require("node:util");
+const path = require("node:path");
+const execute = promisify(execFile);
 
 const FAZE_TEAM_ID = 6667;
 
@@ -104,101 +107,28 @@ function isCloudflarePage(html) {
   );
 }
 
-async function requestHtml(url, options = {}) {
-  const requestOptions = {
-    url,
-    timeout: { request: options.timeout || 10_000 },
-    retry: { limit: options.retries ?? 0 },
-  };
-  if (options.headers) requestOptions.headers = options.headers;
-  const response = await gotScraping(requestOptions);
-  if (response.statusCode >= 400) {
-    throw new Error(`HTTP ${response.statusCode}`);
-  }
-  if (!response.body) throw new Error("返回内容为空");
-  return response.body;
-}
-
-function withFreshQuery(url) {
-  const target = new URL(url);
-  target.searchParams.set("faze_bot_refresh", String(Date.now()));
-  return target.toString();
-}
-
-function jinaUrl(url) {
-  const target = new URL(url);
-  return `https://r.jina.ai/https://www.hltv.org${target.pathname}${target.search}`;
-}
-
-function readerHeaders(options = {}) {
-  const key = options.apiKey ?? process.env.JINA_API_KEY;
-  const proxy = options.proxy ?? process.env.JINA_PROXY;
-  return {
-    "x-respond-with": "html",
-    "x-cache-tolerance": options.fresh ? "0" : "60",
-    ...(options.fresh ? { "x-no-cache": "true" } : {}),
-    ...(key ? {
-      Authorization: `Bearer ${key}`,
-      "x-engine": "browser",
-      "x-respond-timing": "resource-idle",
-      "x-timeout": "15",
-      ...(proxy ? { "x-proxy": proxy } : {}),
-    } : {}),
-  };
-}
-
-async function requestReaderHtml(url, options = {}) {
-  let lastError;
-  for (let attempt = 1; attempt <= 2; attempt += 1) {
-    try {
-      const response = await fetch(url, {
-        headers: readerHeaders(options),
-        signal: AbortSignal.timeout(30_000),
-      });
-      if (!response.ok) {
-        const error = new Error(`读取通道 HTTP ${response.status}`);
-        error.status = response.status;
-        throw error;
-      }
-      const html = await response.text();
-      if (!html) throw new Error("返回内容为空");
-      return html;
-    } catch (error) {
-      lastError = error;
-      if (error.status && error.status < 500 && error.status !== 429) break;
-      if (attempt < 2) {
-        await new Promise((resolve) => setTimeout(resolve, attempt * 1_500));
-      }
-    }
-  }
-  throw lastError;
-}
-
 async function fetchHltvHtml(url, options = {}) {
-  const requestUrl = options.fresh ? withFreshQuery(url) : url;
-  try {
-    const html = await requestHtml(requestUrl);
-    if (isCloudflarePage(html)) {
-      throw new Error("HLTV返回了Cloudflare验证页");
-    }
-    if (options.validate) options.validate(html);
-    return html;
-  } catch (directError) {
-    let html;
-    try {
-      html = await requestReaderHtml(jinaUrl(requestUrl), options);
-    } catch (error) {
-      throw new Error(`HLTV直连失败（${directError.message}），${error.message}`);
-    }
-    if (isCloudflarePage(html)) {
-      throw new Error(
-        `HLTV直连失败（${directError.message}），备用通道也被Cloudflare拦截。${process.env.JINA_API_KEY ? "已配置认证读取，仍需检查数据通道。" : "匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。"}`,
-      );
-    }
-    if (options.validate) options.validate(html);
-    console.warn(`HLTV直连失败，已使用备用通道：${directError.message}`);
-    return html;
+  const target = new URL(url);
+  if (target.protocol !== "https:" || target.hostname !== "www.hltv.org") {
+    throw new Error("只允许读取HLTV公开页面");
   }
+  if (options.fresh) target.searchParams.set("faze_bot_refresh", String(Date.now()));
+  const python = process.env.HLTV_PYTHON || (process.platform === "win32" ? "python" : "python3");
+  let html;
+  try {
+    const result = await execute(python, [path.join(__dirname, "fetch-hltv.py"), target.toString()], {
+      timeout: 50_000, maxBuffer: 8 * 1024 * 1024, encoding: "utf8",
+      windowsHide: true,
+    });
+    html = result.stdout;
+  } catch (error) {
+    const detail = error.code === "ENOENT" ? "未安装Python或HLTV_PYTHON路径不正确" :
+      String(error.stderr || error.message).trim().slice(-600);
+    throw new Error(`HLTV直接读取失败：${detail}`);
+  }
+  if (!html || isCloudflarePage(html)) throw new Error("HLTV仍返回验证页，下轮重试；没有发送缺失数据");
+  if (options.validate) options.validate(html);
+  return html;
 }
 
 function parseResultsHtml(html, { since = 0, now = Date.now() } = {}) {
@@ -669,12 +599,9 @@ class HltvDataSource {
   }
 
   async listRecentResults({ since, now = Date.now() }) {
-    const params = new URLSearchParams({
-      team: String(FAZE_TEAM_ID),
-      startDate: new Date(since).toISOString().slice(0, 10),
-      endDate: new Date(now).toISOString().slice(0, 10),
-    });
-    const html = await this.fetchPage(`https://www.hltv.org/results?${params}`, {
+    // Date-range combinations are blocked more aggressively. Fetch team results
+    // and apply the same recovery window locally; the first page holds 100 games.
+    const html = await this.fetchPage(`https://www.hltv.org/results?team=${FAZE_TEAM_ID}`, {
       fresh: true, validate: (html) => validateListPage(html, "results"),
     });
     validateListPage(html, "results");
@@ -711,5 +638,5 @@ module.exports = {
   parseResultsHtml,
   validateMatchPage,
   validateListPage,
-  readerHeaders,
+  fetchHltvHtml,
 };

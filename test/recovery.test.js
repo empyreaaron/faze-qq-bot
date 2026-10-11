@@ -4,7 +4,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const { runMonitor, shouldInspect, shouldRefresh } = require("../src/core");
 const { executeMonitor } = require("../src/index");
-const { parseResultsHtml, HltvDataSource, readerHeaders, inferSeriesStatus } = require("../src/hltv");
+const { parseResultsHtml, HltvDataSource, inferSeriesStatus } = require("../src/hltv");
 
 const now = Date.parse("2026-10-09T14:00:00Z");
 const logger = { log() {}, error() {} };
@@ -19,6 +19,43 @@ const result = { ...preview, embeddedStats: stats, maps: [{ name: "Nuke",
   statsId: 10, result: { team1TotalRounds: 13, team2TotalRounds: 8 } }] };
 const source = () => ({ listTeamMatches: async () => [],
   listRecentResults: async () => [preview], getMatch: async () => result });
+
+test("任何选手缺少原版字段时不能发送缩水统计，恢复后补发", async () => {
+  const incomplete = structuredClone(result);
+  incomplete.embeddedStats.playerStats.team1[0].roundSwing = null;
+  const sent = [];
+  const messenger = { send: async (messages) => sent.push(...messages) };
+  const first = await runMonitor({ state: {}, dataSource: { ...source(), getMatch: async () => incomplete },
+    messenger, now, logger });
+  assert.equal(sent.length, 0);
+  assert.equal(first.matches[123].resultSent, false);
+  assert.match(first.lastRunErrors.join(" "), /统计不完整/);
+  await runMonitor({ state: first, dataSource: source(), messenger, now: now + 300000, logger });
+  assert.equal(sent.length, 1);
+});
+
+test("发送后状态保存失败立即停止，不能继续发送下一场", async () => {
+  const sent = [];
+  let checkpoints = 0;
+  const fatal = Object.assign(new Error("保存失败"), { statePersistence: true });
+  await assert.rejects(runMonitor({ state: {}, dataSource: { ...source(),
+    listRecentResults: async () => [preview, { ...preview, id: 456 }],
+    getMatch: async (id) => ({ ...result, id }) },
+    messenger: { send: async (messages) => sent.push(...messages) }, now, logger,
+    checkpoint: async () => { if (++checkpoints > 1) throw fatal; },
+  }), /保存失败/);
+  assert.equal(sent.length, 1);
+});
+
+test("补查使用可用的队伍赛果页，日期窗口在本地筛选", async () => {
+  let requested;
+  const dataSource = new HltvDataSource({ fetchPage: async (url) => {
+    requested = url;
+    return '<div class="results-holder"></div>';
+  } });
+  assert.deepEqual(await dataSource.listRecentResults({ since: now - 1000, now }), []);
+  assert.equal(requested, "https://www.hltv.org/results?team=6667");
+});
 
 test("整场比赛在停机期间完成，恢复后从赛果列表补发且不重复", async () => {
   const sent = [];
@@ -96,17 +133,6 @@ test("异常200页面或残缺比赛页必须报错，不能更新为空赛程",
   await assert.rejects(bad.listTeamMatches(), /拒绝/);
   await assert.rejects(bad.listRecentResults({ since: now - 10000, now }), /拒绝/);
   await assert.rejects(bad.getMatch(1), /拒绝/);
-});
-
-test("认证模式使用浏览器并绕过缓存，未配置key不调用受限模式", () => {
-  const anonymous = readerHeaders({ apiKey: "", proxy: "", fresh: true });
-  assert.equal(anonymous.Authorization, undefined);
-  assert.equal(anonymous["x-engine"], undefined);
-  const authenticated = readerHeaders({ apiKey: "test-secret", proxy: "", fresh: true });
-  assert.equal(authenticated.Authorization, "Bearer test-secret");
-  assert.equal(authenticated["x-engine"], "browser");
-  assert.equal(authenticated["x-no-cache"], "true");
-  assert.equal(authenticated["x-proxy"], undefined);
 });
 
 test("BO5和加时须确认结束，不因临时领先比分提前发赛果", () => {

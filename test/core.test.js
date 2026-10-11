@@ -43,7 +43,7 @@ test("比赛Live时只发送一次开赛提醒", async () => {
     logger: { log() {}, error() {} },
   });
   assert.equal(sent.length, 1);
-  assert.match(sent[0], /FaZe比赛开始/);
+  assert.match(sent[0], /FaZe比赛开赛/);
   assert.equal(first.matches["123"].startSent, true);
 
   await runMonitor({
@@ -113,7 +113,7 @@ test("首次检查时比赛已经结束，不补发开赛提醒，只发赛果",
     logger: { log() {}, error() {} },
   });
   assert.equal(
-    sent.some((message) => message.includes("比赛开始")),
+    sent.some((message) => message.includes("比赛开赛")),
     false,
   );
   assert.equal(
