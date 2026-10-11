@@ -33,7 +33,7 @@ function sendFingerprint(state) {
     )
     .sort()
     .join("|");
-  return `${matches}#${state?.lastBlindAlertAt || ""}`;
+  return matches;
 }
 
 async function saveState(state) {

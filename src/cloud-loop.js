@@ -6,10 +6,12 @@ const path = require("node:path");
 // Keep one cloud runner alive for five hours, then explicitly start its successor.
 // This avoids relying on GitHub schedule events for every five-minute tick.
 async function runCloudLoop({ run, wait, clock = Date.now, durationMs = 5 * 60 * 60 * 1000,
-  intervalMs = 300_000, stopped = () => false, logger = console }) {
+  intervalMs = 300_000, stopped = () => false, logger = console, maxConsecutiveFailures = 6 }) {
   const end = clock() + durationMs;
   let lastCode = 1;
   let cycles = 0;
+  let failed = 0;
+  let consecutive = 0;
   while (!stopped() && clock() < end) {
     const started = clock();
     lastCode = await run();
@@ -17,12 +19,20 @@ async function runCloudLoop({ run, wait, clock = Date.now, durationMs = 5 * 60 *
     if (lastCode === 2 || lastCode === null) {
       return { cycles, lastCode, handoff: false }; // State sync failure or cancellation.
     }
-    if (lastCode !== 0) logger.error("本轮抓取失败，队列已保留，下一轮重试。");
+    if (lastCode !== 0) {
+      failed += 1;
+      consecutive += 1;
+      logger.error("本轮抓取失败，队列已保留，下一轮重试。");
+      // End early so the failed run (and GitHub's failure email) shows up within
+      // about half an hour instead of after the full five hours.
+      if (consecutive >= maxConsecutiveFailures) break;
+    } else consecutive = 0;
     const remaining = end - clock();
     if (stopped() || remaining <= 0) break;
     await wait(Math.min(remaining, Math.max(1000, intervalMs - (clock() - started))));
   }
-  return { cycles, lastCode, handoff: !stopped() && cycles > 0 };
+  // Any failed cycle fails the whole run, so GitHub sends its usual email.
+  return { cycles, failed, lastCode: failed ? 1 : 0, handoff: !stopped() && cycles > 0 };
 }
 
 async function main() {

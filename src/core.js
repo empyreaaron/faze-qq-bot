@@ -17,10 +17,6 @@ const HEARTBEAT_MS = 30 * 24 * 60 * 60 * 1000;
 const OVER_RETRY_MS = 10 * 60 * 1000;
 // ...and after this long we post the score alone rather than stay silent.
 const STATS_WAIT_MS = 6 * 60 * 60 * 1000;
-// Going blind used to be invisible: HLTV refused every read for three days and
-// nothing said so. Warn the group instead of quietly skipping matches.
-const BLIND_ALERT_AFTER_MS = 90 * 60 * 1000;
-const BLIND_ALERT_REPEAT_MS = 6 * 60 * 60 * 1000;
 
 function requireCompleteStats(stats) {
   for (const side of ["team1", "team2"]) {
@@ -131,46 +127,6 @@ function pruneMatches(state, now) {
   }
 }
 
-// Tell the group when HLTV has been unreadable for a while, and again when it
-// recovers. Never let a failure here mask the monitoring result itself.
-async function reportHealth({ state, messenger, now, logger }) {
-  const lastRead = Date.parse(state.lastSuccessfulReadAt || "");
-  const blindSince = Number.isFinite(lastRead) ? now - lastRead : null;
-  const alerted = Date.parse(state.lastBlindAlertAt || "");
-
-  if (blindSince !== null && blindSince < BLIND_ALERT_AFTER_MS) {
-    if (Number.isFinite(alerted)) {
-      state.lastBlindAlertAt = null;
-      try {
-        await messenger.send(["【监控恢复】已重新读到HLTV，比赛提醒继续。"]);
-      } catch (error) {
-        logger.error(`恢复通知发送失败：${error.message}`);
-      }
-    }
-    return;
-  }
-  if (blindSince === null && !state.lastRunAt) return;
-  if (Number.isFinite(alerted) && now - alerted < BLIND_ALERT_REPEAT_MS) return;
-
-  const minutes =
-    blindSince === null ? null : Math.round(blindSince / 60_000);
-  try {
-    await messenger.send([
-      [
-        "【监控异常】",
-        minutes === null
-          ? "还没有成功读到过HLTV。"
-          : `已连续 ${minutes} 分钟无法读取HLTV，期间的比赛可能漏报。`,
-        "恢复后会自动补发赛果。",
-      ].join("\n"),
-    ]);
-    state.lastBlindAlertAt = iso(now);
-    logger.log("已发送监控异常提醒。");
-  } catch (error) {
-    logger.error(`异常提醒发送失败：${error.message}`);
-  }
-}
-
 async function runMonitor({
   state: inputState,
   dataSource,
@@ -191,6 +147,7 @@ async function runMonitor({
     state.lastResultsCheckAt = null;
   }
   state.lastRunAt = iso(now);
+  state.lastRunErrors = [];
   const mergePreviews = (previews) => {
     for (const preview of previews) {
       const id = String(preview.id);
@@ -204,7 +161,6 @@ async function runMonitor({
       const previews = await dataSource.listTeamMatches();
       mergePreviews(previews);
       state.lastScheduleCheckAt = iso(now);
-      state.lastSuccessfulReadAt = iso(now);
       logger.log(
         `赛程刷新完成，当前记录 ${Object.keys(state.matches).length} 场。`,
       );
@@ -220,7 +176,6 @@ async function runMonitor({
         const previews = await dataSource.listRecentResults({ since: now - RECOVERY_MS, now });
         mergePreviews(previews);
         state.lastResultsCheckAt = iso(now);
-        state.lastSuccessfulReadAt = iso(now);
         logger.log(`近期赛果补查完成，发现 ${previews.length} 场。`);
       } catch (error) {
         fail(`补查HLTV近期赛果失败：${error.message}`);
@@ -247,7 +202,6 @@ async function runMonitor({
     const id = String(original.id);
     try {
       const details = await dataSource.getMatch(original.id);
-      state.lastSuccessfulReadAt = iso(now);
       const match = mergeDetails(state.matches[id], details, now);
       state.matches[id] = match;
 
@@ -272,7 +226,6 @@ async function runMonitor({
             statsError = error;
             if (match.statsId) {
               stats = await dataSource.getStats(match.statsId);
-              state.lastSuccessfulReadAt = iso(now);
               try {
                 requireCompleteStats(stats);
                 statsError = null;
@@ -323,8 +276,6 @@ async function runMonitor({
       fail(`检查比赛 ${original.id} 失败：${error.message}`);
     }
   }
-
-  await reportHealth({ state, messenger, now, logger });
 
   if (
     !state.lastHeartbeatAt ||
