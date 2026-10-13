@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-13T03:27:03.966Z",
+  "lastScheduleCheckAt": "2026-10-13T03:57:04.365Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -436,7 +436,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-08T14:53:17.933Z",
-      "lastSeenAt": "2026-10-13T03:07:03.649Z",
+      "lastSeenAt": "2026-10-13T03:37:04.169Z",
       "startSent": true,
       "resultSent": true,
       "lastCheckedAt": "2026-10-11T01:19:22.084Z",
@@ -468,7 +468,7 @@
       },
       "format": "bo3",
       "title": null,
-      "lastSeenAt": "2026-10-13T03:07:03.649Z"
+      "lastSeenAt": "2026-10-13T03:37:04.169Z"
     },
     "2399052": {
       "id": 2399052,
@@ -493,7 +493,7 @@
       },
       "format": "bo3",
       "title": null,
-      "lastSeenAt": "2026-10-13T03:07:03.649Z"
+      "lastSeenAt": "2026-10-13T03:37:04.169Z"
     },
     "2399055": {
       "id": 2399055,
@@ -515,7 +515,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-11T05:46:24.320Z",
-      "lastSeenAt": "2026-10-13T03:07:03.649Z",
+      "lastSeenAt": "2026-10-13T03:37:04.169Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -703,13 +703,13 @@
       "resultSentAt": "2026-10-11T05:46:24.320Z"
     }
   },
-  "lastRunGapMs": 300028,
-  "lastRunAt": "2026-10-13T03:27:03.966Z",
+  "lastRunGapMs": 300081,
+  "lastRunAt": "2026-10-13T03:57:04.365Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-13T03:07:03.649Z",
+  "lastResultsCheckAt": "2026-10-13T03:37:04.169Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2397941:over:1:1|2398000:over:1:1|2399044:over:1:1|2399048:over:1:1|2399052:over:1:1|2399055:over:0:1",
-  "lastPushedAt": "2026-10-13T03:27:16.458Z",
-  "lastSuccessfulRunAt": "2026-10-13T03:22:03.938Z"
+  "lastPushedAt": "2026-10-13T03:57:17.025Z",
+  "lastSuccessfulRunAt": "2026-10-13T03:52:04.284Z"
 }
