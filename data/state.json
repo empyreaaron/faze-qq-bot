@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-15T17:08:45.158Z",
+  "lastScheduleCheckAt": "2026-10-15T17:43:45.470Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -436,7 +436,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-08T14:53:17.933Z",
-      "lastSeenAt": "2026-10-15T16:43:44.786Z",
+      "lastSeenAt": "2026-10-15T17:43:45.470Z",
       "startSent": true,
       "resultSent": true,
       "lastCheckedAt": "2026-10-11T01:19:22.084Z",
@@ -468,7 +468,7 @@
       },
       "format": "bo3",
       "title": null,
-      "lastSeenAt": "2026-10-15T16:43:44.786Z"
+      "lastSeenAt": "2026-10-15T17:43:45.470Z"
     },
     "2399052": {
       "id": 2399052,
@@ -493,7 +493,7 @@
       },
       "format": "bo3",
       "title": null,
-      "lastSeenAt": "2026-10-15T16:43:44.786Z"
+      "lastSeenAt": "2026-10-15T17:43:45.470Z"
     },
     "2399055": {
       "id": 2399055,
@@ -515,7 +515,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-11T05:46:24.320Z",
-      "lastSeenAt": "2026-10-15T16:43:44.786Z",
+      "lastSeenAt": "2026-10-15T17:43:45.470Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -717,19 +717,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-14T07:44:54.142Z",
-      "lastSeenAt": "2026-10-15T17:08:45.158Z",
+      "lastSeenAt": "2026-10-15T17:43:45.470Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300019,
-  "lastRunAt": "2026-10-15T17:08:45.158Z",
+  "lastRunGapMs": 300095,
+  "lastRunAt": "2026-10-15T17:43:45.470Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-15T16:43:44.786Z",
+  "lastResultsCheckAt": "2026-10-15T17:43:45.470Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2397941:over:1:1|2398000:over:1:1|2399044:over:1:1|2399048:over:1:1|2399052:over:1:1|2399055:over:0:1|2399610:scheduled:0:0",
-  "lastPushedAt": "2026-10-15T17:08:59.997Z",
-  "lastSuccessfulRunAt": "2026-10-15T17:03:45.139Z"
+  "lastPushedAt": "2026-10-15T17:43:52.970Z",
+  "lastSuccessfulRunAt": "2026-10-15T17:38:45.375Z"
 }
