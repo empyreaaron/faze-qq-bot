@@ -724,11 +724,14 @@
       "liveFromList": true,
       "discoveredAt": "2026-10-14T07:44:54.142Z",
       "lastSeenAt": "2026-10-20T14:00:43.951Z",
-      "status": "live",
+      "status": "over",
       "startSent": true,
-      "resultSent": false,
-      "statsId": null,
-      "winnerTeam": null,
+      "resultSent": true,
+      "statsId": 132251,
+      "winnerTeam": {
+        "id": 6667,
+        "name": "FaZe"
+      },
       "stage": {
         "name": "Upper bracket round of 16",
         "label": "胜者组十六强",
@@ -755,8 +758,8 @@
           "name": "Cache",
           "statsId": null,
           "result": {
-            "team1TotalRounds": 12,
-            "team2TotalRounds": 12
+            "team1TotalRounds": 16,
+            "team2TotalRounds": 14
           }
         }
       ],
@@ -905,11 +908,13 @@
           ]
         }
       },
-      "lastCheckedAt": "2026-10-20T14:00:43.951Z",
+      "lastCheckedAt": "2026-10-20T14:05:44.030Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-10-20T10:58:13.350Z",
-      "startSentAt": "2026-10-20T11:03:13.359Z"
+      "startSentAt": "2026-10-20T11:03:13.359Z",
+      "overSince": "2026-10-20T14:05:44.030Z",
+      "resultSentAt": "2026-10-20T14:05:44.030Z"
     }
   },
   "lastRunGapMs": 300079,
@@ -918,7 +923,7 @@
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-10-20T14:00:43.951Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:live:1:0:1",
-  "lastPushedAt": "2026-10-20T14:05:57.098Z",
+  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1",
+  "lastPushedAt": "2026-10-20T14:06:14.802Z",
   "lastSuccessfulRunAt": "2026-10-20T14:00:43.951Z"
 }
