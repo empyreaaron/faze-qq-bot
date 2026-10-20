@@ -225,7 +225,7 @@ async function runMonitor({
         await checkpoint(state);
       }
 
-      if (match.status === "live" && !match.startSent) {
+      if (match.status === "live" && !match.startSent && !match.prematchSent) {
         await messenger.send([formatStartMessage(match)]);
         match.startSent = true;
         match.startSentAt = iso(now);
@@ -318,4 +318,5 @@ module.exports = {
   shouldRefresh,
   requireCompleteStats,
 };
+
 
