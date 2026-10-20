@@ -4,11 +4,13 @@ const {
   formatResultMessages,
   formatScoreOnlyResultMessages,
   formatStartMessage,
+  formatBeijingTime,
 } = require("./format");
 
 const SCHEDULE_REFRESH_MS = 5 * 60 * 1000;
 const RESULTS_REFRESH_MS = 30 * 60 * 1000;
 const RECOVERY_MS = 7 * 24 * 60 * 60 * 1000;
+const PREMATCH_REMINDER_MS = 10 * 60 * 1000;
 const INSPECT_BEFORE_START_MS = 45 * 60 * 1000;
 const KEEP_MATCH_MS = 30 * 24 * 60 * 60 * 1000;
 const HEARTBEAT_MS = 30 * 24 * 60 * 60 * 1000;
@@ -205,6 +207,24 @@ async function runMonitor({
       const match = mergeDetails(state.matches[id], details, now);
       state.matches[id] = match;
 
+      const untilStart = match.date - now;
+      if (match.status === "scheduled" && !match.liveFromList &&
+          !match.startSent && !match.resultSent && !match.prematchSent &&
+          Number.isFinite(match.date) && untilStart > 0 &&
+          untilStart <= PREMATCH_REMINDER_MS) {
+        await messenger.send([[
+          "【FaZe赛前提醒】",
+          `${match.team1?.name || "TBA"} vs ${match.team2?.name || "TBA"}`,
+          `赛事：${match.event?.name || "赛事待定"}`,
+          `预计开赛（北京时间）：${formatBeijingTime(match.date)}`,
+          "比赛即将开始，实际开赛时间以赛事安排为准。",
+        ].join("\n")]);
+        match.prematchSent = true;
+        match.prematchSentAt = iso(now);
+        logger.log(`已发送赛前提醒：${match.id}`);
+        await checkpoint(state);
+      }
+
       if (match.status === "live" && !match.startSent) {
         await messenger.send([formatStartMessage(match)]);
         match.startSent = true;
@@ -298,3 +318,4 @@ module.exports = {
   shouldRefresh,
   requireCompleteStats,
 };
+

@@ -29,7 +29,7 @@ function sendFingerprint(state) {
   const matches = Object.values(state?.matches || {})
     .map(
       (match) =>
-        `${match.id}:${match.status}:${match.startSent ? 1 : 0}:${match.resultSent ? 1 : 0}`,
+        `${match.id}:${match.status}:${match.startSent ? 1 : 0}:${match.resultSent ? 1 : 0}:${match.prematchSent ? 1 : 0}`,
     )
     .sort()
     .join("|");
@@ -103,3 +103,4 @@ if (require.main === module) main().catch((error) => {
 });
 
 module.exports = { executeMonitor };
+
