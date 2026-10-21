@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-21T15:48:30.006Z",
+  "lastScheduleCheckAt": "2026-10-21T16:18:30.344Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -722,7 +722,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-14T07:44:54.142Z",
-      "lastSeenAt": "2026-10-21T15:43:29.913Z",
+      "lastSeenAt": "2026-10-21T16:13:30.284Z",
       "status": "over",
       "startSent": true,
       "resultSent": true,
@@ -935,7 +935,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:15:44.078Z",
-      "lastSeenAt": "2026-10-21T15:43:29.913Z",
+      "lastSeenAt": "2026-10-21T16:13:30.284Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1148,7 +1148,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-10-21T14:23:28.494Z",
-      "lastSeenAt": "2026-10-21T15:48:30.006Z",
+      "lastSeenAt": "2026-10-21T16:18:30.344Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -1163,7 +1163,10 @@
         {
           "name": "Ancient",
           "statsId": null,
-          "result": null
+          "result": {
+            "team1TotalRounds": 5,
+            "team2TotalRounds": 7
+          }
         },
         {
           "name": "Dust2",
@@ -1177,7 +1180,7 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-10-21T15:48:30.006Z",
+      "lastCheckedAt": "2026-10-21T16:18:30.344Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-10-21T15:38:29.855Z"
@@ -1200,7 +1203,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-21T15:48:30.006Z",
+      "lastSeenAt": "2026-10-21T16:18:30.344Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -1223,19 +1226,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-10-21T15:48:30.006Z",
+      "lastSeenAt": "2026-10-21T16:18:30.344Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300093,
-  "lastRunAt": "2026-10-21T15:48:30.006Z",
+  "lastRunGapMs": 300060,
+  "lastRunAt": "2026-10-21T16:18:30.344Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-21T15:43:29.913Z",
+  "lastResultsCheckAt": "2026-10-21T16:13:30.284Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:live:0:0:1|2399857:scheduled:0:0:0|2399867:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-21T15:48:58.009Z",
-  "lastSuccessfulRunAt": "2026-10-21T15:48:30.006Z"
+  "lastPushedAt": "2026-10-21T16:18:58.503Z",
+  "lastSuccessfulRunAt": "2026-10-21T16:18:30.344Z"
 }
