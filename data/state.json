@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-21T16:18:30.344Z",
+  "lastScheduleCheckAt": "2026-10-21T16:48:30.713Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -722,7 +722,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-14T07:44:54.142Z",
-      "lastSeenAt": "2026-10-21T16:13:30.284Z",
+      "lastSeenAt": "2026-10-21T16:43:30.682Z",
       "status": "over",
       "startSent": true,
       "resultSent": true,
@@ -935,7 +935,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:15:44.078Z",
-      "lastSeenAt": "2026-10-21T16:13:30.284Z",
+      "lastSeenAt": "2026-10-21T16:43:30.682Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1148,7 +1148,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-10-21T14:23:28.494Z",
-      "lastSeenAt": "2026-10-21T16:18:30.344Z",
+      "lastSeenAt": "2026-10-21T16:48:30.713Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -1162,10 +1162,10 @@
       "maps": [
         {
           "name": "Ancient",
-          "statsId": null,
+          "statsId": 242464,
           "result": {
             "team1TotalRounds": 5,
-            "team2TotalRounds": 7
+            "team2TotalRounds": 13
           }
         },
         {
@@ -1179,8 +1179,152 @@
           "result": null
         }
       ],
-      "embeddedStats": null,
-      "lastCheckedAt": "2026-10-21T16:18:30.344Z",
+      "embeddedStats": {
+        "team1": {
+          "name": "Envy"
+        },
+        "team2": {
+          "name": "FaZe"
+        },
+        "overview": {},
+        "playerStats": {
+          "team1": [
+            {
+              "player": {
+                "id": 20482,
+                "name": "Kursy"
+              },
+              "kills": 12,
+              "deaths": 13,
+              "killDeathsDifference": -1,
+              "roundSwing": -2.39,
+              "ADR": 72.2,
+              "KAST": 61.1,
+              "rating3": 1.04
+            },
+            {
+              "player": {
+                "id": 14176,
+                "name": "misutaaa"
+              },
+              "kills": 12,
+              "deaths": 17,
+              "killDeathsDifference": -5,
+              "roundSwing": 0.23,
+              "ADR": 70.3,
+              "KAST": 61.1,
+              "rating3": 0.91
+            },
+            {
+              "player": {
+                "id": 13497,
+                "name": "Lucky"
+              },
+              "kills": 8,
+              "deaths": 15,
+              "killDeathsDifference": -7,
+              "roundSwing": -4.13,
+              "ADR": 72.6,
+              "KAST": 61.1,
+              "rating3": 0.74
+            },
+            {
+              "player": {
+                "id": 13138,
+                "name": "Maka"
+              },
+              "kills": 7,
+              "deaths": 13,
+              "killDeathsDifference": -6,
+              "roundSwing": -5.22,
+              "ADR": 40.7,
+              "KAST": 72.2,
+              "rating3": 0.64
+            },
+            {
+              "player": {
+                "id": 21969,
+                "name": "Graviti"
+              },
+              "kills": 9,
+              "deaths": 16,
+              "killDeathsDifference": -7,
+              "roundSwing": -7.13,
+              "ADR": 57.3,
+              "KAST": 44.4,
+              "rating3": 0.54
+            }
+          ],
+          "team2": [
+            {
+              "player": {
+                "id": 9960,
+                "name": "frozen"
+              },
+              "kills": 28,
+              "deaths": 8,
+              "killDeathsDifference": 20,
+              "roundSwing": 11.83,
+              "ADR": 153.6,
+              "KAST": 88.9,
+              "rating3": 2.8
+            },
+            {
+              "player": {
+                "id": 22866,
+                "name": "JBOEN"
+              },
+              "kills": 17,
+              "deaths": 9,
+              "killDeathsDifference": 8,
+              "roundSwing": 6.62,
+              "ADR": 90.2,
+              "KAST": 94.4,
+              "rating3": 1.72
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 11,
+              "deaths": 6,
+              "killDeathsDifference": 5,
+              "roundSwing": 4.53,
+              "ADR": 55.4,
+              "KAST": 83.3,
+              "rating3": 1.36
+            },
+            {
+              "player": {
+                "id": 10394,
+                "name": "Twistzz"
+              },
+              "kills": 8,
+              "deaths": 11,
+              "killDeathsDifference": -3,
+              "roundSwing": -1.17,
+              "ADR": 57.8,
+              "KAST": 83.3,
+              "rating3": 0.93
+            },
+            {
+              "player": {
+                "id": 22383,
+                "name": "jcobbb"
+              },
+              "kills": 10,
+              "deaths": 15,
+              "killDeathsDifference": -5,
+              "roundSwing": -3.18,
+              "ADR": 74.4,
+              "KAST": 61.1,
+              "rating3": 0.73
+            }
+          ]
+        }
+      },
+      "lastCheckedAt": "2026-10-21T16:48:30.713Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-10-21T15:38:29.855Z"
@@ -1203,7 +1347,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-21T16:18:30.344Z",
+      "lastSeenAt": "2026-10-21T16:48:30.713Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -1226,19 +1370,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-10-21T16:18:30.344Z",
+      "lastSeenAt": "2026-10-21T16:48:30.713Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300060,
-  "lastRunAt": "2026-10-21T16:18:30.344Z",
+  "lastRunGapMs": 300031,
+  "lastRunAt": "2026-10-21T16:48:30.713Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-21T16:13:30.284Z",
+  "lastResultsCheckAt": "2026-10-21T16:43:30.682Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:live:0:0:1|2399857:scheduled:0:0:0|2399867:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-21T16:18:58.503Z",
-  "lastSuccessfulRunAt": "2026-10-21T16:18:30.344Z"
+  "lastPushedAt": "2026-10-21T16:49:00.011Z",
+  "lastSuccessfulRunAt": "2026-10-21T16:48:30.713Z"
 }
