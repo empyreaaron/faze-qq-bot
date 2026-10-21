@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-21T19:08:57.229Z",
+  "lastScheduleCheckAt": "2026-10-21T19:43:57.712Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -722,7 +722,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-14T07:44:54.142Z",
-      "lastSeenAt": "2026-10-21T18:43:56.824Z",
+      "lastSeenAt": "2026-10-21T19:43:57.712Z",
       "status": "over",
       "startSent": true,
       "resultSent": true,
@@ -935,7 +935,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:15:44.078Z",
-      "lastSeenAt": "2026-10-21T18:43:56.824Z",
+      "lastSeenAt": "2026-10-21T19:43:57.712Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1129,26 +1129,25 @@
     },
     "2399628": {
       "id": 2399628,
-      "date": 1792597500000,
+      "date": 1792609313000,
       "team1": {
-        "id": 5991,
-        "name": "Envy"
-      },
-      "team2": {
         "id": 6667,
         "name": "FaZe"
       },
+      "team2": {
+        "id": null,
+        "name": "Envy"
+      },
       "event": {
-        "id": 9312,
         "name": "Digital Crusade DraculaN Season 7"
       },
       "format": {
         "type": "bo3"
       },
       "title": null,
-      "liveFromList": true,
+      "liveFromList": false,
       "discoveredAt": "2026-10-21T14:23:28.494Z",
-      "lastSeenAt": "2026-10-21T18:58:57.047Z",
+      "lastSeenAt": "2026-10-21T19:43:57.712Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1342,7 +1341,7 @@
     },
     "2399633": {
       "id": 2399633,
-      "date": 1792611900000,
+      "date": 1792613400000,
       "team1": {
         "id": 7175,
         "name": "HEROIC"
@@ -1360,7 +1359,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T19:03:57.132Z",
-      "lastSeenAt": "2026-10-21T19:08:57.229Z",
+      "lastSeenAt": "2026-10-21T19:43:57.712Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false,
@@ -1389,7 +1388,7 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-10-21T19:03:57.132Z",
+      "lastCheckedAt": "2026-10-21T19:38:57.614Z",
       "lastError": null
     },
     "2399857": {
@@ -1410,7 +1409,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-21T19:08:57.229Z",
+      "lastSeenAt": "2026-10-21T19:43:57.712Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -1433,19 +1432,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-10-21T19:08:57.229Z",
+      "lastSeenAt": "2026-10-21T19:43:57.712Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300097,
-  "lastRunAt": "2026-10-21T19:08:57.229Z",
+  "lastRunGapMs": 300098,
+  "lastRunAt": "2026-10-21T19:43:57.712Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-21T18:43:56.824Z",
+  "lastResultsCheckAt": "2026-10-21T19:43:57.712Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:scheduled:0:0:0|2399857:scheduled:0:0:0|2399867:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-21T19:09:09.114Z",
-  "lastSuccessfulRunAt": "2026-10-21T19:03:57.132Z"
+  "lastPushedAt": "2026-10-21T19:44:02.735Z",
+  "lastSuccessfulRunAt": "2026-10-21T19:38:57.614Z"
 }
