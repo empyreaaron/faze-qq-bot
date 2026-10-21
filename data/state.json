@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-21T21:48:59.375Z",
+  "lastScheduleCheckAt": "2026-10-21T22:19:44.733Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -722,7 +722,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-14T07:44:54.142Z",
-      "lastSeenAt": "2026-10-21T21:43:59.281Z",
+      "lastSeenAt": "2026-10-21T22:14:44.654Z",
       "status": "over",
       "startSent": true,
       "resultSent": true,
@@ -935,7 +935,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:15:44.078Z",
-      "lastSeenAt": "2026-10-21T21:43:59.281Z",
+      "lastSeenAt": "2026-10-21T22:14:44.654Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1147,7 +1147,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T14:23:28.494Z",
-      "lastSeenAt": "2026-10-21T21:43:59.281Z",
+      "lastSeenAt": "2026-10-21T22:14:44.654Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1351,7 +1351,6 @@
         "name": "FaZe"
       },
       "event": {
-        "id": 9312,
         "name": "Digital Crusade DraculaN Season 7"
       },
       "format": {
@@ -1360,7 +1359,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-10-21T19:03:57.132Z",
-      "lastSeenAt": "2026-10-21T21:48:59.375Z",
+      "lastSeenAt": "2026-10-21T22:19:44.733Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -1382,10 +1381,10 @@
         },
         {
           "name": "Ancient",
-          "statsId": null,
+          "statsId": 242526,
           "result": {
-            "team1TotalRounds": 7,
-            "team2TotalRounds": 5
+            "team1TotalRounds": 13,
+            "team2TotalRounds": 9
           }
         },
         {
@@ -1406,140 +1405,140 @@
           "team1": [
             {
               "player": {
-                "id": 21239,
-                "name": "MartinezSa"
-              },
-              "kills": 16,
-              "deaths": 11,
-              "killDeathsDifference": 5,
-              "roundSwing": 3.58,
-              "ADR": 82.6,
-              "KAST": 81,
-              "rating3": 1.36
-            },
-            {
-              "player": {
                 "id": 21163,
                 "name": "susp"
               },
-              "kills": 10,
-              "deaths": 14,
-              "killDeathsDifference": -4,
-              "roundSwing": 0.59,
-              "ADR": 56,
-              "KAST": 57.1,
-              "rating3": 0.88
-            },
-            {
-              "player": {
-                "id": 21983,
-                "name": "Chr1zN"
-              },
-              "kills": 10,
-              "deaths": 10,
-              "killDeathsDifference": 0,
-              "roundSwing": -0.56,
-              "ADR": 49.1,
-              "KAST": 76.2,
-              "rating3": 0.86
+              "kills": 29,
+              "deaths": 25,
+              "killDeathsDifference": 4,
+              "roundSwing": 1.43,
+              "ADR": 73.5,
+              "KAST": 60.5,
+              "rating3": 1.15
             },
             {
               "player": {
                 "id": 13666,
                 "name": "Brollan"
               },
-              "kills": 11,
-              "deaths": 15,
-              "killDeathsDifference": -4,
-              "roundSwing": -4.21,
-              "ADR": 66.9,
-              "KAST": 57.1,
-              "rating3": 0.81
+              "kills": 26,
+              "deaths": 26,
+              "killDeathsDifference": 0,
+              "roundSwing": -1.78,
+              "ADR": 77.7,
+              "KAST": 72.1,
+              "rating3": 1
             },
             {
               "player": {
                 "id": 20119,
                 "name": "nilo"
               },
-              "kills": 7,
-              "deaths": 17,
-              "killDeathsDifference": -10,
-              "roundSwing": -5.64,
-              "ADR": 51.6,
-              "KAST": 52.4,
-              "rating3": 0.57
+              "kills": 28,
+              "deaths": 28,
+              "killDeathsDifference": 0,
+              "roundSwing": -0.69,
+              "ADR": 69.6,
+              "KAST": 67.4,
+              "rating3": 0.94
+            },
+            {
+              "player": {
+                "id": 21239,
+                "name": "MartinezSa"
+              },
+              "kills": 26,
+              "deaths": 24,
+              "killDeathsDifference": 2,
+              "roundSwing": -0.92,
+              "ADR": 63.6,
+              "KAST": 72.1,
+              "rating3": 0.93
+            },
+            {
+              "player": {
+                "id": 21983,
+                "name": "Chr1zN"
+              },
+              "kills": 21,
+              "deaths": 22,
+              "killDeathsDifference": -1,
+              "roundSwing": 0.38,
+              "ADR": 51,
+              "KAST": 79.1,
+              "rating3": 0.92
             }
           ],
           "team2": [
             {
               "player": {
-                "id": 22383,
-                "name": "jcobbb"
-              },
-              "kills": 16,
-              "deaths": 10,
-              "killDeathsDifference": 6,
-              "roundSwing": 2.97,
-              "ADR": 83.5,
-              "KAST": 81,
-              "rating3": 1.33
-            },
-            {
-              "player": {
-                "id": 21972,
-                "name": "Neityu"
-              },
-              "kills": 15,
-              "deaths": 11,
-              "killDeathsDifference": 4,
-              "roundSwing": 1.16,
-              "ADR": 75.8,
-              "KAST": 81,
-              "rating3": 1.26
-            },
-            {
-              "player": {
-                "id": 9960,
-                "name": "frozen"
-              },
-              "kills": 13,
-              "deaths": 9,
-              "killDeathsDifference": 4,
-              "roundSwing": 1.85,
-              "ADR": 58.7,
-              "KAST": 76.2,
-              "rating3": 1.13
-            },
-            {
-              "player": {
                 "id": 22866,
                 "name": "JBOEN"
               },
-              "kills": 11,
-              "deaths": 12,
-              "killDeathsDifference": -1,
-              "roundSwing": 1.57,
-              "ADR": 60.7,
-              "KAST": 71.4,
-              "rating3": 1.03
+              "kills": 28,
+              "deaths": 24,
+              "killDeathsDifference": 4,
+              "roundSwing": 4.39,
+              "ADR": 71.6,
+              "KAST": 72.1,
+              "rating3": 1.24
             },
             {
               "player": {
                 "id": 10394,
                 "name": "Twistzz"
               },
-              "kills": 11,
-              "deaths": 12,
-              "killDeathsDifference": -1,
-              "roundSwing": -1.32,
-              "ADR": 65.2,
-              "KAST": 90.5,
+              "kills": 23,
+              "deaths": 26,
+              "killDeathsDifference": -3,
+              "roundSwing": 0.19,
+              "ADR": 66.3,
+              "KAST": 79.1,
               "rating3": 1.02
+            },
+            {
+              "player": {
+                "id": 9960,
+                "name": "frozen"
+              },
+              "kills": 23,
+              "deaths": 26,
+              "killDeathsDifference": -3,
+              "roundSwing": -0.11,
+              "ADR": 63.3,
+              "KAST": 65.1,
+              "rating3": 0.95
+            },
+            {
+              "player": {
+                "id": 22383,
+                "name": "jcobbb"
+              },
+              "kills": 24,
+              "deaths": 28,
+              "killDeathsDifference": -4,
+              "roundSwing": -1.03,
+              "ADR": 69.8,
+              "KAST": 67.4,
+              "rating3": 0.94
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 26,
+              "deaths": 26,
+              "killDeathsDifference": 0,
+              "roundSwing": -1.84,
+              "ADR": 61.4,
+              "KAST": 69.8,
+              "rating3": 0.92
             }
           ]
         }
       },
-      "lastCheckedAt": "2026-10-21T21:48:59.375Z",
+      "lastCheckedAt": "2026-10-21T22:14:44.654Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-10-21T20:03:57.984Z"
@@ -1562,7 +1561,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-21T21:48:59.375Z",
+      "lastSeenAt": "2026-10-21T22:19:44.733Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -1585,19 +1584,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-10-21T21:48:59.375Z",
+      "lastSeenAt": "2026-10-21T22:19:44.733Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300094,
-  "lastRunAt": "2026-10-21T21:48:59.375Z",
+  "lastRunGapMs": 300079,
+  "lastRunAt": "2026-10-21T22:19:44.733Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-21T21:43:59.281Z",
+  "lastResultsCheckAt": "2026-10-21T22:14:44.654Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:live:0:0:1|2399857:scheduled:0:0:0|2399867:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-21T21:49:04.797Z",
-  "lastSuccessfulRunAt": "2026-10-21T21:48:59.375Z"
+  "lastPushedAt": "2026-10-21T22:19:47.982Z",
+  "lastSuccessfulRunAt": "2026-10-21T22:14:44.654Z"
 }
