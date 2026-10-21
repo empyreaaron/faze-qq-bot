@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-21T18:48:56.869Z",
+  "lastScheduleCheckAt": "2026-10-21T19:03:57.132Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -1139,6 +1139,7 @@
         "name": "FaZe"
       },
       "event": {
+        "id": 9312,
         "name": "Digital Crusade DraculaN Season 7"
       },
       "format": {
@@ -1147,7 +1148,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-10-21T14:23:28.494Z",
-      "lastSeenAt": "2026-10-21T18:48:56.869Z",
+      "lastSeenAt": "2026-10-21T18:58:57.047Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -1179,8 +1180,8 @@
           "name": "Anubis",
           "statsId": null,
           "result": {
-            "team1TotalRounds": 5,
-            "team2TotalRounds": 7
+            "team1TotalRounds": 12,
+            "team2TotalRounds": 12
           }
         }
       ],
@@ -1329,10 +1330,33 @@
           ]
         }
       },
-      "lastCheckedAt": "2026-10-21T18:43:56.824Z",
+      "lastCheckedAt": "2026-10-21T18:58:57.047Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-10-21T15:38:29.855Z"
+    },
+    "2399633": {
+      "id": 2399633,
+      "date": 1792611900000,
+      "team1": {
+        "id": 7175,
+        "name": "HEROIC"
+      },
+      "team2": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "event": {
+        "name": "Digital Crusade DraculaN Season 7"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-10-21T19:03:57.132Z",
+      "lastSeenAt": "2026-10-21T19:03:57.132Z",
+      "status": "scheduled",
+      "startSent": false,
+      "resultSent": false
     },
     "2399857": {
       "id": 2399857,
@@ -1352,7 +1376,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-21T18:48:56.869Z",
+      "lastSeenAt": "2026-10-21T19:03:57.132Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -1375,19 +1399,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-10-21T18:48:56.869Z",
+      "lastSeenAt": "2026-10-21T19:03:57.132Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300045,
-  "lastRunAt": "2026-10-21T18:48:56.869Z",
+  "lastRunGapMs": 300085,
+  "lastRunAt": "2026-10-21T19:03:57.132Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-10-21T18:43:56.824Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:live:0:0:1|2399857:scheduled:0:0:0|2399867:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-21T18:49:09.851Z",
-  "lastSuccessfulRunAt": "2026-10-21T18:43:56.824Z"
+  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:live:0:0:1|2399633:scheduled:0:0:0|2399857:scheduled:0:0:0|2399867:scheduled:0:0:0",
+  "lastPushedAt": "2026-10-21T19:04:00.010Z",
+  "lastSuccessfulRunAt": "2026-10-21T18:58:57.047Z"
 }
