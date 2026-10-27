@@ -1805,11 +1805,14 @@
       "liveFromList": true,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
       "lastSeenAt": "2026-10-27T12:24:28.632Z",
-      "status": "live",
+      "status": "over",
       "startSent": false,
-      "resultSent": false,
-      "statsId": null,
-      "winnerTeam": null,
+      "resultSent": true,
+      "statsId": 132501,
+      "winnerTeam": {
+        "id": 6667,
+        "name": "FaZe"
+      },
       "stage": {
         "name": "Group A opening match",
         "label": null,
@@ -1826,10 +1829,10 @@
         },
         {
           "name": "Mirage",
-          "statsId": null,
+          "statsId": 242983,
           "result": {
-            "team1TotalRounds": 1,
-            "team2TotalRounds": 11
+            "team1TotalRounds": 2,
+            "team2TotalRounds": 13
           }
         },
         {
@@ -1853,52 +1856,52 @@
                 "id": 22860,
                 "name": "avid"
               },
-              "kills": 18,
-              "deaths": 14,
-              "killDeathsDifference": 4,
-              "roundSwing": 3.98,
-              "ADR": 110.5,
-              "KAST": 78.9,
-              "rating3": 1.58
-            },
-            {
-              "player": {
-                "id": 7443,
-                "name": "twist"
-              },
-              "kills": 9,
-              "deaths": 14,
-              "killDeathsDifference": -5,
-              "roundSwing": -0.25,
-              "ADR": 69.8,
-              "KAST": 57.9,
-              "rating3": 0.91
+              "kills": 31,
+              "deaths": 22,
+              "killDeathsDifference": 9,
+              "roundSwing": 2.78,
+              "ADR": 105.7,
+              "KAST": 85.3,
+              "rating3": 1.48
             },
             {
               "player": {
                 "id": 16487,
                 "name": "eraa"
               },
-              "kills": 8,
-              "deaths": 12,
-              "killDeathsDifference": -4,
-              "roundSwing": -1.44,
-              "ADR": 30.9,
-              "KAST": 52.6,
-              "rating3": 0.68
+              "kills": 20,
+              "deaths": 19,
+              "killDeathsDifference": 1,
+              "roundSwing": -4.14,
+              "ADR": 48.4,
+              "KAST": 64.7,
+              "rating3": 0.72
+            },
+            {
+              "player": {
+                "id": 7443,
+                "name": "twist"
+              },
+              "kills": 14,
+              "deaths": 24,
+              "killDeathsDifference": -10,
+              "roundSwing": -4,
+              "ADR": 62,
+              "KAST": 55.9,
+              "rating3": 0.7
             },
             {
               "player": {
                 "id": 21159,
                 "name": "bobeksde"
               },
-              "kills": 6,
-              "deaths": 17,
-              "killDeathsDifference": -11,
-              "roundSwing": -4.49,
-              "ADR": 54.6,
-              "KAST": 42.1,
-              "rating3": 0.62
+              "kills": 12,
+              "deaths": 29,
+              "killDeathsDifference": -17,
+              "roundSwing": -5.94,
+              "ADR": 53.2,
+              "KAST": 47.1,
+              "rating3": 0.53
             },
             {
               "player": {
@@ -1906,12 +1909,12 @@
                 "name": "upE"
               },
               "kills": 3,
-              "deaths": 16,
-              "killDeathsDifference": -13,
-              "roundSwing": -11.14,
-              "ADR": 27.1,
-              "KAST": 47.4,
-              "rating3": 0.33
+              "deaths": 28,
+              "killDeathsDifference": -25,
+              "roundSwing": -11.48,
+              "ADR": 27,
+              "KAST": 41.2,
+              "rating3": 0.28
             }
           ],
           "team2": [
@@ -1920,73 +1923,75 @@
                 "id": 9960,
                 "name": "frozen"
               },
-              "kills": 20,
-              "deaths": 7,
-              "killDeathsDifference": 13,
-              "roundSwing": 10.67,
-              "ADR": 120.6,
-              "KAST": 100,
-              "rating3": 2.27
-            },
-            {
-              "player": {
-                "id": 21972,
-                "name": "Neityu"
-              },
-              "kills": 16,
-              "deaths": 6,
-              "killDeathsDifference": 10,
-              "roundSwing": 3.62,
-              "ADR": 85,
-              "KAST": 89.5,
-              "rating3": 1.62
+              "kills": 31,
+              "deaths": 14,
+              "killDeathsDifference": 17,
+              "roundSwing": 10.61,
+              "ADR": 99.1,
+              "KAST": 94.1,
+              "rating3": 2.07
             },
             {
               "player": {
                 "id": 22383,
                 "name": "jcobbb"
               },
-              "kills": 19,
-              "deaths": 10,
-              "killDeathsDifference": 9,
-              "roundSwing": 3.15,
-              "ADR": 89.7,
-              "KAST": 73.7,
-              "rating3": 1.4
+              "kills": 34,
+              "deaths": 20,
+              "killDeathsDifference": 14,
+              "roundSwing": 8.03,
+              "ADR": 90.9,
+              "KAST": 67.6,
+              "rating3": 1.64
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 24,
+              "deaths": 13,
+              "killDeathsDifference": 11,
+              "roundSwing": 3.86,
+              "ADR": 71.7,
+              "KAST": 82.4,
+              "rating3": 1.41
             },
             {
               "player": {
                 "id": 22866,
                 "name": "JBOEN"
               },
-              "kills": 14,
-              "deaths": 7,
+              "kills": 20,
+              "deaths": 13,
               "killDeathsDifference": 7,
-              "roundSwing": 2.28,
-              "ADR": 72,
-              "KAST": 94.7,
-              "rating3": 1.18
+              "roundSwing": 2.95,
+              "ADR": 62.8,
+              "KAST": 88.2,
+              "rating3": 1.19
             },
             {
               "player": {
                 "id": 10394,
                 "name": "Twistzz"
               },
-              "kills": 4,
-              "deaths": 14,
-              "killDeathsDifference": -10,
-              "roundSwing": -6.37,
-              "ADR": 28.4,
-              "KAST": 68.4,
-              "rating3": 0.43
+              "kills": 12,
+              "deaths": 20,
+              "killDeathsDifference": -8,
+              "roundSwing": -2.67,
+              "ADR": 45.7,
+              "KAST": 76.5,
+              "rating3": 0.74
             }
           ]
         }
       },
-      "lastCheckedAt": "2026-10-27T12:24:28.632Z",
+      "lastCheckedAt": "2026-10-27T12:29:28.725Z",
       "lastError": null,
       "prematchSent": true,
-      "prematchSentAt": "2026-10-27T10:49:27.128Z"
+      "prematchSentAt": "2026-10-27T10:49:27.128Z",
+      "overSince": "2026-10-27T12:29:28.725Z",
+      "resultSentAt": "2026-10-27T12:29:28.725Z"
     },
     "2399868": {
       "id": 2399868,
@@ -2018,7 +2023,7 @@
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-10-27T12:04:28.320Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:live:0:0:1|2399868:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-27T12:29:41.830Z",
+  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:over:0:1:1|2399868:scheduled:0:0:0",
+  "lastPushedAt": "2026-10-27T12:30:07.831Z",
   "lastSuccessfulRunAt": "2026-10-27T12:24:28.632Z"
 }
