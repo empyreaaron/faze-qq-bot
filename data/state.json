@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-28T13:52:17.115Z",
+  "lastScheduleCheckAt": "2026-10-28T14:07:17.260Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -935,7 +935,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:15:44.078Z",
-      "lastSeenAt": "2026-10-28T13:37:16.911Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1147,7 +1147,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T14:23:28.494Z",
-      "lastSeenAt": "2026-10-28T13:37:16.911Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1359,7 +1359,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T19:03:57.132Z",
-      "lastSeenAt": "2026-10-28T13:37:16.911Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1571,7 +1571,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T23:19:45.643Z",
-      "lastSeenAt": "2026-10-28T13:37:16.911Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1778,7 +1778,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-28T13:52:17.115Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -1803,7 +1803,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-10-28T13:37:16.911Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2012,7 +2012,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-27T12:29:28.725Z",
-      "lastSeenAt": "2026-10-28T13:37:16.911Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2200,15 +2200,35 @@
       "prematchSentAt": "2026-10-27T13:04:29.205Z",
       "overSince": "2026-10-27T14:59:58.392Z",
       "resultSentAt": "2026-10-27T14:59:58.392Z"
+    },
+    "2399877": {
+      "id": 2399877,
+      "date": 1793275200000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": null,
+      "event": {
+        "name": "RLG Tesla Cup 2026"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-10-28T14:07:17.260Z",
+      "lastSeenAt": "2026-10-28T14:07:17.260Z",
+      "status": "scheduled",
+      "startSent": false,
+      "resultSent": false
     }
   },
-  "lastRunGapMs": 300103,
-  "lastRunAt": "2026-10-28T13:52:17.115Z",
+  "lastRunGapMs": 300054,
+  "lastRunAt": "2026-10-28T14:07:17.260Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-28T13:37:16.911Z",
+  "lastResultsCheckAt": "2026-10-28T14:07:17.260Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:over:0:1:1|2399868:over:0:1:1",
-  "lastPushedAt": "2026-10-28T13:52:20.685Z",
-  "lastSuccessfulRunAt": "2026-10-28T13:47:17.012Z"
+  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:over:0:1:1|2399868:over:0:1:1|2399877:scheduled:0:0:0",
+  "lastPushedAt": "2026-10-28T14:07:36.728Z",
+  "lastSuccessfulRunAt": "2026-10-28T14:02:17.206Z"
 }
