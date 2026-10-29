@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-29T10:54:57.937Z",
+  "lastScheduleCheckAt": "2026-10-29T11:04:58.063Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -1778,7 +1778,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-29T10:54:57.937Z",
+      "lastSeenAt": "2026-10-29T11:04:58.063Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -2213,25 +2213,57 @@
         "name": "GamerLegion"
       },
       "event": {
+        "id": 9434,
         "name": "RLG Tesla Cup 2026"
       },
-      "format": "bo3",
+      "format": {
+        "type": "bo3"
+      },
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-28T14:07:17.260Z",
-      "lastSeenAt": "2026-10-29T10:54:57.937Z",
+      "lastSeenAt": "2026-10-29T11:04:58.063Z",
       "status": "scheduled",
       "startSent": false,
-      "resultSent": false
+      "resultSent": false,
+      "statsId": null,
+      "winnerTeam": null,
+      "stage": {
+        "name": "Semi-final",
+        "label": "半决赛",
+        "isKnockout": true
+      },
+      "maps": [
+        {
+          "name": "Dust2",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Mirage",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Nuke",
+          "statsId": null,
+          "result": null
+        }
+      ],
+      "embeddedStats": null,
+      "lastCheckedAt": "2026-10-29T11:04:58.063Z",
+      "lastError": null,
+      "prematchSent": true,
+      "prematchSentAt": "2026-10-29T11:04:58.063Z"
     }
   },
-  "lastRunGapMs": 300104,
-  "lastRunAt": "2026-10-29T10:54:57.937Z",
+  "lastRunGapMs": 300091,
+  "lastRunAt": "2026-10-29T11:04:58.063Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-10-29T10:39:57.654Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:over:0:1:1|2399868:over:0:1:1|2399877:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-29T10:55:02.541Z",
-  "lastSuccessfulRunAt": "2026-10-29T10:49:57.833Z"
+  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:over:0:1:1|2399868:over:0:1:1|2399877:scheduled:0:0:1",
+  "lastPushedAt": "2026-10-29T11:05:20.881Z",
+  "lastSuccessfulRunAt": "2026-10-29T10:59:57.972Z"
 }
