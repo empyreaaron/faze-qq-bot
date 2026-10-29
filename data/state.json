@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-10-29T15:00:01.452Z",
+  "lastScheduleCheckAt": "2026-10-29T15:10:01.637Z",
   "lastHeartbeatAt": "2026-09-30T14:10:59.931Z",
   "matches": {
     "2397941": {
@@ -1571,7 +1571,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T23:19:45.643Z",
-      "lastSeenAt": "2026-10-29T14:40:01.085Z",
+      "lastSeenAt": "2026-10-29T15:10:01.637Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1778,7 +1778,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-10-29T15:00:01.452Z",
+      "lastSeenAt": "2026-10-29T15:10:01.637Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
@@ -1803,7 +1803,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-10-29T14:40:01.085Z",
+      "lastSeenAt": "2026-10-29T15:10:01.637Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2012,7 +2012,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-27T12:29:28.725Z",
-      "lastSeenAt": "2026-10-29T14:40:01.085Z",
+      "lastSeenAt": "2026-10-29T15:10:01.637Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2221,7 +2221,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-28T14:07:17.260Z",
-      "lastSeenAt": "2026-10-29T14:40:01.085Z",
+      "lastSeenAt": "2026-10-29T15:10:01.637Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2425,6 +2425,7 @@
         "name": "FaZe"
       },
       "event": {
+        "id": 9434,
         "name": "RLG Tesla Cup 2026"
       },
       "format": {
@@ -2433,7 +2434,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-29T14:20:00.760Z",
-      "lastSeenAt": "2026-10-29T15:00:01.452Z",
+      "lastSeenAt": "2026-10-29T15:10:01.637Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false,
@@ -2462,17 +2463,19 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-10-29T14:55:01.362Z",
-      "lastError": null
+      "lastCheckedAt": "2026-10-29T15:10:01.637Z",
+      "lastError": null,
+      "prematchSent": true,
+      "prematchSentAt": "2026-10-29T15:10:01.637Z"
     }
   },
-  "lastRunGapMs": 300090,
-  "lastRunAt": "2026-10-29T15:00:01.452Z",
+  "lastRunGapMs": 300085,
+  "lastRunAt": "2026-10-29T15:10:01.637Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-10-29T14:40:01.085Z",
+  "lastResultsCheckAt": "2026-10-29T15:10:01.637Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:scheduled:0:0:0",
-  "lastPushedAt": "2026-10-29T15:00:15.952Z",
-  "lastSuccessfulRunAt": "2026-10-29T14:55:01.362Z"
+  "lastPushedFingerprint": "2397941:over:1:1:0|2398000:over:1:1:0|2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:scheduled:0:0:0|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:scheduled:0:0:1",
+  "lastPushedAt": "2026-10-29T15:10:48.671Z",
+  "lastSuccessfulRunAt": "2026-10-29T15:05:01.552Z"
 }
