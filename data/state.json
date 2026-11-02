@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-02T12:04:47.162Z",
+  "lastScheduleCheckAt": "2026-11-02T12:09:47.257Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399044": {
@@ -2395,15 +2395,35 @@
       "prematchSentAt": "2026-10-29T15:10:01.637Z",
       "overSince": "2026-10-29T17:05:26.753Z",
       "resultSentAt": "2026-10-29T17:05:26.753Z"
+    },
+    "2399994": {
+      "id": 2399994,
+      "date": 1793689200000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": null,
+      "event": {
+        "name": "IEM Beijing 2026"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-11-02T12:09:47.257Z",
+      "lastSeenAt": "2026-11-02T12:09:47.257Z",
+      "status": "scheduled",
+      "startSent": false,
+      "resultSent": false
     }
   },
-  "lastRunGapMs": 300101,
-  "lastRunAt": "2026-11-02T12:04:47.162Z",
+  "lastRunGapMs": 300095,
+  "lastRunAt": "2026-11-02T12:09:47.257Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-02T11:49:46.866Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1",
-  "lastPushedAt": "2026-11-02T12:05:02.271Z",
-  "lastSuccessfulRunAt": "2026-11-02T11:59:47.061Z"
+  "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-02T12:10:01.434Z",
+  "lastSuccessfulRunAt": "2026-11-02T12:04:47.162Z"
 }
