@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-02T08:54:13.591Z",
+  "lastScheduleCheckAt": "2026-11-02T09:29:14.105Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399044": {
@@ -1357,7 +1357,6 @@
         "name": "FaZe"
       },
       "event": {
-        "id": 8245,
         "name": "IEM Beijing 2026"
       },
       "format": {
@@ -1366,7 +1365,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-11-02T08:54:13.591Z",
+      "lastSeenAt": "2026-11-02T09:29:14.105Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -1381,7 +1380,10 @@
         {
           "name": "Ancient",
           "statsId": null,
-          "result": null
+          "result": {
+            "team1TotalRounds": 10,
+            "team2TotalRounds": 2
+          }
         },
         {
           "name": "Dust2",
@@ -1395,7 +1397,7 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-02T08:54:13.591Z",
+      "lastCheckedAt": "2026-11-02T09:24:14.009Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-02T08:44:13.402Z"
@@ -1420,7 +1422,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-21T08:17:57.415Z",
-      "lastSeenAt": "2026-11-02T08:49:13.523Z",
+      "lastSeenAt": "2026-11-02T09:19:13.910Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1629,7 +1631,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-27T12:29:28.725Z",
-      "lastSeenAt": "2026-11-02T08:49:13.523Z",
+      "lastSeenAt": "2026-11-02T09:19:13.910Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1838,7 +1840,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-28T14:07:17.260Z",
-      "lastSeenAt": "2026-11-02T08:49:13.523Z",
+      "lastSeenAt": "2026-11-02T09:19:13.910Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2050,7 +2052,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-29T14:20:00.760Z",
-      "lastSeenAt": "2026-11-02T08:49:13.523Z",
+      "lastSeenAt": "2026-11-02T09:19:13.910Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2240,13 +2242,13 @@
       "resultSentAt": "2026-10-29T17:05:26.753Z"
     }
   },
-  "lastRunGapMs": 300068,
-  "lastRunAt": "2026-11-02T08:54:13.591Z",
+  "lastRunGapMs": 300096,
+  "lastRunAt": "2026-11-02T09:29:14.105Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-02T08:49:13.523Z",
+  "lastResultsCheckAt": "2026-11-02T09:19:13.910Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:live:0:0:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1",
-  "lastPushedAt": "2026-11-02T08:54:42.609Z",
-  "lastSuccessfulRunAt": "2026-11-02T08:54:13.591Z"
+  "lastPushedAt": "2026-11-02T09:29:29.006Z",
+  "lastSuccessfulRunAt": "2026-11-02T09:24:14.009Z"
 }
