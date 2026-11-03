@@ -2398,16 +2398,17 @@
     },
     "2399994": {
       "id": 2399994,
-      "date": 1793699718000,
+      "date": 1793689200000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
       },
       "team2": {
-        "id": null,
+        "id": 11283,
         "name": "Falcons"
       },
       "event": {
+        "id": 8245,
         "name": "IEM Beijing 2026"
       },
       "format": {
@@ -2417,7 +2418,7 @@
       "liveFromList": false,
       "discoveredAt": "2026-11-02T12:09:47.257Z",
       "lastSeenAt": "2026-11-03T09:57:31.380Z",
-      "status": "over",
+      "status": "live",
       "startSent": false,
       "resultSent": false,
       "statsId": null,
@@ -2643,7 +2644,7 @@
           ]
         }
       },
-      "lastCheckedAt": "2026-11-03T09:52:31.283Z",
+      "lastCheckedAt": "2026-11-03T09:57:31.380Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-03T06:52:28.133Z"
@@ -2655,7 +2656,7 @@
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-03T09:57:31.380Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:0:1",
-  "lastPushedAt": "2026-11-03T09:58:01.789Z",
-  "lastSuccessfulRunAt": "2026-11-03T09:52:31.283Z"
+  "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:live:0:0:1",
+  "lastPushedAt": "2026-11-03T09:58:18.284Z",
+  "lastSuccessfulRunAt": "2026-11-03T09:57:31.380Z"
 }
