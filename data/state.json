@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-03T06:52:28.133Z",
+  "lastScheduleCheckAt": "2026-11-03T07:02:28.320Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399044": {
@@ -2415,10 +2415,10 @@
         "type": "bo3"
       },
       "title": null,
-      "liveFromList": false,
+      "liveFromList": true,
       "discoveredAt": "2026-11-02T12:09:47.257Z",
-      "lastSeenAt": "2026-11-03T06:52:28.133Z",
-      "status": "scheduled",
+      "lastSeenAt": "2026-11-03T07:02:28.320Z",
+      "status": "live",
       "startSent": false,
       "resultSent": false,
       "statsId": null,
@@ -2491,19 +2491,19 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-03T06:52:28.133Z",
+      "lastCheckedAt": "2026-11-03T07:02:28.320Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-03T06:52:28.133Z"
     }
   },
-  "lastRunGapMs": 300058,
-  "lastRunAt": "2026-11-03T06:52:28.133Z",
+  "lastRunGapMs": 300097,
+  "lastRunAt": "2026-11-03T07:02:28.320Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-03T06:52:28.133Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:scheduled:0:0:1",
-  "lastPushedAt": "2026-11-03T06:53:18.830Z",
-  "lastSuccessfulRunAt": "2026-11-03T06:47:28.075Z"
+  "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:live:0:0:1",
+  "lastPushedAt": "2026-11-03T07:02:59.383Z",
+  "lastSuccessfulRunAt": "2026-11-03T07:02:28.320Z"
 }
