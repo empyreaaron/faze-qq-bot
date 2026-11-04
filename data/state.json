@@ -2609,13 +2609,13 @@
       "resultSentAt": "2026-11-03T10:02:31.433Z"
     }
   },
-  "lastRunGapMs": 300100,
-  "lastRunAt": "2026-11-04T16:14:55.573Z",
+  "lastRunGapMs": 300102,
+  "lastRunAt": "2026-11-04T16:45:49.359Z",
   "lastRunErrors": [],
-  "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-04T16:04:55.406Z",
+  "lastRunStatus": "failed",
+  "lastResultsCheckAt": null,
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1",
-  "lastPushedAt": "2026-11-04T16:15:08.834Z",
+  "lastPushedAt": "2026-11-04T16:45:50.962Z",
   "lastSuccessfulRunAt": "2026-11-04T16:09:55.473Z"
 }
