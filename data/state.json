@@ -1,35 +1,8 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-07T19:55:05.855Z",
+  "lastScheduleCheckAt": "2026-11-07T20:15:06.205Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
-    "2399044": {
-      "id": 2399044,
-      "date": 1791490260000,
-      "team1": {
-        "id": 6667,
-        "name": "FaZe"
-      },
-      "team2": {
-        "id": null,
-        "name": "Sangal"
-      },
-      "event": {
-        "name": "Roman Imperium Cup IX"
-      },
-      "format": "bo3",
-      "title": null,
-      "liveFromList": false,
-      "discoveredAt": "2026-10-08T14:53:17.933Z",
-      "lastSeenAt": "2026-10-15T19:43:47.006Z",
-      "startSent": true,
-      "resultSent": true,
-      "lastCheckedAt": "2026-10-11T01:19:22.084Z",
-      "lastError": "HLTV直连失败（HTTP 403），备用通道也被Cloudflare拦截。匿名读取已不可用；可配置JINA_API_KEY后验证浏览器读取。",
-      "status": "over",
-      "resultSentAt": "2026-10-11T05:44:34.149Z",
-      "resultSkipped": "missed during HLTV outage; not re-posted"
-    },
     "2399048": {
       "id": 2399048,
       "date": 1791560100000,
@@ -1365,7 +1338,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-10-20T14:45:44.437Z",
-      "lastSeenAt": "2026-11-07T19:45:05.691Z",
+      "lastSeenAt": "2026-11-07T20:15:06.205Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2416,7 +2389,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-02T12:09:47.257Z",
-      "lastSeenAt": "2026-11-07T19:45:05.691Z",
+      "lastSeenAt": "2026-11-07T20:15:06.205Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2609,13 +2582,13 @@
       "resultSentAt": "2026-11-03T10:02:31.433Z"
     }
   },
-  "lastRunGapMs": 300099,
-  "lastRunAt": "2026-11-07T19:55:05.855Z",
+  "lastRunGapMs": 300055,
+  "lastRunAt": "2026-11-07T20:15:06.205Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-07T19:45:05.691Z",
+  "lastResultsCheckAt": "2026-11-07T20:15:06.205Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399044:over:1:1:0|2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1",
-  "lastPushedAt": "2026-11-07T19:55:19.841Z",
-  "lastSuccessfulRunAt": "2026-11-07T19:50:05.756Z"
+  "lastPushedFingerprint": "2399048:over:1:1:0|2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1",
+  "lastPushedAt": "2026-11-07T20:15:22.829Z",
+  "lastSuccessfulRunAt": "2026-11-07T20:15:06.205Z"
 }
