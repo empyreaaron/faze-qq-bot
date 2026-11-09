@@ -1,33 +1,8 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-09T12:59:31.288Z",
+  "lastScheduleCheckAt": "2026-11-09T13:24:31.698Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
-    "2399052": {
-      "id": 2399052,
-      "date": 1791638617000,
-      "team1": {
-        "id": 6667,
-        "name": "FaZe"
-      },
-      "team2": {
-        "id": null,
-        "name": "NAVI Junior"
-      },
-      "status": "over",
-      "liveFromList": false,
-      "discoveredAt": "2026-10-11T05:44:34.149Z",
-      "startSent": true,
-      "resultSent": true,
-      "resultSentAt": "2026-10-11T05:44:34.149Z",
-      "resultSkipped": "missed during HLTV outage; not re-posted",
-      "event": {
-        "name": "Roman Imperium Cup IX"
-      },
-      "format": "bo3",
-      "title": null,
-      "lastSeenAt": "2026-10-17T13:18:54.602Z"
-    },
     "2399055": {
       "id": 2399055,
       "date": 1791661011000,
@@ -2364,7 +2339,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-02T12:09:47.257Z",
-      "lastSeenAt": "2026-11-09T12:49:31.112Z",
+      "lastSeenAt": "2026-11-09T13:19:31.681Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2557,13 +2532,13 @@
       "resultSentAt": "2026-11-03T10:02:31.433Z"
     }
   },
-  "lastRunGapMs": 300085,
-  "lastRunAt": "2026-11-09T12:59:31.288Z",
+  "lastRunGapMs": 300017,
+  "lastRunAt": "2026-11-09T13:24:31.698Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-09T12:49:31.112Z",
+  "lastResultsCheckAt": "2026-11-09T13:19:31.681Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399052:over:1:1:0|2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1",
-  "lastPushedAt": "2026-11-09T12:59:46.058Z",
-  "lastSuccessfulRunAt": "2026-11-09T12:54:31.203Z"
+  "lastPushedFingerprint": "2399055:over:0:1:0|2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1",
+  "lastPushedAt": "2026-11-09T13:24:46.707Z",
+  "lastSuccessfulRunAt": "2026-11-09T13:24:31.698Z"
 }
