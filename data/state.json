@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-10T14:27:12.256Z",
+  "lastScheduleCheckAt": "2026-11-10T14:57:12.732Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2325,13 +2325,13 @@
       "resultSentAt": "2026-11-03T10:02:31.433Z"
     }
   },
-  "lastRunGapMs": 300033,
-  "lastRunAt": "2026-11-10T14:27:12.256Z",
+  "lastRunGapMs": 300025,
+  "lastRunAt": "2026-11-10T14:57:12.732Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-10T14:22:12.223Z",
+  "lastResultsCheckAt": "2026-11-10T14:52:12.707Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1",
-  "lastPushedAt": "2026-11-10T14:27:27.241Z",
-  "lastSuccessfulRunAt": "2026-11-10T14:22:12.223Z"
+  "lastPushedAt": "2026-11-10T14:57:28.066Z",
+  "lastSuccessfulRunAt": "2026-11-10T14:52:12.707Z"
 }
