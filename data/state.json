@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-14T17:17:55.125Z",
+  "lastScheduleCheckAt": "2026-11-14T17:27:55.249Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2324,6 +2324,29 @@
       "overSince": "2026-11-03T10:02:31.433Z",
       "resultSentAt": "2026-11-03T10:02:31.433Z"
     },
+    "2400411": {
+      "id": 2400411,
+      "date": 1794733200000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": {
+        "id": 4991,
+        "name": "fnatic"
+      },
+      "event": {
+        "name": "PGL Cluj-Napoca 2027 Closed Qualifier"
+      },
+      "format": "bo3",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-11-14T17:27:55.249Z",
+      "lastSeenAt": "2026-11-14T17:27:55.249Z",
+      "status": "scheduled",
+      "startSent": false,
+      "resultSent": false
+    },
     "2400500": {
       "id": 2400500,
       "date": 1795503600000,
@@ -2342,19 +2365,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-14T17:17:55.125Z",
+      "lastSeenAt": "2026-11-14T17:27:55.249Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300017,
-  "lastRunAt": "2026-11-14T17:17:55.125Z",
+  "lastRunGapMs": 300103,
+  "lastRunAt": "2026-11-14T17:27:55.249Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-14T17:02:54.960Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-14T17:18:07.982Z",
-  "lastSuccessfulRunAt": "2026-11-14T17:12:55.108Z"
+  "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:scheduled:0:0:0|2400500:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-14T17:28:08.663Z",
+  "lastSuccessfulRunAt": "2026-11-14T17:22:55.146Z"
 }
