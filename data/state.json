@@ -2561,6 +2561,7 @@
         "name": "FaZe"
       },
       "event": {
+        "id": 9135,
         "name": "PGL Cluj-Napoca 2027 Closed Qualifier"
       },
       "format": {
@@ -2643,8 +2644,10 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-15T14:49:57.019Z",
-      "lastError": null
+      "lastCheckedAt": "2026-11-15T14:54:57.100Z",
+      "lastError": null,
+      "prematchSent": true,
+      "prematchSentAt": "2026-11-15T14:54:57.100Z"
     },
     "2400500": {
       "id": 2400500,
@@ -2676,7 +2679,7 @@
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-15T14:34:56.857Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:scheduled:0:0:0|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-15T14:55:10.069Z",
+  "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:scheduled:0:0:1|2400500:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-15T14:55:28.230Z",
   "lastSuccessfulRunAt": "2026-11-15T14:49:57.019Z"
 }
