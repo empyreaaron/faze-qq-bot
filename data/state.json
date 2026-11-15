@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-15T16:45:28.988Z",
+  "lastScheduleCheckAt": "2026-11-15T17:15:29.367Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2344,7 +2344,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-14T17:27:55.249Z",
-      "lastSeenAt": "2026-11-15T16:35:28.859Z",
+      "lastSeenAt": "2026-11-15T17:05:29.251Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2561,6 +2561,7 @@
         "name": "FaZe"
       },
       "event": {
+        "id": 9135,
         "name": "PGL Cluj-Napoca 2027 Closed Qualifier"
       },
       "format": {
@@ -2569,7 +2570,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-11-15T12:49:55.388Z",
-      "lastSeenAt": "2026-11-15T16:45:28.988Z",
+      "lastSeenAt": "2026-11-15T17:15:29.367Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -2629,7 +2630,10 @@
         {
           "name": "Mirage",
           "statsId": null,
-          "result": null
+          "result": {
+            "team1TotalRounds": 9,
+            "team2TotalRounds": 3
+          }
         },
         {
           "name": "Ancient",
@@ -2643,7 +2647,7 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-15T16:40:28.929Z",
+      "lastCheckedAt": "2026-11-15T17:15:29.367Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-15T14:54:57.100Z"
@@ -2666,19 +2670,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-15T16:45:28.988Z",
+      "lastSeenAt": "2026-11-15T17:15:29.367Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300059,
-  "lastRunAt": "2026-11-15T16:45:28.988Z",
+  "lastRunGapMs": 300098,
+  "lastRunAt": "2026-11-15T17:15:29.367Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-15T16:35:28.859Z",
+  "lastResultsCheckAt": "2026-11-15T17:05:29.251Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:live:0:0:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-15T16:45:42.752Z",
-  "lastSuccessfulRunAt": "2026-11-15T16:40:28.929Z"
+  "lastPushedAt": "2026-11-15T17:15:46.911Z",
+  "lastSuccessfulRunAt": "2026-11-15T17:15:29.367Z"
 }
