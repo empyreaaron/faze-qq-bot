@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-15T18:30:30.496Z",
+  "lastScheduleCheckAt": "2026-11-15T19:05:30.997Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2344,7 +2344,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-14T17:27:55.249Z",
-      "lastSeenAt": "2026-11-15T18:05:30.104Z",
+      "lastSeenAt": "2026-11-15T19:05:30.997Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2551,26 +2551,25 @@
     },
     "2400415": {
       "id": 2400415,
-      "date": 1794759300000,
+      "date": 1794767284000,
       "team1": {
-        "id": 7175,
-        "name": "HEROIC"
-      },
-      "team2": {
         "id": 6667,
         "name": "FaZe"
       },
+      "team2": {
+        "id": null,
+        "name": "HEROIC"
+      },
       "event": {
-        "id": 9135,
         "name": "PGL Cluj-Napoca 2027 Closed Qualifier"
       },
       "format": {
         "type": "bo3"
       },
       "title": null,
-      "liveFromList": true,
+      "liveFromList": false,
       "discoveredAt": "2026-11-15T12:49:55.388Z",
-      "lastSeenAt": "2026-11-15T18:25:30.451Z",
+      "lastSeenAt": "2026-11-15T19:05:30.997Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2777,19 +2776,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-15T18:30:30.496Z",
+      "lastSeenAt": "2026-11-15T19:05:30.997Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300045,
-  "lastRunAt": "2026-11-15T18:30:30.496Z",
+  "lastRunGapMs": 300003,
+  "lastRunAt": "2026-11-15T19:05:30.997Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-15T18:05:30.104Z",
+  "lastResultsCheckAt": "2026-11-15T19:05:30.997Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-15T18:31:01.123Z",
-  "lastSuccessfulRunAt": "2026-11-15T18:25:30.451Z"
+  "lastPushedAt": "2026-11-15T19:05:47.205Z",
+  "lastSuccessfulRunAt": "2026-11-15T19:00:30.994Z"
 }
