@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-15T16:04:57.810Z",
+  "lastScheduleCheckAt": "2026-11-15T16:14:58.006Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2568,10 +2568,10 @@
         "type": "bo3"
       },
       "title": null,
-      "liveFromList": false,
+      "liveFromList": true,
       "discoveredAt": "2026-11-15T12:49:55.388Z",
-      "lastSeenAt": "2026-11-15T16:04:57.810Z",
-      "status": "scheduled",
+      "lastSeenAt": "2026-11-15T16:14:58.006Z",
+      "status": "live",
       "startSent": false,
       "resultSent": false,
       "statsId": null,
@@ -2644,7 +2644,7 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-15T16:04:57.810Z",
+      "lastCheckedAt": "2026-11-15T16:14:58.006Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-15T14:54:57.100Z"
@@ -2667,19 +2667,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-15T16:04:57.810Z",
+      "lastSeenAt": "2026-11-15T16:14:58.006Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300022,
-  "lastRunAt": "2026-11-15T16:04:57.810Z",
+  "lastRunGapMs": 300096,
+  "lastRunAt": "2026-11-15T16:14:58.006Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-15T16:04:57.810Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:scheduled:0:0:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-15T16:05:27.056Z",
-  "lastSuccessfulRunAt": "2026-11-15T16:04:57.810Z"
+  "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:live:0:0:1|2400500:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-15T16:15:24.510Z",
+  "lastSuccessfulRunAt": "2026-11-15T16:14:58.006Z"
 }
