@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-15T09:34:22.754Z",
+  "lastScheduleCheckAt": "2026-11-15T10:09:23.186Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2336,7 +2336,6 @@
         "name": "fnatic"
       },
       "event": {
-        "id": 9135,
         "name": "PGL Cluj-Napoca 2027 Closed Qualifier"
       },
       "format": {
@@ -2345,7 +2344,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-11-14T17:27:55.249Z",
-      "lastSeenAt": "2026-11-15T09:34:22.754Z",
+      "lastSeenAt": "2026-11-15T10:09:23.186Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -2419,7 +2418,7 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-15T09:34:22.754Z",
+      "lastCheckedAt": "2026-11-15T10:04:23.184Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-15T08:54:22.238Z"
@@ -2442,19 +2441,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-15T09:34:22.754Z",
+      "lastSeenAt": "2026-11-15T10:09:23.186Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300043,
-  "lastRunAt": "2026-11-15T09:34:22.754Z",
+  "lastRunGapMs": 300002,
+  "lastRunAt": "2026-11-15T10:09:23.186Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-15T09:34:22.754Z",
+  "lastResultsCheckAt": "2026-11-15T10:04:23.184Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:live:0:0:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-15T09:34:33.309Z",
-  "lastSuccessfulRunAt": "2026-11-15T09:34:22.754Z"
+  "lastPushedAt": "2026-11-15T10:09:26.241Z",
+  "lastSuccessfulRunAt": "2026-11-15T10:04:23.184Z"
 }
