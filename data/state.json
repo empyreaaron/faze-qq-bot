@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-15T10:39:23.607Z",
+  "lastScheduleCheckAt": "2026-11-15T11:09:24.151Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2344,7 +2344,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-11-14T17:27:55.249Z",
-      "lastSeenAt": "2026-11-15T10:39:23.607Z",
+      "lastSeenAt": "2026-11-15T11:09:24.151Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -2403,10 +2403,10 @@
         },
         {
           "name": "Anubis",
-          "statsId": null,
+          "statsId": 244412,
           "result": {
-            "team1TotalRounds": 6,
-            "team2TotalRounds": 6
+            "team1TotalRounds": 7,
+            "team2TotalRounds": 13
           }
         },
         {
@@ -2420,8 +2420,152 @@
           "result": null
         }
       ],
-      "embeddedStats": null,
-      "lastCheckedAt": "2026-11-15T10:34:23.569Z",
+      "embeddedStats": {
+        "team1": {
+          "name": "FaZe"
+        },
+        "team2": {
+          "name": "fnatic"
+        },
+        "overview": {},
+        "playerStats": {
+          "team1": [
+            {
+              "player": {
+                "id": 22866,
+                "name": "JBOEN"
+              },
+              "kills": 13,
+              "deaths": 12,
+              "killDeathsDifference": 1,
+              "roundSwing": 1.29,
+              "ADR": 65.5,
+              "KAST": 65,
+              "rating3": 1.04
+            },
+            {
+              "player": {
+                "id": 10394,
+                "name": "Twistzz"
+              },
+              "kills": 10,
+              "deaths": 14,
+              "killDeathsDifference": -4,
+              "roundSwing": -2.65,
+              "ADR": 60.6,
+              "KAST": 60,
+              "rating3": 0.82
+            },
+            {
+              "player": {
+                "id": 9960,
+                "name": "frozen"
+              },
+              "kills": 10,
+              "deaths": 13,
+              "killDeathsDifference": -3,
+              "roundSwing": -1.83,
+              "ADR": 59.5,
+              "KAST": 65,
+              "rating3": 0.81
+            },
+            {
+              "player": {
+                "id": 21972,
+                "name": "Neityu"
+              },
+              "kills": 7,
+              "deaths": 17,
+              "killDeathsDifference": -10,
+              "roundSwing": -3.19,
+              "ADR": 43.4,
+              "KAST": 50,
+              "rating3": 0.58
+            },
+            {
+              "player": {
+                "id": 7264,
+                "name": "enkay J"
+              },
+              "kills": 8,
+              "deaths": 15,
+              "killDeathsDifference": -7,
+              "roundSwing": -4.55,
+              "ADR": 34.5,
+              "KAST": 50,
+              "rating3": 0.54
+            }
+          ],
+          "team2": [
+            {
+              "player": {
+                "id": 23046,
+                "name": "jambo"
+              },
+              "kills": 17,
+              "deaths": 9,
+              "killDeathsDifference": 8,
+              "roundSwing": 6.44,
+              "ADR": 86,
+              "KAST": 90,
+              "rating3": 1.58
+            },
+            {
+              "player": {
+                "id": 25228,
+                "name": "mazay"
+              },
+              "kills": 19,
+              "deaths": 8,
+              "killDeathsDifference": 11,
+              "roundSwing": 4.72,
+              "ADR": 82,
+              "KAST": 80,
+              "rating3": 1.57
+            },
+            {
+              "player": {
+                "id": 23414,
+                "name": "jackasmo"
+              },
+              "kills": 17,
+              "deaths": 11,
+              "killDeathsDifference": 6,
+              "roundSwing": 0.43,
+              "ADR": 91.9,
+              "KAST": 85,
+              "rating3": 1.34
+            },
+            {
+              "player": {
+                "id": 24283,
+                "name": "cairne"
+              },
+              "kills": 11,
+              "deaths": 9,
+              "killDeathsDifference": 2,
+              "roundSwing": 1.94,
+              "ADR": 56,
+              "KAST": 85,
+              "rating3": 1.06
+            },
+            {
+              "player": {
+                "id": 17803,
+                "name": "fEAR"
+              },
+              "kills": 7,
+              "deaths": 11,
+              "killDeathsDifference": -4,
+              "roundSwing": -2.61,
+              "ADR": 59.8,
+              "KAST": 75,
+              "rating3": 0.8
+            }
+          ]
+        }
+      },
+      "lastCheckedAt": "2026-11-15T11:04:24.058Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-15T08:54:22.238Z"
@@ -2444,19 +2588,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-15T10:39:23.607Z",
+      "lastSeenAt": "2026-11-15T11:09:24.151Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300038,
-  "lastRunAt": "2026-11-15T10:39:23.607Z",
+  "lastRunGapMs": 300093,
+  "lastRunAt": "2026-11-15T11:09:24.151Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-15T10:34:23.569Z",
+  "lastResultsCheckAt": "2026-11-15T11:04:24.058Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:live:0:0:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-15T10:39:27.377Z",
-  "lastSuccessfulRunAt": "2026-11-15T10:34:23.569Z"
+  "lastPushedAt": "2026-11-15T11:09:37.186Z",
+  "lastSuccessfulRunAt": "2026-11-15T11:04:24.058Z"
 }
