@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-15T08:04:21.661Z",
+  "lastScheduleCheckAt": "2026-11-15T08:34:21.925Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399610": {
@@ -2336,16 +2336,91 @@
         "name": "fnatic"
       },
       "event": {
+        "id": 9135,
         "name": "PGL Cluj-Napoca 2027 Closed Qualifier"
       },
-      "format": "bo3",
+      "format": {
+        "type": "bo3"
+      },
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-14T17:27:55.249Z",
-      "lastSeenAt": "2026-11-15T08:04:21.661Z",
+      "lastSeenAt": "2026-11-15T08:34:21.925Z",
       "status": "scheduled",
       "startSent": false,
-      "resultSent": false
+      "resultSent": false,
+      "statsId": null,
+      "winnerTeam": null,
+      "stage": {
+        "name": "Upper bracket quarter-final",
+        "label": "胜者组四分之一决赛",
+        "isKnockout": true
+      },
+      "maps": [
+        {
+          "name": "Cache - 73%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Mirage - 62%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Ancient - 64%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Cache - 73%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Mirage - 62%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Anubis - 57%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Cache - 73%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Dust2 - 40%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Ancient - 64%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        }
+      ],
+      "embeddedStats": null,
+      "lastCheckedAt": "2026-11-15T08:34:21.925Z",
+      "lastError": null
     },
     "2400500": {
       "id": 2400500,
@@ -2365,19 +2440,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-15T08:04:21.661Z",
+      "lastSeenAt": "2026-11-15T08:34:21.925Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300098,
-  "lastRunAt": "2026-11-15T08:04:21.661Z",
+  "lastRunGapMs": 300067,
+  "lastRunAt": "2026-11-15T08:34:21.925Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-15T08:04:21.661Z",
+  "lastResultsCheckAt": "2026-11-15T08:34:21.925Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:scheduled:0:0:0|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-15T08:04:37.664Z",
-  "lastSuccessfulRunAt": "2026-11-15T07:59:21.563Z"
+  "lastPushedAt": "2026-11-15T08:34:51.411Z",
+  "lastSuccessfulRunAt": "2026-11-15T08:34:21.925Z"
 }
