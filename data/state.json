@@ -1,221 +1,8 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-19T13:46:08.897Z",
+  "lastScheduleCheckAt": "2026-11-19T14:06:09.152Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
-    "2399610": {
-      "id": 2399610,
-      "date": 1792505011000,
-      "team1": {
-        "id": 6667,
-        "name": "FaZe"
-      },
-      "team2": {
-        "id": null,
-        "name": "ASTRAL"
-      },
-      "event": {
-        "name": "Digital Crusade DraculaN Season 7"
-      },
-      "format": {
-        "type": "bo3"
-      },
-      "title": null,
-      "liveFromList": false,
-      "discoveredAt": "2026-10-14T07:44:54.142Z",
-      "lastSeenAt": "2026-10-27T13:34:57.039Z",
-      "status": "over",
-      "startSent": true,
-      "resultSent": true,
-      "statsId": 132251,
-      "winnerTeam": {
-        "id": 6667,
-        "name": "FaZe"
-      },
-      "stage": {
-        "name": "Upper bracket round of 16",
-        "label": "胜者组十六强",
-        "isKnockout": true
-      },
-      "maps": [
-        {
-          "name": "Ancient",
-          "statsId": 242279,
-          "result": {
-            "team1TotalRounds": 4,
-            "team2TotalRounds": 13
-          }
-        },
-        {
-          "name": "Mirage",
-          "statsId": 242291,
-          "result": {
-            "team1TotalRounds": 13,
-            "team2TotalRounds": 7
-          }
-        },
-        {
-          "name": "Cache",
-          "statsId": null,
-          "result": {
-            "team1TotalRounds": 16,
-            "team2TotalRounds": 14
-          }
-        }
-      ],
-      "embeddedStats": {
-        "team1": {
-          "name": "FaZe"
-        },
-        "team2": {
-          "name": "ASTRAL"
-        },
-        "overview": {},
-        "playerStats": {
-          "team1": [
-            {
-              "player": {
-                "id": 22383,
-                "name": "jcobbb"
-              },
-              "kills": 29,
-              "deaths": 29,
-              "killDeathsDifference": 0,
-              "roundSwing": 3.57,
-              "ADR": 87.3,
-              "KAST": 75.7,
-              "rating3": 1.37
-            },
-            {
-              "player": {
-                "id": 10394,
-                "name": "Twistzz"
-              },
-              "kills": 32,
-              "deaths": 28,
-              "killDeathsDifference": 4,
-              "roundSwing": -0.45,
-              "ADR": 93,
-              "KAST": 70.3,
-              "rating3": 1.19
-            },
-            {
-              "player": {
-                "id": 22866,
-                "name": "JBOEN"
-              },
-              "kills": 21,
-              "deaths": 25,
-              "killDeathsDifference": -4,
-              "roundSwing": 1.83,
-              "ADR": 68.6,
-              "KAST": 70.3,
-              "rating3": 1.03
-            },
-            {
-              "player": {
-                "id": 9960,
-                "name": "frozen"
-              },
-              "kills": 21,
-              "deaths": 24,
-              "killDeathsDifference": -3,
-              "roundSwing": -1.33,
-              "ADR": 55.5,
-              "KAST": 67.6,
-              "rating3": 0.96
-            },
-            {
-              "player": {
-                "id": 21972,
-                "name": "Neityu"
-              },
-              "kills": 19,
-              "deaths": 26,
-              "killDeathsDifference": -7,
-              "roundSwing": -2.06,
-              "ADR": 69.6,
-              "KAST": 67.6,
-              "rating3": 0.91
-            }
-          ],
-          "team2": [
-            {
-              "player": {
-                "id": 19725,
-                "name": "gxx-"
-              },
-              "kills": 37,
-              "deaths": 21,
-              "killDeathsDifference": 16,
-              "roundSwing": 5.68,
-              "ADR": 115.8,
-              "KAST": 86.5,
-              "rating3": 1.71
-            },
-            {
-              "player": {
-                "id": 22008,
-                "name": "swiz"
-              },
-              "kills": 30,
-              "deaths": 24,
-              "killDeathsDifference": 6,
-              "roundSwing": 0.16,
-              "ADR": 75.2,
-              "KAST": 59.5,
-              "rating3": 1.02
-            },
-            {
-              "player": {
-                "id": 23545,
-                "name": "RaY5ive"
-              },
-              "kills": 21,
-              "deaths": 26,
-              "killDeathsDifference": -5,
-              "roundSwing": -4.05,
-              "ADR": 66.4,
-              "KAST": 75.7,
-              "rating3": 0.83
-            },
-            {
-              "player": {
-                "id": 24997,
-                "name": "meowpop"
-              },
-              "kills": 20,
-              "deaths": 25,
-              "killDeathsDifference": -5,
-              "roundSwing": -1.7,
-              "ADR": 58.5,
-              "KAST": 64.9,
-              "rating3": 0.83
-            },
-            {
-              "player": {
-                "id": 24704,
-                "name": "Neqy"
-              },
-              "kills": 24,
-              "deaths": 27,
-              "killDeathsDifference": -3,
-              "roundSwing": -1.65,
-              "ADR": 65.7,
-              "KAST": 62.2,
-              "rating3": 0.79
-            }
-          ]
-        }
-      },
-      "lastCheckedAt": "2026-10-20T14:05:44.030Z",
-      "lastError": null,
-      "prematchSent": true,
-      "prematchSentAt": "2026-10-20T10:58:13.350Z",
-      "startSentAt": "2026-10-20T11:03:13.359Z",
-      "overSince": "2026-10-20T14:05:44.030Z",
-      "resultSentAt": "2026-10-20T14:05:44.030Z"
-    },
     "2399623": {
       "id": 2399623,
       "date": 1792592451000,
@@ -2776,19 +2563,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-19T13:46:08.897Z",
+      "lastSeenAt": "2026-11-19T14:06:09.152Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300063,
-  "lastRunAt": "2026-11-19T13:46:08.897Z",
+  "lastRunGapMs": 300031,
+  "lastRunAt": "2026-11-19T14:06:09.152Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-19T13:41:08.834Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399610:over:1:1:1|2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-19T13:46:12.391Z",
-  "lastSuccessfulRunAt": "2026-11-19T13:41:08.834Z"
+  "lastPushedFingerprint": "2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-19T14:06:23.833Z",
+  "lastSuccessfulRunAt": "2026-11-19T14:06:09.152Z"
 }
