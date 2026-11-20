@@ -1,220 +1,8 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-20T14:03:40.140Z",
+  "lastScheduleCheckAt": "2026-11-20T14:23:40.493Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
-    "2399623": {
-      "id": 2399623,
-      "date": 1792592451000,
-      "team1": {
-        "id": 6667,
-        "name": "FaZe"
-      },
-      "team2": {
-        "id": null,
-        "name": "JiJieHao"
-      },
-      "event": {
-        "name": "Digital Crusade DraculaN Season 7"
-      },
-      "format": {
-        "type": "bo3"
-      },
-      "title": null,
-      "liveFromList": false,
-      "discoveredAt": "2026-10-20T14:15:44.078Z",
-      "lastSeenAt": "2026-10-28T14:07:17.260Z",
-      "status": "over",
-      "startSent": false,
-      "resultSent": true,
-      "statsId": 132302,
-      "winnerTeam": {
-        "id": 10245,
-        "name": "JiJieHao"
-      },
-      "stage": {
-        "name": "Upper bracket quarter-final",
-        "label": "胜者组四分之一决赛",
-        "isKnockout": true
-      },
-      "maps": [
-        {
-          "name": "Mirage",
-          "statsId": 242405,
-          "result": {
-            "team1TotalRounds": 13,
-            "team2TotalRounds": 6
-          }
-        },
-        {
-          "name": "Dust2",
-          "statsId": 242422,
-          "result": {
-            "team1TotalRounds": 9,
-            "team2TotalRounds": 13
-          }
-        },
-        {
-          "name": "Anubis",
-          "statsId": null,
-          "result": {
-            "team1TotalRounds": 11,
-            "team2TotalRounds": 13
-          }
-        }
-      ],
-      "embeddedStats": {
-        "team1": {
-          "name": "FaZe"
-        },
-        "team2": {
-          "name": "JiJieHao"
-        },
-        "overview": {},
-        "playerStats": {
-          "team1": [
-            {
-              "player": {
-                "id": 10394,
-                "name": "Twistzz"
-              },
-              "kills": 34,
-              "deaths": 26,
-              "killDeathsDifference": 8,
-              "roundSwing": 2.34,
-              "ADR": 89.6,
-              "KAST": 73.2,
-              "rating3": 1.3
-            },
-            {
-              "player": {
-                "id": 22383,
-                "name": "jcobbb"
-              },
-              "kills": 26,
-              "deaths": 27,
-              "killDeathsDifference": -1,
-              "roundSwing": 1.73,
-              "ADR": 75.2,
-              "KAST": 65.9,
-              "rating3": 1.18
-            },
-            {
-              "player": {
-                "id": 22866,
-                "name": "JBOEN"
-              },
-              "kills": 27,
-              "deaths": 22,
-              "killDeathsDifference": 5,
-              "roundSwing": 1.06,
-              "ADR": 57.4,
-              "KAST": 73.2,
-              "rating3": 1.03
-            },
-            {
-              "player": {
-                "id": 21972,
-                "name": "Neityu"
-              },
-              "kills": 18,
-              "deaths": 23,
-              "killDeathsDifference": -5,
-              "roundSwing": 0,
-              "ADR": 55.3,
-              "KAST": 75.6,
-              "rating3": 0.93
-            },
-            {
-              "player": {
-                "id": 9960,
-                "name": "frozen"
-              },
-              "kills": 28,
-              "deaths": 32,
-              "killDeathsDifference": -4,
-              "roundSwing": -2.14,
-              "ADR": 72.9,
-              "KAST": 73.2,
-              "rating3": 0.88
-            }
-          ],
-          "team2": [
-            {
-              "player": {
-                "id": 17675,
-                "name": "m1N1"
-              },
-              "kills": 37,
-              "deaths": 25,
-              "killDeathsDifference": 12,
-              "roundSwing": 5.55,
-              "ADR": 83.2,
-              "KAST": 70.7,
-              "rating3": 1.44
-            },
-            {
-              "player": {
-                "id": 18163,
-                "name": "Bibu"
-              },
-              "kills": 25,
-              "deaths": 23,
-              "killDeathsDifference": 2,
-              "roundSwing": 0.12,
-              "ADR": 64.6,
-              "KAST": 75.6,
-              "rating3": 1.07
-            },
-            {
-              "player": {
-                "id": 22419,
-                "name": "0SAMAS"
-              },
-              "kills": 22,
-              "deaths": 28,
-              "killDeathsDifference": -6,
-              "roundSwing": -0.91,
-              "ADR": 69.7,
-              "KAST": 80.5,
-              "rating3": 0.93
-            },
-            {
-              "player": {
-                "id": 18790,
-                "name": "CacaNito"
-              },
-              "kills": 25,
-              "deaths": 27,
-              "killDeathsDifference": -2,
-              "roundSwing": -3.01,
-              "ADR": 73.2,
-              "KAST": 70.7,
-              "rating3": 0.86
-            },
-            {
-              "player": {
-                "id": 18120,
-                "name": "sinnopsyy"
-              },
-              "kills": 21,
-              "deaths": 30,
-              "killDeathsDifference": -9,
-              "roundSwing": -4.74,
-              "ADR": 61.5,
-              "KAST": 70.7,
-              "rating3": 0.73
-            }
-          ]
-        }
-      },
-      "lastCheckedAt": "2026-10-21T14:28:28.589Z",
-      "lastError": null,
-      "prematchSent": true,
-      "prematchSentAt": "2026-10-21T10:53:00.129Z",
-      "overSince": "2026-10-21T14:28:28.589Z",
-      "resultSentAt": "2026-10-21T14:28:28.589Z"
-    },
     "2399628": {
       "id": 2399628,
       "date": 1792609313000,
@@ -2131,7 +1919,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-14T17:27:55.249Z",
-      "lastSeenAt": "2026-11-20T13:43:39.897Z",
+      "lastSeenAt": "2026-11-20T14:13:40.309Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2356,7 +2144,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-15T12:49:55.388Z",
-      "lastSeenAt": "2026-11-20T13:43:39.897Z",
+      "lastSeenAt": "2026-11-20T14:13:40.309Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2563,19 +2351,19 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-20T14:03:40.140Z",
+      "lastSeenAt": "2026-11-20T14:23:40.493Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300048,
-  "lastRunAt": "2026-11-20T14:03:40.140Z",
+  "lastRunGapMs": 300095,
+  "lastRunAt": "2026-11-20T14:23:40.493Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-20T13:43:39.897Z",
+  "lastResultsCheckAt": "2026-11-20T14:13:40.309Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399623:over:0:1:1|2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-20T14:03:53.552Z",
-  "lastSuccessfulRunAt": "2026-11-20T13:58:40.092Z"
+  "lastPushedFingerprint": "2399628:over:0:1:1|2399633:over:0:1:1|2399635:over:0:1:1|2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-20T14:23:44.330Z",
+  "lastSuccessfulRunAt": "2026-11-20T14:23:40.493Z"
 }
