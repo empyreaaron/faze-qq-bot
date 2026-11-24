@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-24T11:55:48.355Z",
+  "lastScheduleCheckAt": "2026-11-24T12:10:48.525Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1915,10 +1915,10 @@
         "type": "bo1"
       },
       "title": null,
-      "liveFromList": false,
+      "liveFromList": true,
       "discoveredAt": "2026-11-24T08:15:44.976Z",
-      "lastSeenAt": "2026-11-24T11:55:48.355Z",
-      "status": "scheduled",
+      "lastSeenAt": "2026-11-24T12:10:48.525Z",
+      "status": "live",
       "startSent": false,
       "resultSent": false,
       "statsId": null,
@@ -1940,25 +1940,25 @@
           "result": null
         },
         {
-          "name": "TBA",
+          "name": "Mirage",
           "statsId": null,
           "result": null
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-24T11:55:48.355Z",
+      "lastCheckedAt": "2026-11-24T12:10:48.525Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-24T11:40:48.095Z"
     }
   },
-  "lastRunGapMs": 300086,
-  "lastRunAt": "2026-11-24T11:55:48.355Z",
+  "lastRunGapMs": 300023,
+  "lastRunAt": "2026-11-24T12:10:48.525Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-24T11:45:48.173Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:scheduled:0:0:1",
-  "lastPushedAt": "2026-11-24T11:55:58.863Z",
-  "lastSuccessfulRunAt": "2026-11-24T11:55:48.355Z"
+  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:live:0:0:1",
+  "lastPushedAt": "2026-11-24T12:11:09.846Z",
+  "lastSuccessfulRunAt": "2026-11-24T12:10:48.525Z"
 }
