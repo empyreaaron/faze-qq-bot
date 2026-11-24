@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-24T12:46:20.704Z",
+  "lastScheduleCheckAt": "2026-11-24T12:56:20.792Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -2092,15 +2092,38 @@
       "prematchSentAt": "2026-11-24T11:40:48.095Z",
       "overSince": "2026-11-24T12:46:20.704Z",
       "resultSentAt": "2026-11-24T12:46:20.704Z"
+    },
+    "2400567": {
+      "id": 2400567,
+      "date": 1795590000000,
+      "team1": {
+        "id": 12467,
+        "name": "PARIVISION"
+      },
+      "team2": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "event": {
+        "name": "PGL Major Singapore 2026 Stage 1"
+      },
+      "format": "bo1",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-11-24T12:56:20.792Z",
+      "lastSeenAt": "2026-11-24T12:56:20.792Z",
+      "status": "scheduled",
+      "startSent": false,
+      "resultSent": false
     }
   },
-  "lastRunGapMs": 300002,
-  "lastRunAt": "2026-11-24T12:46:20.704Z",
+  "lastRunGapMs": 300060,
+  "lastRunAt": "2026-11-24T12:56:20.792Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-24T12:46:20.704Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1",
-  "lastPushedAt": "2026-11-24T12:46:54.428Z",
-  "lastSuccessfulRunAt": "2026-11-24T12:41:20.702Z"
+  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-24T12:56:33.861Z",
+  "lastSuccessfulRunAt": "2026-11-24T12:51:20.732Z"
 }
