@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-24T11:20:47.900Z",
+  "lastScheduleCheckAt": "2026-11-24T11:40:48.095Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1898,7 +1898,7 @@
     },
     "2400564": {
       "id": 2400564,
-      "date": 1795521600000,
+      "date": 1795521000000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
@@ -1908,6 +1908,7 @@
         "name": "BC.Game"
       },
       "event": {
+        "id": 9303,
         "name": "PGL Major Singapore 2026 Stage 1"
       },
       "format": {
@@ -1916,7 +1917,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T08:15:44.976Z",
-      "lastSeenAt": "2026-11-24T11:20:47.900Z",
+      "lastSeenAt": "2026-11-24T11:40:48.095Z",
       "status": "scheduled",
       "startSent": false,
       "resultSent": false,
@@ -1945,17 +1946,19 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-24T11:15:47.797Z",
-      "lastError": null
+      "lastCheckedAt": "2026-11-24T11:40:48.095Z",
+      "lastError": null,
+      "prematchSent": true,
+      "prematchSentAt": "2026-11-24T11:40:48.095Z"
     }
   },
-  "lastRunGapMs": 300103,
-  "lastRunAt": "2026-11-24T11:20:47.900Z",
+  "lastRunGapMs": 300024,
+  "lastRunAt": "2026-11-24T11:40:48.095Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-24T11:15:47.797Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-24T11:21:03.421Z",
-  "lastSuccessfulRunAt": "2026-11-24T11:15:47.797Z"
+  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:scheduled:0:0:1",
+  "lastPushedAt": "2026-11-24T11:42:09.126Z",
+  "lastSuccessfulRunAt": "2026-11-24T11:35:48.071Z"
 }
