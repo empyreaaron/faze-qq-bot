@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-24T07:50:44.595Z",
+  "lastScheduleCheckAt": "2026-11-24T08:15:44.976Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1702,26 +1702,25 @@
     },
     "2400500": {
       "id": 2400500,
-      "date": 1795503600000,
+      "date": 1795506507000,
       "team1": {
         "id": 6667,
         "name": "FaZe"
       },
       "team2": {
-        "id": 12257,
+        "id": null,
         "name": "Wildcard"
       },
       "event": {
-        "id": 9303,
         "name": "PGL Major Singapore 2026 Stage 1"
       },
       "format": {
         "type": "bo1"
       },
       "title": null,
-      "liveFromList": true,
+      "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-24T07:45:44.566Z",
+      "lastSeenAt": "2026-11-24T08:15:44.976Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1896,15 +1895,38 @@
       "prematchSentAt": "2026-11-24T06:50:15.181Z",
       "overSince": "2026-11-24T07:50:44.595Z",
       "resultSentAt": "2026-11-24T07:50:44.595Z"
+    },
+    "2400564": {
+      "id": 2400564,
+      "date": 1795521600000,
+      "team1": {
+        "id": 6667,
+        "name": "FaZe"
+      },
+      "team2": {
+        "id": 12878,
+        "name": "BC.Game"
+      },
+      "event": {
+        "name": "PGL Major Singapore 2026 Stage 1"
+      },
+      "format": "bo1",
+      "title": null,
+      "liveFromList": false,
+      "discoveredAt": "2026-11-24T08:15:44.976Z",
+      "lastSeenAt": "2026-11-24T08:15:44.976Z",
+      "status": "scheduled",
+      "startSent": false,
+      "resultSent": false
     }
   },
-  "lastRunGapMs": 300029,
-  "lastRunAt": "2026-11-24T07:50:44.595Z",
+  "lastRunGapMs": 300098,
+  "lastRunAt": "2026-11-24T08:15:44.976Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-24T07:45:44.566Z",
+  "lastResultsCheckAt": "2026-11-24T08:15:44.976Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1",
-  "lastPushedAt": "2026-11-24T07:51:09.986Z",
-  "lastSuccessfulRunAt": "2026-11-24T07:45:44.566Z"
+  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:scheduled:0:0:0",
+  "lastPushedAt": "2026-11-24T08:16:05.123Z",
+  "lastSuccessfulRunAt": "2026-11-24T08:10:44.878Z"
 }
