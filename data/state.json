@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-25T11:34:11.466Z",
+  "lastScheduleCheckAt": "2026-11-25T12:09:12.141Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1720,7 +1720,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-25T11:14:11.080Z",
+      "lastSeenAt": "2026-11-25T11:44:11.659Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1916,7 +1916,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T08:15:44.976Z",
-      "lastSeenAt": "2026-11-25T11:14:11.080Z",
+      "lastSeenAt": "2026-11-25T11:44:11.659Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2112,7 +2112,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T12:56:20.792Z",
-      "lastSeenAt": "2026-11-25T11:14:11.080Z",
+      "lastSeenAt": "2026-11-25T11:44:11.659Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2289,13 +2289,13 @@
       "resultSentAt": "2026-11-25T08:18:42.311Z"
     }
   },
-  "lastRunGapMs": 300097,
-  "lastRunAt": "2026-11-25T11:34:11.466Z",
+  "lastRunGapMs": 300086,
+  "lastRunAt": "2026-11-25T12:09:12.141Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-25T11:14:11.080Z",
+  "lastResultsCheckAt": "2026-11-25T11:44:11.659Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:over:0:1:1",
-  "lastPushedAt": "2026-11-25T11:34:28.489Z",
-  "lastSuccessfulRunAt": "2026-11-25T11:29:11.369Z"
+  "lastPushedAt": "2026-11-25T12:09:17.598Z",
+  "lastSuccessfulRunAt": "2026-11-25T12:04:12.055Z"
 }
