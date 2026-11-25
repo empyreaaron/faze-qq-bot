@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-25T07:43:41.729Z",
+  "lastScheduleCheckAt": "2026-11-25T08:13:42.213Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1720,7 +1720,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-25T07:43:41.729Z",
+      "lastSeenAt": "2026-11-25T08:13:42.213Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1916,7 +1916,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T08:15:44.976Z",
-      "lastSeenAt": "2026-11-25T07:43:41.729Z",
+      "lastSeenAt": "2026-11-25T08:13:42.213Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2113,7 +2113,7 @@
       "title": null,
       "liveFromList": true,
       "discoveredAt": "2026-11-24T12:56:20.792Z",
-      "lastSeenAt": "2026-11-25T07:43:41.729Z",
+      "lastSeenAt": "2026-11-25T08:13:42.213Z",
       "status": "live",
       "startSent": false,
       "resultSent": false,
@@ -2138,23 +2138,26 @@
         {
           "name": "Anubis",
           "statsId": null,
-          "result": null
+          "result": {
+            "team1TotalRounds": 10,
+            "team2TotalRounds": 2
+          }
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-25T07:43:41.729Z",
+      "lastCheckedAt": "2026-11-25T08:13:42.213Z",
       "lastError": null,
       "prematchSent": true,
       "prematchSentAt": "2026-11-25T07:03:41.087Z"
     }
   },
-  "lastRunGapMs": 300012,
-  "lastRunAt": "2026-11-25T07:43:41.729Z",
+  "lastRunGapMs": 300096,
+  "lastRunAt": "2026-11-25T08:13:42.213Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-25T07:43:41.729Z",
+  "lastResultsCheckAt": "2026-11-25T08:13:42.213Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:live:0:0:1",
-  "lastPushedAt": "2026-11-25T07:44:08.761Z",
-  "lastSuccessfulRunAt": "2026-11-25T07:43:41.729Z"
+  "lastPushedAt": "2026-11-25T08:14:09.895Z",
+  "lastSuccessfulRunAt": "2026-11-25T08:13:42.213Z"
 }
