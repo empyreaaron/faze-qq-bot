@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-25T06:08:40.445Z",
+  "lastScheduleCheckAt": "2026-11-25T06:38:40.802Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1720,7 +1720,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-25T05:43:40.185Z",
+      "lastSeenAt": "2026-11-25T06:13:40.483Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1916,7 +1916,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T08:15:44.976Z",
-      "lastSeenAt": "2026-11-25T05:43:40.185Z",
+      "lastSeenAt": "2026-11-25T06:13:40.483Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2106,23 +2106,52 @@
       "event": {
         "name": "PGL Major Singapore 2026 Stage 1"
       },
-      "format": "bo1",
+      "format": {
+        "type": "bo1"
+      },
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T12:56:20.792Z",
-      "lastSeenAt": "2026-11-25T06:08:40.445Z",
+      "lastSeenAt": "2026-11-25T06:38:40.802Z",
       "status": "scheduled",
       "startSent": false,
-      "resultSent": false
+      "resultSent": false,
+      "statsId": null,
+      "winnerTeam": null,
+      "stage": {
+        "name": "Swiss round 3 (teams with a 1-1 record)",
+        "label": null,
+        "isKnockout": false
+      },
+      "maps": [
+        {
+          "name": "Ancient - 44%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "Ancient - 37%",
+          "statsId": null,
+          "result": null
+        },
+        {
+          "name": "TBA",
+          "statsId": null,
+          "result": null
+        }
+      ],
+      "embeddedStats": null,
+      "lastCheckedAt": "2026-11-25T06:33:40.696Z",
+      "lastError": null
     }
   },
-  "lastRunGapMs": 300064,
-  "lastRunAt": "2026-11-25T06:08:40.445Z",
+  "lastRunGapMs": 300106,
+  "lastRunAt": "2026-11-25T06:38:40.802Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-25T05:43:40.185Z",
+  "lastResultsCheckAt": "2026-11-25T06:13:40.483Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-25T06:08:45.996Z",
-  "lastSuccessfulRunAt": "2026-11-25T06:03:40.381Z"
+  "lastPushedAt": "2026-11-25T06:38:46.544Z",
+  "lastSuccessfulRunAt": "2026-11-25T06:33:40.696Z"
 }
