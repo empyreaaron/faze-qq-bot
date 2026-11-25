@@ -2116,13 +2116,13 @@
       "resultSent": false
     }
   },
-  "lastRunGapMs": 300097,
-  "lastRunAt": "2026-11-25T02:57:18.284Z",
+  "lastRunGapMs": 300063,
+  "lastRunAt": "2026-11-25T03:27:55.681Z",
   "lastRunErrors": [],
-  "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-25T02:47:18.088Z",
+  "lastRunStatus": "failed",
+  "lastResultsCheckAt": null,
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-25T02:57:23.501Z",
+  "lastPushedAt": "2026-11-25T03:27:57.220Z",
   "lastSuccessfulRunAt": "2026-11-25T02:52:18.187Z"
 }
