@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-25T08:18:42.311Z",
+  "lastScheduleCheckAt": "2026-11-25T08:49:08.633Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1720,7 +1720,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-25T08:13:42.213Z",
+      "lastSeenAt": "2026-11-25T08:44:08.553Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1916,7 +1916,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T08:15:44.976Z",
-      "lastSeenAt": "2026-11-25T08:13:42.213Z",
+      "lastSeenAt": "2026-11-25T08:44:08.553Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2094,26 +2094,25 @@
     },
     "2400567": {
       "id": 2400567,
-      "date": 1795590600000,
+      "date": 1795594550000,
       "team1": {
-        "id": 12467,
-        "name": "PARIVISION"
-      },
-      "team2": {
         "id": 6667,
         "name": "FaZe"
       },
+      "team2": {
+        "id": null,
+        "name": "PARIVISION"
+      },
       "event": {
-        "id": 9303,
         "name": "PGL Major Singapore 2026 Stage 1"
       },
       "format": {
         "type": "bo1"
       },
       "title": null,
-      "liveFromList": true,
+      "liveFromList": false,
       "discoveredAt": "2026-11-24T12:56:20.792Z",
-      "lastSeenAt": "2026-11-25T08:13:42.213Z",
+      "lastSeenAt": "2026-11-25T08:44:08.553Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -2290,13 +2289,13 @@
       "resultSentAt": "2026-11-25T08:18:42.311Z"
     }
   },
-  "lastRunGapMs": 300098,
-  "lastRunAt": "2026-11-25T08:18:42.311Z",
+  "lastRunGapMs": 300080,
+  "lastRunAt": "2026-11-25T08:49:08.633Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-25T08:13:42.213Z",
+  "lastResultsCheckAt": "2026-11-25T08:44:08.553Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:over:0:1:1",
-  "lastPushedAt": "2026-11-25T08:19:07.499Z",
-  "lastSuccessfulRunAt": "2026-11-25T08:13:42.213Z"
+  "lastPushedAt": "2026-11-25T08:49:24.861Z",
+  "lastSuccessfulRunAt": "2026-11-25T08:44:08.553Z"
 }
