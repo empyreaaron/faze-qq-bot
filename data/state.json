@@ -2300,6 +2300,7 @@
         "name": "FaZe"
       },
       "event": {
+        "id": 9303,
         "name": "PGL Major Singapore 2026 Stage 1"
       },
       "format": {
@@ -2367,8 +2368,10 @@
         }
       ],
       "embeddedStats": null,
-      "lastCheckedAt": "2026-11-26T05:46:18.025Z",
-      "lastError": null
+      "lastCheckedAt": "2026-11-26T05:51:18.123Z",
+      "lastError": null,
+      "prematchSent": true,
+      "prematchSentAt": "2026-11-26T05:51:18.123Z"
     }
   },
   "lastRunGapMs": 300098,
@@ -2377,7 +2380,7 @@
   "lastRunStatus": "success",
   "lastResultsCheckAt": "2026-11-26T05:46:18.025Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
-  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:over:0:1:1|2400574:scheduled:0:0:0",
-  "lastPushedAt": "2026-11-26T05:51:23.414Z",
+  "lastPushedFingerprint": "2399857:over:0:1:1|2399867:over:0:1:1|2399868:over:0:1:1|2399877:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:over:0:1:1|2400574:scheduled:0:0:1",
+  "lastPushedAt": "2026-11-26T05:51:36.374Z",
   "lastSuccessfulRunAt": "2026-11-26T05:46:18.025Z"
 }
