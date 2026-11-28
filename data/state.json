@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "lastScheduleCheckAt": "2026-11-28T14:17:41.419Z",
+  "lastScheduleCheckAt": "2026-11-28T14:47:41.673Z",
   "lastHeartbeatAt": "2026-10-30T14:12:37.882Z",
   "matches": {
     "2399857": {
@@ -1090,7 +1090,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-11T08:39:09.928Z",
-      "lastSeenAt": "2026-11-28T14:17:41.419Z",
+      "lastSeenAt": "2026-11-28T14:47:41.673Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1286,7 +1286,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T08:15:44.976Z",
-      "lastSeenAt": "2026-11-28T14:17:41.419Z",
+      "lastSeenAt": "2026-11-28T14:47:41.673Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1482,7 +1482,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-24T12:56:20.792Z",
-      "lastSeenAt": "2026-11-28T14:17:41.419Z",
+      "lastSeenAt": "2026-11-28T14:47:41.673Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1678,7 +1678,7 @@
       "title": null,
       "liveFromList": false,
       "discoveredAt": "2026-11-25T13:24:13.523Z",
-      "lastSeenAt": "2026-11-28T14:17:41.419Z",
+      "lastSeenAt": "2026-11-28T14:47:41.673Z",
       "status": "over",
       "startSent": false,
       "resultSent": true,
@@ -1871,13 +1871,13 @@
       "resultSentAt": "2026-11-26T08:46:20.998Z"
     }
   },
-  "lastRunGapMs": 300104,
-  "lastRunAt": "2026-11-28T14:17:41.419Z",
+  "lastRunGapMs": 300002,
+  "lastRunAt": "2026-11-28T14:47:41.673Z",
   "lastRunErrors": [],
   "lastRunStatus": "success",
-  "lastResultsCheckAt": "2026-11-28T14:17:41.419Z",
+  "lastResultsCheckAt": "2026-11-28T14:47:41.673Z",
   "lastSuccessfulReadAt": "2026-10-11T05:46:24.320Z",
   "lastPushedFingerprint": "2399857:over:0:1:1|2399878:over:0:1:1|2399994:over:0:1:1|2400411:over:0:1:1|2400415:over:0:1:1|2400500:over:0:1:1|2400564:over:0:1:1|2400567:over:0:1:1|2400574:over:0:1:1",
-  "lastPushedAt": "2026-11-28T14:18:01.715Z",
-  "lastSuccessfulRunAt": "2026-11-28T14:17:41.419Z"
+  "lastPushedAt": "2026-11-28T14:48:02.076Z",
+  "lastSuccessfulRunAt": "2026-11-28T14:42:41.671Z"
 }
